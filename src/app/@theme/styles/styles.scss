@@ -31,3 +31,14 @@
 
   @include nb-overrides();
 };
+
+.elanco-color {
+  color: #0067B1
+}
+.main-container-fixed {
+  padding-left:1rem
+}
+.active {
+  border-left: 3px solid; 
+  border-color:#0067B1;
+}
