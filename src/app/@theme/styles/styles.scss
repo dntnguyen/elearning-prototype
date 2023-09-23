@@ -32,13 +32,23 @@
   @include nb-overrides();
 };
 
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+
+$elanco-color: #0067B1;
+
 .elanco-color {
-  color: #0067B1
+  color: $elanco-color
 }
 .main-container-fixed {
   padding-left:1rem
 }
-.active {
+
+.title-border-line-left {
   border-left: 3px solid; 
-  border-color:#0067B1;
+  border-color:$elanco-color; 
+}
+
+nb-menu .menu-item a.active {
+  border-left: 3px solid; 
+  border-color:$elanco-color; 
 }

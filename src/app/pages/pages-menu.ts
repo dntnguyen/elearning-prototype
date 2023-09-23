@@ -2,6 +2,24 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Bài học',
+    icon: 'calendar-outline',
+    link: '/pages/lessons',
+    home: true,
+  },
+  {
+    title: 'Bài thi',
+    icon: 'book-outline',
+    link: '/pages/exams',
+    home: true,
+  },
+  {
+    title: 'Bài thi',
+    icon: 'calendar-outline',
+    link: '/pages/lesson-categories',
+    home: true,
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
