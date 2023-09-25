@@ -13,7 +13,7 @@ interface Person {
 }
 
 @Component({
-  selector: 'fxd-lesson',
+  selector: 'ngx-lesson',
   styleUrls: ['./lesson.component.scss'],
   templateUrl: './lesson.component.html',
 })
