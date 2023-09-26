@@ -18,6 +18,7 @@ import { LessonComponent } from './lesson.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     ngFormsModule,
     NbCheckboxModule,
     NzInputModule,
+    NzTagModule
   ],
   declarations: [
     LessonComponent,

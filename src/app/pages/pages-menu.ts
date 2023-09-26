@@ -2,6 +2,11 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Phân loại bài học',
+    icon: 'book-outline',
+    link: '/pages/lesson-categories',
+    home: true,
+  },{
     title: 'Bài học',
     icon: 'calendar-outline',
     link: '/pages/lessons',

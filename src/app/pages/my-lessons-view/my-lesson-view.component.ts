@@ -23,20 +23,20 @@ interface Lesson {
 })
 export class MyLessonViewComponent {
   data = [
-    {name:'Racing car sprays burning fuel into crowd.', steps: 0, percent: 100, showInfo: true},
-    {name:'Japanese princess to wed commoner.', steps: 0, percent: 100, showInfo: true},
-    {name:'Australian walks 100km after outback crash.', steps: 0, percent: 100, showInfo: true},
-    {name:'Man charged over missing wedding girl.', steps: 0, percent: 100, showInfo: true},
-    {name:'Los Angeles battles huge wildfires.', steps: 5, percent: 25, showInfo: true},
+    {name:'Bài 1: Tổng quan về khóa học', percent: 100, timeSpent: '00:20:19'},
+    {name:'Bài 2: ELANCO PIG ACADEMY là gì?', percent: 100, timeSpent: '00:25:03'},
+    {name:'Bài 3: Các dấu hiệu bệnh', percent: 75, timeSpent: '00:20:54'},
+    {name:'Bài 4: Phương pháp chữa trị', percent: 50, timeSpent: '00:15:16'},
+    {name:'Bài 5: Cách thức phòng ngừa', percent: 0, timeSpent: '00:10:04'},
   ];
 
-  dataAdvanced = [
-    {name:'Racing car sprays burning fuel into crowd.', steps: 0, percent: 100, showInfo: true},
-    {name:'Japanese princess to wed commoner.', steps: 5, percent: 75, showInfo: true},
-    {name:'Australian walks 100km after outback crash.', steps: 5, percent: 50, showInfo: true},
-    {name:'Man charged over missing wedding girl.', steps: 5, percent: 50, showInfo: true},
-    {name:'Los Angeles battles huge wildfires.', steps: 5, percent: 0, showInfo: true},
-  ];
+  // dataAdvanced = [
+  //   {name:'Racing car sprays burning fuel into crowd.', steps: 0, percent: 100, showInfo: true},
+  //   {name:'Japanese princess to wed commoner.', steps: 5, percent: 75, showInfo: true},
+  //   {name:'Australian walks 100km after outback crash.', steps: 5, percent: 50, showInfo: true},
+  //   {name:'Man charged over missing wedding girl.', steps: 5, percent: 50, showInfo: true},
+  //   {name:'Los Angeles battles huge wildfires.', steps: 5, percent: 0, showInfo: true},
+  // ];
 
   constructor(iconsLibrary: NbIconLibraries,
     private router: Router,
