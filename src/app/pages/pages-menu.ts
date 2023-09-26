@@ -14,9 +14,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'Bài thi',
+    title: 'Khóa học của tôi',
     icon: 'calendar-outline',
-    link: '/pages/lesson-categories',
+    link: '/pages/my-lessons',
     home: true,
   },
   {

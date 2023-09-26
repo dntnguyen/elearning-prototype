@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { LessonComponent } from './lessons/lesson.component';
+import { MyLessonComponent } from './my-lessons/my-lesson.component';
+import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +16,14 @@ const routes: Routes = [{
     {
       path: 'lessons',
       component: LessonComponent,
+    },
+    {
+      path: 'my-lessons',
+      component: MyLessonComponent,
+    },
+    {
+      path: 'my-lessons/view',
+      component: MyLessonViewComponent,
     },
     {
       path: 'dashboard',

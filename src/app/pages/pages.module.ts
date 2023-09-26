@@ -6,6 +6,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { LessonModule } from './lessons/lesson.module';
+import { MyLessonModule } from './my-lessons/my-lesson.module';
+import { MyLessonViewModule } from './my-lessons-view/my-lesson-view.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 
 @NgModule({
@@ -16,6 +18,8 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
     DashboardModule,
     MiscellaneousModule,
     LessonModule,
+    MyLessonModule,
+    MyLessonViewModule,
     ECommerceModule
   ],
   declarations: [

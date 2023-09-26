@@ -44,11 +44,16 @@ $elanco-color: #0067B1;
 }
 
 .title-border-line-left {
-  border-left: 3px solid; 
+  border-left: 4px solid; 
   border-color:$elanco-color; 
 }
 
 nb-menu .menu-item a.active {
-  border-left: 3px solid; 
+  border-left: 4px solid; 
   border-color:$elanco-color; 
+  background-color: rgba($color: $elanco-color, $alpha: 0.1);
+}
+
+.gray-description {
+  color: rgb(155, 155, 155);
 }
