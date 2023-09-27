@@ -8,6 +8,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { LessonComponent } from './lessons/lesson.component';
 import { MyLessonComponent } from './my-lessons/my-lesson.component';
 import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
+import { LessonAssignComponent } from './lesson-assigns/lesson-assign.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +17,10 @@ const routes: Routes = [{
     {
       path: 'lessons',
       component: LessonComponent,
+    },
+    {
+      path: 'lesson-assigns',
+      component: LessonAssignComponent,
     },
     {
       path: 'my-lessons',

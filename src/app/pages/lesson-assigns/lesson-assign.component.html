@@ -1,0 +1,159 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="row">
+        <div class="col-md-7" style="border-right:0.5px solid rgb(204, 204, 204);">
+          <div style="font-size:0.8em">Tìm kiếm</div>
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:100%;">
+            <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
+          </ng-template>
+
+          <nz-tabset>
+            <nz-tab nzTitle="Tất cả">
+              <nz-table #basicTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th style="width:60px;"><b>Chọn</b></th>
+                    <th style="width:60px;">
+                    </th>
+                    <th><b>Tên</b></th>
+                    <th><b>Loại</b></th>
+                    <th><b>Thông tin chi tiết</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td class="text-center">
+                      <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                    </td>
+                    <td class="text-center">
+                      <ng-container *ngIf="data.type === 'User'">
+                        <nb-icon [icon]="'person'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(11, 191, 197);"></nb-icon>
+                      </ng-container>
+                      <ng-container *ngIf="data.type === 'Group'">
+                        <nb-icon [icon]="'people'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(165, 11, 165);"></nb-icon>
+                      </ng-container>
+                    </td>
+                    <td>
+                      {{data.name}}
+                    </td>
+                    <td>
+                      {{data.type}}
+                    </td>
+                    <td>
+                      {{data.email}}
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+            <nz-tab nzTitle="Người dùng">
+              <nz-table #userTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th style="width:60px;"><b>Chọn</b></th>
+                    <th style="width:60px;">
+                    </th>
+                    <th><b>Tên</b></th>
+                    <th><b>Loại</b></th>
+                    <th><b>Email</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of userTable.data">
+                    <tr *ngIf="data.type === 'User'">
+                      <td class="text-center">
+                        <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                      </td>
+                      <td class="text-center">
+
+                        <nb-icon [icon]="'person'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(11, 191, 197);"></nb-icon>
+
+                      </td>
+                      <td>
+                        {{data.name}}
+                      </td>
+                      <td>
+                        {{data.type}}
+                      </td>
+                      <td>
+                        {{data.email}}
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+            <nz-tab nzTitle="Nhóm người dùng">
+              <nz-table #groupTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th style="width:60px;"><b>Chọn</b></th>
+                    <th style="width:60px;">
+                    </th>
+                    <th><b>Tên</b></th>
+                    <th><b>Loại</b></th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of groupTable.data">
+                    <tr *ngIf="data.type === 'Group'">
+                      <td class="text-center">
+                        <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                      </td>
+                      <td class="text-center">
+
+                        <nb-icon [icon]="'people'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(165, 11, 165);"></nb-icon>
+
+                      </td>
+                      <td>
+                        {{data.name}}
+                      </td>
+                      <td>
+                        {{data.type}}
+                      </td>
+
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+          </nz-tabset>
+        </div>
+        <div class="col-md-5">
+          <div class="mb-1"><b>Đã chọn: {{listOfSelected?.length}}</b></div>
+          <br />
+          <div class="mb-1">Bỏ chọn tất cả</div>
+          <br />
+          <nz-table #selectedTable [nzData]="listOfSelected" style="width:100%" [nzShowPagination]="false" nzSize="small"
+            [nzPageSize]="9999">
+            <tbody>
+              <ng-container *ngFor="let data of selectedTable.data">
+                <tr *ngIf="data.type === 'User'">
+                  <td>
+                    <div>{{data.name}}</div>
+                    <div>{{data.email}}</div>
+                  </td>
+                  <td>
+                    Delete
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>

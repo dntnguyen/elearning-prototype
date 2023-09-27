@@ -8,6 +8,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { LessonModule } from './lessons/lesson.module';
 import { MyLessonModule } from './my-lessons/my-lesson.module';
 import { MyLessonViewModule } from './my-lessons-view/my-lesson-view.module';
+import { LessonAssignModule } from './lesson-assigns/lesson-assign.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
     LessonModule,
     MyLessonModule,
     MyLessonViewModule,
+    LessonAssignModule,
     ECommerceModule
   ],
   declarations: [

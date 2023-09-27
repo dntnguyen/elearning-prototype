@@ -6,10 +6,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'book-outline',
     link: '/pages/lesson-categories',
     home: true,
-  },{
+  },
+  {
     title: 'Bài học',
     icon: 'calendar-outline',
     link: '/pages/lessons',
+    home: true,
+  },
+  {
+    title: 'Assign bài học',
+    icon: 'calendar-outline',
+    link: '/pages/lesson-assigns',
     home: true,
   },
   {
