@@ -1,36 +1,123 @@
 <div class="row">
-    <nb-card style="width:100%">
-        <nb-card-body>
-           
-          
-            <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
-                <input type="text" nz-input size="small" placeholder="input search text" />
-              </nz-input-group>
-              <ng-template #suffixIconSearch>
-                <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;"></nb-icon>
-              </ng-template>
-            <nz-table #basicTable [nzData]="listOfData" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of basicTable.data">
-                        <td>{{ data.name }}</td>
-                        <td>{{ data.age }}</td>
-                        <td>{{ data.address }}</td>
-                        <td>
-                            <a>Action 一 {{ data.name }}</a>
-                            <!-- <nz-divider nzType="vertical"></nz-divider> -->
-                            <a>Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </nz-table>
-        </nb-card-body>
-    </nb-card>
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="row mb-2">
+        <div class="col-lg-6">
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
+            <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;color:gray;opacity: 50%;"></nb-icon>
+          </ng-template>
+          &nbsp;
+          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"
+            nzPlaceHolder="Ngày tạo"></nz-date-picker>
+        </div>
+        <div class="col-lg-6">
+          <div class="float-right">
+            <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="openFilterForm()">
+              <i class="fa fa-filter"></i>&nbsp;
+              Lọc
+            </button>
+            <button id="btn-delete" nz-button nzType="primary" class="mr-2">
+              Xóa
+            </button>
+            <button nz-button nzType="primary">
+              <i class="fa fa-plus"></i>&nbsp;
+              Thêm bài học
+            </button>
+          </div>
+        </div>
+      </div>
+      <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzTableLayout]="'fixed'">
+        <thead>
+          <tr>
+            <th style="width: 5%;" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
+              [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+            <th style="width: 5%;"><b>STT </b></th>
+            <th style="width: 30%;"><b>Tiêu đề </b></th>
+            <th><b>Có chứng chỉ </b></th>
+            <th style="width: 20%;"><b>Phân loại </b></th>
+            <th><b>Công khai </b></th>
+            <th><b>Trạng thái </b></th>
+            <th><b>Ngày tạo </b></th>
+            <th><b>Hành động </b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <td>{{ data.no }}</td>
+            <td>{{ data.title }}</td>
+            <td>{{ data.haveCertification }}</td>
+            <td><div *ngFor="let value of data.categogy">{{ value }}</div></td>
+            <td>
+              <div [className]="getHtmlClassByDivPublic(data.public)">
+                <div [className]="getHtmlClassByDataPublic(data.public)">{{ data.public }}</div>
+              </div>
+            </td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.createdDate }}</td>
+            <td>
+              <a><nb-icon id="ico-eye" [icon]="'eye'" pack="ion" style="font-weight:lighter;"></nb-icon></a>&nbsp;
+              <a routerLink="./lesson-report-activities"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
+              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a><i id="ico-trash" class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nb-card-body>
+  </nb-card>
 </div>
+<nz-drawer [nzBodyStyle]="{ overflow: 'auto'}" [nzMaskClosable]="true" [nzWidth]="378" [nzVisible]="visible"
+  nzTitle="Lọc" [nzFooter]="footerTpl" (nzOnClose)="close()" [nzZIndex]="1000">
+  <form nz-form *nzDrawerContent>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="name"><b>Trạng thái</b></label><br />
+        <label nz-checkbox nzValue="Tất cả">Tất cả</label>
+        <label nz-checkbox [ngModel]="true" nzValue="Đã xuất bản">Đã xuất bản</label>
+        <label nz-checkbox nzValue="Đang sửa">Đang sửa</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="name"><b>Công khai</b></label><br />
+        <label nz-checkbox nzValue="Tất cả">Tất cả</label>
+        <label nz-checkbox [ngModel]="true" nzValue="Đã xuất bản">Đã xuất bản</label>
+        <label nz-checkbox nzValue="Đang sửa">Đang sửa</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="name"><b>Có chứng chỉ</b></label><br />
+        <label nz-checkbox nzValue="Tất cả">Tất cả</label>
+        <label nz-checkbox [ngModel]="true" nzValue="Đã xuất bản">Có</label>
+        <label nz-checkbox nzValue="Đang sửa">Không</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="name"><b>Phân loại</b></label>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Kênh" style="width:100%">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+        </nz-select>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="BU" style="width:100%">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+        </nz-select>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Nhóm sản phẩm" style="width:100%">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <!-- <button nz-button style="margin-right: 8px;" (click)="close()">Cancel</button> -->
+      <button nz-button nzType="primary" (click)="close()" style="width:100%">Xác nhận</button>
+    </div>
+  </ng-template>
+</nz-drawer>

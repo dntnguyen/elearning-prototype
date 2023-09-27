@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { LessonComponent } from './lessons/lesson.component';
+import { ReportActivitiesComponent } from './lessons/report-activities/report-activities.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,10 @@ const routes: Routes = [{
     {
       path: 'lessons',
       component: LessonComponent,
+    },
+	{
+      path: 'lessons/lesson-report-activities',
+      component: ReportActivitiesComponent,
     },
     {
       path: 'dashboard',
