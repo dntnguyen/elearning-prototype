@@ -1,0 +1,114 @@
+<div class="row">
+    <nb-card style="width:100%">
+        <nb-card-body>
+            <div>
+                <span (click)="backToMyLesson()" style="cursor:pointer;padding:2px;display: inline-block;height:20px;">
+
+                    <nb-icon [icon]="'chevron-left'" pack="ion"
+                        style="font-size:18px;font-weight:lighter;color:rgb(173, 173, 173)"></nb-icon>
+                </span>
+                <span class="elanco-color ml-3"
+                    style="font-size:16px;font-weight: 600;padding-bottom: 10px;display: inline-block;">
+                    Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm
+                </span>
+            </div>
+            <div class="row mt-2 mb-2">
+                <div class="col-md-4">
+                    <img src="../../../assets/images/my-lesson-sample-image.png" height="auto" width="100%" />
+                </div>
+                <div class="col-md-8">
+                    <h4>
+                        ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)
+                    </h4>
+                    <div class="gray-description">
+                        Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh ký sinh trùng đường máu,
+                        được ghi nhận phổ biến ở các đàn heo trên thế giới
+                    </div>
+                    <div class="mt-2">
+                        <span>
+                            12/09/2023
+                        </span>
+                        <span class="ml-2">
+                            <nz-tag nzColor="error">Riêng</nz-tag>
+                        </span>
+                    </div>
+                    <button class="btn btn-sm btn-primary mt-4" nbButton>
+                        <nb-icon [icon]="'arrow-right-b'" pack="ion"
+                            style="font-size:18px;font-weight:lighter;"></nb-icon>
+                        Bắt đầu học</button>
+
+                    <button class="btn btn-sm btn-primary mt-4 ml-2" nbButton>
+                        <nb-icon [icon]="'arrow-right-b'" pack="ion"
+                            style="font-size:18px;font-weight:lighter;"></nb-icon>
+                        Tiếp tục học</button>
+                </div>
+            </div>
+
+            <nz-tabset>
+
+                <nz-tab nzTitle="Giới thiệu">
+                    <div class="elanco-color title">
+                        Thông tin chung
+                    </div>
+                    <ul style="list-style-type:disc">
+                        <li class="gray-description mt-2">Thời lượng: 120 tiếng</li>
+                        <li class="gray-description mt-2">Danh sách bài học: 30 bài học</li>
+                    </ul>
+
+                    <div class="elanco-color title mt-1">
+                        Mô tả
+                    </div>
+                    <div class="gray-description mt-2">
+                        Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh ký sinh trùng đường máu,
+                        được ghi nhận phổ biến ở các đàn heo trên thế giới từ nhiều năm trước,
+                        tuy nhiên tại Việt Nam bệnh chỉ mới được đề cập đến trong khoảng vài năm gần đây.
+                        Vi khuẩn gây bệnh ở heo mọi lứa tuổi. Ở heo con theo mẹ,
+                        vi khuẩn có thể gây bệnh thiếu máu nhiễm trùng (infectious anemia in pigs – IAP) cấp tính,
+                        heo con bị gầy yếu nghiêm trọng, thiếu đường huyết và có thể dẫn đến chết cấp tính.
+                    </div>
+                    <div class="gray-description mt-2">
+                        M.hyopneumoniae khi xâm nhập vào cơ thể,
+                        nó bám vào lông nhung đường hô hấp và phá huỷ lớp lông nhung đường hô hấp
+                        (tác dụng giữ bụi và ngăn cản mầm bệnh đi sâu vào đường hô hấp),
+                        làm suy yếu hệ thống phòng vệ màng nhày – lông nhung,
+                        mở đường và tạo cơ hội cho các mầm bệnh đường hô hấp khác bội nhiễm như:
+                        Pasterella multocida (Tụ huyết trùng), APP (viêm phổi dính sườn),
+                        Haemophillus parasuis (Glasser’s), Bordertella bronchiseptica (Viêm teo mũi truyền nhiễm),
+                        Streptococcus suis (Bệnh liên cầu),
+                        PRRS (Tai xanh) và PCV2 (Circo) xâm nhập và tấn công gây bệnh hô hấp phức hợp (PRDC),
+                        làm tăng tỷ lệ chết và loại thải heo.
+                    </div>
+                </nz-tab>
+                <nz-tab nzTitle="Danh sách bài học">
+
+                    <ng-template #headerTemplate>
+                        <b>Cơ bản</b>
+                    </ng-template>
+
+                    <nz-list nzBordered>
+                        <nz-list-item *ngFor="let item of data">
+                            <div class="row mt-1 mb-1" style="width:100%">
+                                <div class="col-md-8">
+                                    <nb-icon [icon]="'arrow-right-b'" pack="ion"
+                                        style="font-size:18px;font-weight:lighter;"></nb-icon>
+                                    <span style="font-size:16px;font-weight: 600;">{{ item.name }}</span>
+                                </div>
+                                <div class="col-md-4 text-right elanco-color">
+                                    {{item.timeSpent}}
+                                </div>
+                                <div class="col-md-12">
+                                    <nz-progress [nzPercent]="item.percent" [nzStrokeColor]="'orange'"
+                                        [nzShowInfo]="false" [nzSize]="'small'"></nz-progress>
+                                </div>
+                                <div class="col-md-12 gray-description">
+                                    {{item.percent}}% hoàn thành
+                                </div>
+                            </div>
+                        </nz-list-item>
+                    </nz-list>
+
+                </nz-tab>
+            </nz-tabset>
+        </nb-card-body>
+    </nb-card>
+</div>

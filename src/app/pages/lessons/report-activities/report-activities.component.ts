@@ -1,0 +1,185 @@
+import { Component, OnInit } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
+import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
+import { endOfMonth } from 'date-fns';
+
+@Component({
+  selector: 'ngx-report-activities',
+  templateUrl: './report-activities.component.html',
+  styleUrls: ['./report-activities.component.scss']
+})
+export class ReportActivitiesComponent implements OnInit {
+  chartTotalUserOnlineInWeek: any;
+  date: any
+  ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
+  constructor(
+    private i18n: NzI18nService
+  ) {
+    Chart.register(...registerables);
+    this.i18n.setLocale(en_US);
+  }
+
+  ngOnInit(): void {
+    this.createChartTotalUserOnlineInWeek()
+    // this.createChartCompareTotalStudentGrades()
+  }
+
+  createChartTotalUserOnlineInWeek() {
+    this.chartTotalUserOnlineInWeek = new Chart("ChartTotalUserOnlineInWeek", {
+      type: 'line',
+      data: {
+        labels: ['12/08', '13/08', '14/08', '15/08', '16/08', '17/08', '18/08'],
+        datasets: [
+          {
+            data: [5, 26, 13, 45, 40, 20, 20],
+            borderColor: 'rgb(90, 74, 153)',
+            backgroundColor: 'rgb(90, 74, 153)',
+            pointRadius: 1,
+            pointHoverRadius: 12,
+            borderWidth: 8
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: false,
+            text: 'loc',
+          },
+          tooltip: {
+            yAlign: 'top',
+            external: this.externalTooltipHandler
+          },
+          legend: {
+            display: false
+          },
+
+        }
+      }
+    });
+  }
+  getOrCreateTooltip(chart) {
+    console.log(chart)
+    let tooltipEl = chart.canvas.parentNode.querySelector('div');
+
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.style.background = 'rgba(0, 0, 0, 0.7)';
+      tooltipEl.style.borderRadius = '3px';
+      tooltipEl.style.color = 'white';
+      tooltipEl.style.opacity = 1;
+      tooltipEl.style.pointerEvents = 'none';
+      tooltipEl.style.position = 'absolute';
+      tooltipEl.style.transform = 'translate(-50%, 0)';
+      tooltipEl.style.transition = 'all .1s ease';
+
+      const table = document.createElement('table');
+      table.style.margin = '0px';
+
+      tooltipEl.appendChild(table);
+      chart.canvas.parentNode.appendChild(tooltipEl);
+    }
+    console.log(tooltipEl)
+    return tooltipEl;
+  };
+  externalTooltipHandler(context) {
+    const { chart, tooltip } = context;
+
+    let tooltipEl = chart.canvas.parentNode.querySelector('div');
+
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.style.background = 'rgba(0, 0, 0, 0.7)';
+      tooltipEl.style.borderRadius = '3px';
+      tooltipEl.style.color = 'white';
+      tooltipEl.style.opacity = 1;
+      tooltipEl.style.pointerEvents = 'none';
+      tooltipEl.style.position = 'absolute';
+      tooltipEl.style.transform = 'translate(-50%, 0)';
+      tooltipEl.style.transition = 'all .1s ease';
+
+      const table = document.createElement('table');
+      table.style.margin = '0px';
+
+      tooltipEl.appendChild(table);
+      chart.canvas.parentNode.appendChild(tooltipEl);
+    }
+
+    // Hide if no tooltip
+    if (tooltip.opacity === 0) {
+      tooltipEl.style.opacity = 0;
+      return;
+    }
+    if (tooltip.body) {
+      console.log(tooltip.body)
+      const titleLines = tooltip.title || [];
+      const bodyLines = tooltip.body.map(b => b.lines);
+
+      const tableHead = document.createElement('thead');
+
+      titleLines.forEach(title => {
+        const tr = document.createElement('tr');
+        tr.style.borderWidth = '0';
+
+        const th = document.createElement('th');
+        th.style.borderWidth = '0';
+        const text = document.createTextNode(title);
+
+        th.appendChild(text);
+        tr.appendChild(th);
+        tableHead.appendChild(tr);
+      });
+
+      const tableBody = document.createElement('tbody');
+      bodyLines.forEach((body, i) => {
+        const colors = tooltip.labelColors[i];
+
+        const span = document.createElement('span');
+        span.style.background = colors.backgroundColor;
+        span.style.borderColor = colors.borderColor;
+        span.style.borderWidth = '2px';
+        span.style.marginRight = '10px';
+        span.style.height = '30px';
+        span.style.width = '30px';
+        span.style.display = 'inline-block';
+
+        const tr = document.createElement('tr');
+        tr.style.backgroundColor = 'inherit';
+        tr.style.borderWidth = '0';
+
+        const td = document.createElement('td');
+        td.style.borderWidth = '0';
+
+        const text = document.createTextNode(body);
+
+        td.appendChild(span);
+        td.appendChild(text);
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      });
+
+      const tableRoot = tooltipEl.querySelector('table');
+
+      // Remove old children
+      while (tableRoot.firstChild) {
+        tableRoot.firstChild.remove();
+      }
+
+      // Add new children
+      tableRoot.appendChild(tableHead);
+      tableRoot.appendChild(tableBody);
+    }
+
+    const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
+
+    // Display, position, and set styles for font
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+    tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+    tooltipEl.style.font = tooltip.options.bodyFont.string;
+    tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
+  }
+
+
+}

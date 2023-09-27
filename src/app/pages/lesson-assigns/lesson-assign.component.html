@@ -1,0 +1,195 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="elanco-color" style="font-size:16px;font-weight: 600;">Bệnh tiêu chảy cấp PED và viêm ruột truyền
+        nhiễm</div>
+
+      <div class="row mt-4">
+        <div class="col-md-7" style="border-right:0.5px solid rgb(204, 204, 204);">
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;" class="mb-2">
+            <input type="text" [(ngModel)]="searchText" nz-input size="small" placeholder="Tìm kiếm"
+              (keyup)="onKeyUp($event)" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
+          </ng-template>
+          <div class="mb-2">
+            <a class="btn btn-sm btn-default small-text"
+              style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+              <span>Khu vực:</span>
+              <span class="ml-2" style="font-weight: bold;">Đồng Nai,Bến Tre,Cần Thơ</span>
+            </a>
+            <a class="btn btn-sm btn-default small-text ml-2"
+              style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+              <span>Ngày đăng ký</span>
+              <span class="ml-2">>=</span>
+              <span class="ml-2" style="font-weight: bold;">60 ngày</span>
+            </a>
+            <a class="btn btn-sm btn-default small-text ml-2"
+              style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+              <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
+                style="font-weight:lighter;opacity: 100%;"></nb-icon>
+
+              <span class="ml-1">Thêm điều kiện</span>
+            </a>
+          </div>
+          <nz-tabset>
+            <nz-tab nzTitle="Tất cả">
+              <nz-table #basicTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th nzWidth="60px"><b></b></th>
+                    <th nzWidth="60px">
+                    </th>
+                    <th><b>Tên</b></th>
+                    <th><b>Nhóm</b></th>
+                    <th><b>Thông tin chi tiết</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td class="text-center">
+                      <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                    </td>
+                    <td class="text-center">
+                      <ng-container *ngIf="data.type === 'User'">
+                        <nb-icon [icon]="'person'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(11, 191, 197);"></nb-icon>
+                      </ng-container>
+                      <ng-container *ngIf="data.type === 'Group'">
+                        <nb-icon [icon]="'people'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(165, 11, 165);"></nb-icon>
+                      </ng-container>
+                    </td>
+                    <td>
+                      {{data.name}}
+                    </td>
+                    <td>
+                      {{data.groupName}}
+                    </td>
+
+                    <td>
+                      {{data.email}}
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+            <nz-tab nzTitle="Người dùng">
+              <nz-table #userTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th style="width:60px;"><b></b></th>
+                    <th style="width:60px;">
+                    </th>
+                    <th><b>Tên</b></th>
+                    <th><b>Nhóm</b></th>
+                    <th><b>Email</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of userTable.data">
+                    <tr *ngIf="data.type === 'User'">
+                      <td class="text-center">
+                        <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                      </td>
+                      <td class="text-center">
+
+                        <nb-icon [icon]="'person'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(11, 191, 197);"></nb-icon>
+
+                      </td>
+                      <td>
+                        {{data.name}}
+                      </td>
+                      <td>
+                        {{data.groupName}}
+                      </td>
+
+                      <td>
+                        {{data.email}}
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+            <nz-tab nzTitle="Nhóm người dùng">
+              <nz-table #groupTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
+                [nzPageSize]="9999">
+                <thead>
+                  <tr>
+                    <th style="width:60px;"><b></b></th>
+                    <th style="width:60px;">
+                    </th>
+                    <th><b>Tên</b></th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of groupTable.data">
+                    <tr *ngIf="data.type === 'Group'">
+                      <td class="text-center">
+                        <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
+                      </td>
+                      <td class="text-center">
+
+                        <nb-icon [icon]="'people'" pack="eva"
+                          style="font-weight:lighter;opacity: 80%;color:rgb(165, 11, 165);"></nb-icon>
+
+                      </td>
+                      <td>
+                        {{data.name}}
+                      </td>
+                      <td>
+                        {{data.groupName}}
+                      </td>
+
+
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </nz-table>
+            </nz-tab>
+          </nz-tabset>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-9">
+              <a nz-button nzType="default" (click)="removeAllSelected()">
+                <span class="ml-1">Bỏ chọn tất cả</span>
+              </a>
+
+              <b class="ml-4">Đã chọn: {{ !listOfSelected ? 0 : listOfSelected?.length }}</b>
+            </div>
+            <div class="col-md-3 text-right">
+              <button nz-button nzType="primary">Lưu</button>
+            </div>
+          </div>
+          <br />
+
+          <nz-table #selectedTable [nzData]="listOfSelected" style="width:100%" [nzShowPagination]="false"
+            nzSize="small" [nzPageSize]="9999" style="min-height:500px">
+            <tbody>
+              <ng-container *ngFor="let data of selectedTable.data">
+                <tr *ngIf="data.type === 'User'">
+                  <td>
+                    <div><b>{{data.name}}</b><span> ({{data.groupName}})</span></div>
+                    <div>{{data.email}}</div>
+                  </td>
+                  <td style="width:60px">
+                    <nb-icon [icon]="'trash-a'" pack="ion" style="font-weight:lighter;color:red;opacity: 0.6;"
+                      (click)="removeUserFromListSelected(data)"></nb-icon>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </nz-table>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>

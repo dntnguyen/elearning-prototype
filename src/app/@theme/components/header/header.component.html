@@ -1,0 +1,40 @@
+<div class="header-container" style="width:16rem">
+  <div class="logo-container">
+    <!-- <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a> -->
+    <img src="../../../../assets/images/logo.svg" height="30px" width="100px" />
+    <a class="logo elanco-color" href="#" (click)="navigateHome()" 
+      style="font-size:18px; font-weight: 600; padding:0px;margin:0px">
+      <span>E-learning</span></a>
+  </div>
+  <!-- <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+  </nb-select> -->
+</div>
+<div class="header-container text-left" style="width:100%; border-left: 0.5px rgb(228, 228, 228) solid;">
+  <div class="elanco-color title-border-line-left" 
+    style="font-size:18px; height:2rem; margin-left: 1.5rem;padding-left: 1rem; padding-top:0.3rem; font-weight: 600">
+    Danh sách bài học</div>
+</div>
+<div class="header-container">
+  <nb-actions size="small">
+
+    <!-- <nb-action class="control-item">
+      <nb-search type="rotate-layout"></nb-search>
+    </nb-action> -->
+    <!-- <nb-action class="control-item" icon="email-outline"></nb-action> -->
+    <nb-action class="control-item" icon="bell-outline"></nb-action>
+
+    <nb-action title="Home">
+      <img src="../../../../assets/images/flag-vietnam.png" height="26px" width="28px" />
+    </nb-action>
+
+
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+      <nb-user [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly" [name]="'Super Admin'"
+        [picture]="user?.picture">
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>
