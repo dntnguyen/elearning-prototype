@@ -1,0 +1,36 @@
+<div class="row">
+    <nb-card style="width:100%">
+        <nb-card-body>
+           
+          
+            <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
+                <input type="text" nz-input size="small" placeholder="input search text" />
+              </nz-input-group>
+              <ng-template #suffixIconSearch>
+                <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;"></nb-icon>
+              </ng-template>
+            <nz-table #basicTable [nzData]="listOfData" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of basicTable.data">
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.age }}</td>
+                        <td>{{ data.address }}</td>
+                        <td>
+                            <a>Action 一 {{ data.name }}</a>
+                            <!-- <nz-divider nzType="vertical"></nz-divider> -->
+                            <a>Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </nb-card-body>
+    </nb-card>
+</div>
