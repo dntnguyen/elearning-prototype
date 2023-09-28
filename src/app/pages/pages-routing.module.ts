@@ -10,6 +10,8 @@ import { ReportActivitiesComponent } from './lessons/report-activities/report-ac
 import { MyLessonComponent } from './my-lessons/my-lesson.component';
 import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
 import { LessonAssignComponent } from './lesson-assigns/lesson-assign.component';
+import { InActiveUserComponent } from './inactive-users/inactive-user.component';
+import { TrackingUserComponent } from './tracking-users/tracking-user.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +36,14 @@ const routes: Routes = [{
     {
       path: 'my-lessons/view',
       component: MyLessonViewComponent,
+    },
+    {
+      path: 'inactive-users',
+      component: InActiveUserComponent,
+    },
+     {
+      path: 'tracking-users',
+      component: TrackingUserComponent,
     },
     {
       path: 'dashboard',

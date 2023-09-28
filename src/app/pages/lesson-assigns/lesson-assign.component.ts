@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NbIconLibraries } from '@nebular/theme';
 import { Router } from '@angular/router';
+import { ChangeTitleService } from '../../change-title.service';
 
 interface UserAndGroup {
   selected: boolean;
@@ -26,7 +27,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user1@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
     },
     {
       selected: false,
@@ -35,7 +36,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user2@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
     },
     {
       selected: false,
@@ -44,7 +45,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user3@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
     },
     {
       selected: false,
@@ -53,7 +54,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user4@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
     },
     {
       selected: false,
@@ -62,7 +63,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user5@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
     },
     {
       selected: false,
@@ -71,7 +72,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user6@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
     },
     {
       selected: false,
@@ -80,7 +81,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user7@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
     },
     {
       selected: false,
@@ -89,7 +90,7 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user8@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
     },
     {
       selected: false,
@@ -98,12 +99,12 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user9@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
     },
     {
       selected: false,
       code: 'G0001',
-      name: 'Nhóm EDC',
+      name: 'EDC',
       type: 'Group',
       email: '',
       groupCode: null,
@@ -112,7 +113,7 @@ export class LessonAssignComponent {
     {
       selected: false,
       code: 'G0002',
-      name: 'Nhóm giảng viên Đại Học',
+      name: 'Giảng viên Đại Học',
       type: 'Group',
       email: '',
       groupCode: null,
@@ -128,11 +129,14 @@ export class LessonAssignComponent {
   visible = false;
 
   constructor(iconsLibrary: NbIconLibraries,
-    private router: Router
+    private router: Router,
+    private changeTitleService: ChangeTitleService
   ) {
     iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
     iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
     iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
+
+    this.changeTitleService.setDataTitle('Assign bài học')
 
     this.listOfData = [...this.defaultData]
   }
@@ -300,5 +304,9 @@ export class LessonAssignComponent {
     this.listOfData = [...listSearch]
   }
 
+  clearSearch() {
+    this.searchText = ''
+    this.onKeyUp(null)
+  }
 }
 

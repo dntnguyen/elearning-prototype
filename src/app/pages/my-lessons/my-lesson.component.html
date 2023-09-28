@@ -9,7 +9,7 @@
                                 <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
                               </nz-input-group>
                               <ng-template #suffixIconSearch>
-                                <nb-icon [icon]="'search'" pack="ion" 
+                                <nb-icon [icon]="'search'" pack="ion"
                                     style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
                               </ng-template>
 
@@ -17,7 +17,7 @@
                               style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
                               <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
                                 style="font-weight:lighter;opacity: 100%;"></nb-icon>
-                
+
                               <span class="ml-1">Thêm điều kiện</span>
                             </a>
                         </div>
@@ -28,15 +28,15 @@
 
                     <nz-table #basicTable [nzData]="listOfData" style="width:100%"
                         [nzShowPagination]="true"
-                        
+
                         [nzPageSize]="12">
-                       
+
                         <tbody>
                             <tr>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-3 mb-4" *ngFor="let data of basicTable.data">
-                                            <img src="../../../assets/images/my-lesson-sample-image.png" 
+                                            <img src="../../../assets/images/my-lesson-sample-image.png"
                                                 height="auto" width="100%"
                                                 style="cursor: pointer;"
                                                 (click)="viewLesson()"
@@ -64,14 +64,14 @@
                                                     </ng-container>
                                                 </span>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </nz-table>
-                    
+
                 </nz-tab>
                 <nz-tab nzTitle="Đã hoàn thành">
                     <div class="row">
@@ -80,27 +80,27 @@
                                 <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
                               </nz-input-group>
                               <ng-template #suffixIconSearch>
-                                <nb-icon [icon]="'search'" pack="ion" 
+                                <nb-icon [icon]="'search'" pack="ion"
                                     style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
                               </ng-template>
                         </div>
                         <div class="col-md-6 text-right">
-                            <input type="button" class="btn btn-sm btn-primary" value="Lọc" />
+
                         </div>
                     </div>
 
                     <br />
-                    <nz-table #tableCompleted [nzData]="listOfDataCompleted" style="width:100%" 
+                    <nz-table #tableCompleted [nzData]="listOfDataCompleted" style="width:100%"
                         [nzShowPagination]="true"
-                       
+
                         [nzPageSize]="12">
-                       
+
                         <tbody>
                             <tr>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-3 mb-4" *ngFor="let data of tableCompleted.data">
-                                            <img src="../../../assets/images/my-lesson-sample-image.png" 
+                                            <img src="../../../assets/images/my-lesson-sample-image.png"
                                                 height="auto" width="100%"
                                                 style="cursor: pointer;"
                                                 (click)="viewLesson()" />

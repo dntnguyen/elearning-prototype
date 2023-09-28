@@ -6,6 +6,7 @@ import { SmartTableData } from '../../@core/data/smart-table';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NbIconLibraries } from '@nebular/theme';
 import { Router } from '@angular/router';
+import { ChangeTitleService } from '../../change-title.service';
 
 interface Lesson {
   imageUrl: string;
@@ -41,13 +42,16 @@ export class MyLessonViewComponent {
   constructor(iconsLibrary: NbIconLibraries,
     private router: Router,
     private location: Location,
+    private changeTitleService: ChangeTitleService
   ) {
     iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
     iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
     iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
+
+    this.changeTitleService.setDataTitle('Khóa học của tôi - Chi tiết')
   }
 
   backToMyLesson() {
     this.router.navigate(['pages','my-lessons']);
-  } 
+  }
 }
