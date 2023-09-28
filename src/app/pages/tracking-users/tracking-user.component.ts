@@ -59,7 +59,7 @@ export class TrackingUserComponent {
   listOfData: TrackingUser[] = [
     {
       "no": 1,
-      "function": "Khóa học",
+      "function": "Bài học",
       "action": "Sửa",
       "user": "staff001 - Nguyễn Văn Bảo",
       "description": "Hướng dẫn sử dụng Elearning Mobile",

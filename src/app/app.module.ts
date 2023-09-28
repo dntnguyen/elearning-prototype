@@ -20,6 +20,10 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { registerLocaleData } from '@angular/common';
+import { vi_VN, NZ_I18N } from 'ng-zorro-antd/i18n';
+import vi from "@angular/common/locales/vi";
+registerLocaleData(vi, "vi_VN");
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +43,9 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: vi_VN },
   ],
   bootstrap: [AppComponent],
 })

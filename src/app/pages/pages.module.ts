@@ -11,6 +11,8 @@ import { MyLessonViewModule } from './my-lessons-view/my-lesson-view.module';
 import { LessonAssignModule } from './lesson-assigns/lesson-assign.module';
 import { InActiveUserModule } from './inactive-users/inactive-user.module';
 import { TrackingUserModule } from './tracking-users/tracking-user.module';
+import { ExamModule } from './exams/exam.module';
+import { LessonCategoryModule } from './lesson-categories/lesson-category.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
     LessonAssignModule,
     InActiveUserModule,
     TrackingUserModule,
+    ExamModule,
+    LessonCategoryModule,
     ECommerceModule,
   ],
   declarations: [

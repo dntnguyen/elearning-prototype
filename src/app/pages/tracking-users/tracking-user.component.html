@@ -21,13 +21,13 @@
                 <span class="ml-2"><=</span>
                 <span class="ml-2" style="font-weight: bold;">25/09/2023</span>
               </a>
-              <a class="btn btn-sm btn-default small-text ml-2"
+              <!-- <a class="btn btn-sm btn-default small-text ml-2"
                 style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
                 <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
                   style="font-weight:lighter;opacity: 100%;"></nb-icon>
 
                 <span class="ml-1">Thêm điều kiện</span>
-              </a>
+              </a> -->
             </div>
         </div>
         <div class="col-lg-3">
@@ -41,28 +41,28 @@
         </div>
       </div>
       <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
-        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzTableLayout]="'fixed'">
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"   [nzScroll]="{ x: '800px' }">
         <thead>
           <tr>
-            <th style="width: 5%;" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
-              [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+            <!-- <th style="width: 5%;" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
+              [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th> -->
             <th style="width: 5%;"><b>STT </b></th>
             <th><b>Chức năng</b></th>
             <th><b>Hành động</b></th>
             <th><b>Người dùng</b></th>
-            <th><b>Mô tả</b></th>
+            <!-- <th><b>Mô tả</b></th> -->
 
             <th><b>Ngày thực hiện</b></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <!-- <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td> -->
             <td>{{ data.no }}</td>
             <td>{{ data.function }}</td>
             <td>{{ data.action }}</td>
             <td>{{ data.user }}</td>
-            <td>{{ data.description }}</td>
+            <!-- <td>{{ data.description }}</td> -->
             <td>{{ data.actionDate }}</td>
 
           </tr>

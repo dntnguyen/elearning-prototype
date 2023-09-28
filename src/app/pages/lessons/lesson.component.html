@@ -83,7 +83,7 @@
 </div>
 <nz-drawer [nzBodyStyle]="{ overflow: 'auto'}" [nzMaskClosable]="true" [nzWidth]="378" [nzVisible]="visible"
   nzTitle="Lọc" [nzFooter]="footerTpl" (nzOnClose)="close()" [nzZIndex]="1000">
-  <form nz-form *nzDrawerContent>
+  <div nz-form *nzDrawerContent>
     <div class="row">
       <div class="col-md-12">
         <label for="name"><b>Trạng thái</b></label><br />
@@ -122,7 +122,7 @@
         </nz-select>
       </div>
     </div>
-  </form>
+  </div>
 
   <ng-template #footerTpl>
     <div style="float: right">
