@@ -48,7 +48,7 @@ export class ReportActivitiesComponent implements OnInit {
             text: 'loc',
           },
           tooltip: {
-            // yAlign: 'top',
+            enabled: false,
             external: this.externalTooltipHandler,
           },
           legend: {
@@ -183,18 +183,18 @@ export class ReportActivitiesComponent implements OnInit {
     this.chartTotalUserOnlineInWeek = new Chart("ChartCountRegisteredAndCompletedCourse", {
       type: 'line',
       data: {
-        labels: ['Feb', 'Jan', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        labels: ['Feb', 'Jan', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
           {
             label: 'Đăng ký khoá học',
-            data: [12, 11, 11, 14, 16, 18, 15, 20, 19, 21, 26,30],
+            data: [12, 11, 11, 14, 16, 18, 15, 20, 19, 21, 26, 30],
             borderColor: '#914DF3',
             backgroundColor: '#914DF3',
             fill: true
           },
           {
             label: 'Hoàn thành khoá học',
-            data: [32, 35, 39, 40, 48, 55, 59, 67, 69, 70, 72,79],
+            data: [32, 35, 39, 40, 48, 55, 59, 67, 69, 70, 72, 79],
             borderColor: '#F5A067',
             backgroundColor: '#F5A067',
             fill: true
