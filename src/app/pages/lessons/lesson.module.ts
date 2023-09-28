@@ -26,6 +26,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReportActivitiesComponent } from './report-activities/report-activities.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { LessonRoutingModule } from './lesson-routing.module';
 // import { Chart } from 'chart.js';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
     NzCheckboxModule,
     NzSelectModule,
     NzStatisticModule,
+    LessonRoutingModule
     // Chart
   ],
   declarations: [

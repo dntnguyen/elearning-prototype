@@ -19,7 +19,7 @@ const routes: Routes = [{
       path: 'lessons',
       component: LessonComponent,
     },
-    {
+	{
       path: 'lessons/lesson-report-activities',
       component: ReportActivitiesComponent,
     },

@@ -6,7 +6,7 @@ import { ReportActivitiesComponent } from './report-activities/report-activities
 
 const routes: Routes = [
   { path: '', component: LessonComponent },
-  // { path: 'lesson-report-activities', component: ReportActivitiesComponent },
+  { path: 'lesson-report-activities', component: ReportActivitiesComponent },
 ];
 
 @NgModule({

@@ -3,12 +3,12 @@
     <div class="card rounded-lg">
       <div class="card-body text-black">
         <div class="row">
-          <div class="col-3 text-center">
+          <div class="col-2 text-center">
             <i class="fa fa-heart"></i>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-10 text-left">
             <h6><b>178+</b></h6>
-            <p>Số lượt hoàn thành</p>
+            <p style="font-size: smaller;">Số lượt hoàn thành</p>
           </div>
         </div>
       </div>
@@ -18,12 +18,12 @@
     <div class="card">
       <div class="card-body text-black">
         <div class="row">
-          <div class="col-3 text-center">
+          <div class="col-2 text-center">
             <i class="fa fa-heart"></i>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-10 text-left">
             <h6><b>20+</b></h6>
-            <p>Số lượt đăng ký</p>
+            <p style="font-size: smaller;">Số lượt đăng ký</p>
           </div>
         </div>
       </div>
@@ -33,12 +33,12 @@
     <div class="card">
       <div class="card-body text-black">
         <div class="row">
-          <div class="col-3 text-center">
+          <div class="col-2 text-center">
             <i class="fa fa-heart"></i>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-10 text-left">
             <h6><b>190+</b></h6>
-            <p>Số lượt online hôm nay</p>
+            <p style="font-size: smaller;">Số lượt online hôm nay</p>
           </div>
         </div>
       </div>
@@ -48,12 +48,12 @@
     <div class="card">
       <div class="card-body text-black">
         <div class="row">
-          <div class="col-3 text-center">
+          <div class="col-2 text-center">
             <i class="fa fa-heart"></i>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-10 text-left" style="padding: 0;">
             <h6><b>2h15m</b></h6>
-            <p>Thời gian hoàn thành khoá học trung bình</p>
+            <p style="font-size: 12px;">Thời gian hoàn thành khoá học trung bình</p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
   <div class="col-12">
     <div class="row">
       <div class="col-12">
-        Báo cáo hoạt động hàng tuần
+        <h4>Báo cáo hoạt động hàng tuần</h4>
       </div>
     </div>
     <div class="row">
@@ -79,6 +79,32 @@
             </div>
             <div class="chart-container" style="width:100%;height:auto;">
               <canvas id="ChartTotalUserOnlineInWeek" height="100%">{{chartTotalUserOnlineInWeek}}</canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12">
+        <h4>Báo cáo hoàn thành khóa học</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <h6 class="float-left">Số lượt hoàn thành khoá học / số lượt đăng ký</h6>
+              <div class="float-right">
+                <nz-date-picker nzMode="year" [(ngModel)]="date" nzPlaceHolder="Năm"></nz-date-picker>
+              </div>
+            </div>
+            <div class="chart-container" style="width:100%;height:auto;">
+              <canvas id="ChartCountRegisteredAndCompletedCourse" height="100%">{{chartTotalUserOnlineInWeek}}</canvas>
             </div>
           </div>
         </div>
