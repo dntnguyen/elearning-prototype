@@ -1,0 +1,74 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="row mb-4">
+        <div class="col-lg-9">
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
+            <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;color:gray;opacity: 50%;"></nb-icon>
+          </ng-template>
+          &nbsp;
+
+            <div class="mt-2 mb-1">
+              <a class="btn btn-sm btn-default small-text"
+                style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+                <span>Từ ngày</span>
+                <span class="ml-2">>=</span>
+                <span class="ml-2" style="font-weight: bold;">01/09/2023</span>
+                <span class="ml-2" >Đến ngày</span>
+                <span class="ml-2"><=</span>
+                <span class="ml-2" style="font-weight: bold;">25/09/2023</span>
+              </a>
+              <!-- <a class="btn btn-sm btn-default small-text ml-2"
+                style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+                <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
+                  style="font-weight:lighter;opacity: 100%;"></nb-icon>
+
+                <span class="ml-1">Thêm điều kiện</span>
+              </a> -->
+            </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="float-right">
+            <!-- <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="openFilterForm()">
+              <i class="fa fa-filter"></i>&nbsp;
+              Lọc
+            </button> -->
+
+          </div>
+        </div>
+      </div>
+      <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"   [nzScroll]="{ x: '800px' }">
+        <thead>
+          <tr>
+            <!-- <th style="width: 5%;" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
+              [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th> -->
+            <th style="width: 5%;"><b>STT </b></th>
+            <th><b>Chức năng</b></th>
+            <th><b>Hành động</b></th>
+            <th><b>Người dùng</b></th>
+            <!-- <th><b>Mô tả</b></th> -->
+
+            <th><b>Ngày thực hiện</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <!-- <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td> -->
+            <td>{{ data.no }}</td>
+            <td>{{ data.function }}</td>
+            <td>{{ data.action }}</td>
+            <td>{{ data.user }}</td>
+            <!-- <td>{{ data.description }}</td> -->
+            <td>{{ data.actionDate }}</td>
+
+          </tr>
+        </tbody>
+      </nz-table>
+    </nb-card-body>
+  </nb-card>
+</div>
+

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NbIconLibraries } from '@nebular/theme';
 import { Router } from '@angular/router';
+import { ChangeTitleService } from '../../change-title.service';
 
 interface UserAndGroup {
   selected: boolean;
@@ -10,6 +11,7 @@ interface UserAndGroup {
   email: string;
   groupCode?: string;
   groupName?: string;
+  name_english?: string;
 }
 
 @Component({
@@ -26,7 +28,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user1@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
+      name_english: "ly thi thanh tam",
     },
     {
       selected: false,
@@ -35,7 +38,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user2@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
+      name_english: "tran trung hieu",
     },
     {
       selected: false,
@@ -44,7 +48,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user3@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
+      name_english: "nguyen khanh tran",
     },
     {
       selected: false,
@@ -53,7 +58,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user4@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
+      name_english: "nguyen van quy",
     },
     {
       selected: false,
@@ -62,7 +68,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user5@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
+      name_english: "le thi ngoc thuy",
     },
     {
       selected: false,
@@ -71,7 +78,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user6@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
+      name_english: "nguyen van khoi",
     },
     {
       selected: false,
@@ -80,7 +88,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user7@gmail.com',
       groupCode: 'G0002',
-      groupName: 'Nhóm giảng viên Đại Học',
+      groupName: 'Giảng viên Đại Học',
+      name_english: "hoang minh tuan",
     },
     {
       selected: false,
@@ -89,7 +98,8 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user8@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
+      name_english: "nguyen thai hoa",
     },
     {
       selected: false,
@@ -98,12 +108,13 @@ export class LessonAssignComponent {
       type: 'User',
       email: 'user9@gmail.com',
       groupCode: 'G0001',
-      groupName: 'Nhóm EDC',
+      groupName: 'EDC',
+      name_english: "vo thanh trung",
     },
     {
       selected: false,
       code: 'G0001',
-      name: 'Nhóm EDC',
+      name: 'EDC',
       type: 'Group',
       email: '',
       groupCode: null,
@@ -112,7 +123,7 @@ export class LessonAssignComponent {
     {
       selected: false,
       code: 'G0002',
-      name: 'Nhóm giảng viên Đại Học',
+      name: 'Giảng viên Đại Học',
       type: 'Group',
       email: '',
       groupCode: null,
@@ -127,12 +138,13 @@ export class LessonAssignComponent {
   searchText: string
   visible = false;
 
+  isCheckedAll: boolean
+
   constructor(iconsLibrary: NbIconLibraries,
-    private router: Router
+    private router: Router,
+    private changeTitleService: ChangeTitleService,
   ) {
-    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
+    this.changeTitleService.setDataTitle('Assign bài học')
 
     this.listOfData = [...this.defaultData]
   }
@@ -287,12 +299,15 @@ export class LessonAssignComponent {
       return
     }
 
-    value = value.toLocaleLowerCase()
+    value = value.toLocaleLowerCase().trim()
 
     let listSearch: UserAndGroup[] = []
     for (let i = 0; i < this.defaultData.length; i++) {
       let handled = this.defaultData[i]
-      if (handled.name?.toLocaleLowerCase().includes(value) || handled.email?.toLocaleLowerCase().includes(value)) {
+      if (handled.name?.toLocaleLowerCase().includes(value)
+        || handled.email?.toLocaleLowerCase().includes(value)
+        || handled.code?.toLocaleLowerCase().includes(value)
+        || handled.name_english?.toLocaleLowerCase().includes(value) ) {
         listSearch.push(handled)
       }
     }
@@ -300,5 +315,16 @@ export class LessonAssignComponent {
     this.listOfData = [...listSearch]
   }
 
+  clearSearch() {
+    this.searchText = ''
+    this.onKeyUp(null)
+  }
+
+  setSelectedAll(){
+    for (let i = 0; i < this.listOfData.length; i++) {
+      this.listOfData[i].selected = this.isCheckedAll
+      this.setSelected(this.listOfData[i])
+    }
+  }
 }
 

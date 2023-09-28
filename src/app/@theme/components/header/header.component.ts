@@ -4,7 +4,9 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { ChangeTitleService } from '../../../change-title.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -40,12 +42,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
+  pageTitle: string = 'Trang chủ'
+  subscriptionChangeTitle: Subscription
+
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              public changeTitleService: ChangeTitleService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -69,6 +76,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+    this.subscriptionChangeTitle = this.changeTitleService.currentGetDataTitle$.subscribe((title) => {
+      this.pageTitle = title
+    })
   }
 
   ngOnDestroy() {
@@ -88,7 +99,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
+    // this.menuService.navigateHome();
+    this.router.navigate(['pages','dashboard']);
     return false;
   }
 }

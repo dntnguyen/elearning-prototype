@@ -5,6 +5,7 @@ import { SmartTableData } from '../../@core/data/smart-table';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { NbIconLibraries } from '@nebular/theme';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
+import { ChangeTitleService } from '../../change-title.service';
 
 interface Lesson {
   no: number;
@@ -204,7 +205,8 @@ export class LessonComponent {
 
   constructor(
     iconsLibrary: NbIconLibraries,
-    private i18n: NzI18nService
+    private i18n: NzI18nService,
+    private changeTitleService: ChangeTitleService
   ) {
     this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
       .filter(icon => icon.indexOf('outline') === -1);
@@ -215,6 +217,7 @@ export class LessonComponent {
     iconsLibrary.setDefaultPack('far');
 
     this.i18n.setLocale(en_US);
+    this.changeTitleService.setDataTitle('Bài học')
   }
 
   updateCheckedSet(id: number, checked: boolean): void {

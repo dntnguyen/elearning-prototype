@@ -11,6 +11,10 @@ import { MyLessonComponent } from './my-lessons/my-lesson.component';
 import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
 import { LessonAssignComponent } from './lesson-assigns/lesson-assign.component';
 import { LessonEditComponent } from './lessons/lesson-edit/lesson-edit.component';
+import { InActiveUserComponent } from './inactive-users/inactive-user.component';
+import { TrackingUserComponent } from './tracking-users/tracking-user.component';
+import { ExamComponent } from './exams/exam.component';
+import { LessonCategoryComponent } from './lesson-categories/lesson-category.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +23,14 @@ const routes: Routes = [{
     {
       path: 'lessons',
       component: LessonComponent,
+    },
+    {
+      path: 'lesson-categories',
+      component: LessonCategoryComponent,
+    },
+    {
+      path: 'exams',
+      component: ExamComponent,
     },
     {
       path: 'lessons/lesson-report-activities',
@@ -39,6 +51,14 @@ const routes: Routes = [{
     {
       path: 'my-lessons/view',
       component: MyLessonViewComponent,
+    },
+    {
+      path: 'inactive-users',
+      component: InActiveUserComponent,
+    },
+     {
+      path: 'tracking-users',
+      component: TrackingUserComponent,
     },
     {
       path: 'dashboard',
