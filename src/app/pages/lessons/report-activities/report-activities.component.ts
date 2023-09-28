@@ -21,7 +21,7 @@ export class ReportActivitiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.createChartTotalUserOnlineInWeek()
-    // this.createChartCompareTotalStudentGrades()
+    this.createChartCountRegisteredAndCompletedCourse()
   }
 
   createChartTotalUserOnlineInWeek() {
@@ -48,8 +48,8 @@ export class ReportActivitiesComponent implements OnInit {
             text: 'loc',
           },
           tooltip: {
-            yAlign: 'top',
-            external: this.externalTooltipHandler
+            // yAlign: 'top',
+            external: this.externalTooltipHandler,
           },
           legend: {
             display: false
@@ -59,30 +59,7 @@ export class ReportActivitiesComponent implements OnInit {
       }
     });
   }
-  getOrCreateTooltip(chart) {
-    console.log(chart)
-    let tooltipEl = chart.canvas.parentNode.querySelector('div');
 
-    if (!tooltipEl) {
-      tooltipEl = document.createElement('div');
-      tooltipEl.style.background = 'rgba(0, 0, 0, 0.7)';
-      tooltipEl.style.borderRadius = '3px';
-      tooltipEl.style.color = 'white';
-      tooltipEl.style.opacity = 1;
-      tooltipEl.style.pointerEvents = 'none';
-      tooltipEl.style.position = 'absolute';
-      tooltipEl.style.transform = 'translate(-50%, 0)';
-      tooltipEl.style.transition = 'all .1s ease';
-
-      const table = document.createElement('table');
-      table.style.margin = '0px';
-
-      tooltipEl.appendChild(table);
-      chart.canvas.parentNode.appendChild(tooltipEl);
-    }
-    console.log(tooltipEl)
-    return tooltipEl;
-  };
   externalTooltipHandler(context) {
     const { chart, tooltip } = context;
 
@@ -90,17 +67,20 @@ export class ReportActivitiesComponent implements OnInit {
 
     if (!tooltipEl) {
       tooltipEl = document.createElement('div');
-      tooltipEl.style.background = 'rgba(0, 0, 0, 0.7)';
-      tooltipEl.style.borderRadius = '3px';
-      tooltipEl.style.color = 'white';
-      tooltipEl.style.opacity = 1;
+      tooltipEl.style.background = 'rgba(255, 255, 255, 1)';
+      tooltipEl.style.borderRadius = '10px';
+      tooltipEl.style.color = 'black';
+      tooltipEl.style.borderWidth = '1px';
+      tooltipEl.style.borderColor = '#000000';
+      tooltipEl.style.opacity = 100;
       tooltipEl.style.pointerEvents = 'none';
       tooltipEl.style.position = 'absolute';
-      tooltipEl.style.transform = 'translate(-50%, 0)';
+      tooltipEl.style.transform = 'translate(-50%, -100%)';
       tooltipEl.style.transition = 'all .1s ease';
+      tooltipEl.style.boxShadow = '10px 10px 10px rgba(148, 148, 148, 1)';
 
       const table = document.createElement('table');
-      table.style.margin = '0px';
+      table.style.margin = '10px';
 
       tooltipEl.appendChild(table);
       chart.canvas.parentNode.appendChild(tooltipEl);
@@ -112,7 +92,6 @@ export class ReportActivitiesComponent implements OnInit {
       return;
     }
     if (tooltip.body) {
-      console.log(tooltip.body)
       const titleLines = tooltip.title || [];
       const bodyLines = tooltip.body.map(b => b.lines);
 
@@ -124,6 +103,8 @@ export class ReportActivitiesComponent implements OnInit {
 
         const th = document.createElement('th');
         th.style.borderWidth = '0';
+        th.style.color = 'rgba(60, 60, 67, 0.60)';
+
         const text = document.createTextNode(title);
 
         th.appendChild(text);
@@ -150,14 +131,30 @@ export class ReportActivitiesComponent implements OnInit {
 
         const td = document.createElement('td');
         td.style.borderWidth = '0';
+        td.style.color = '#11263C';
+        td.style.fontSize = '20px';
 
         const text = document.createTextNode(body);
 
-        td.appendChild(span);
         td.appendChild(text);
         tr.appendChild(td);
         tableBody.appendChild(tr);
       });
+
+      const tableFooter = document.createElement('tbody');
+      const tr = document.createElement('tr');
+      tr.style.backgroundColor = 'inherit';
+      tr.style.borderWidth = '0';
+
+      const td = document.createElement('td');
+      td.style.borderWidth = '0';
+      td.style.color = 'rgba(60, 60, 67, 0.60)';
+
+      const text = document.createTextNode('user online trong tuần');
+
+      td.appendChild(text);
+      tr.appendChild(td);
+      tableBody.appendChild(tr);
 
       const tableRoot = tooltipEl.querySelector('table');
 
@@ -169,6 +166,7 @@ export class ReportActivitiesComponent implements OnInit {
       // Add new children
       tableRoot.appendChild(tableHead);
       tableRoot.appendChild(tableBody);
+      tableRoot.appendChild(tableFooter);
     }
 
     const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
@@ -181,5 +179,43 @@ export class ReportActivitiesComponent implements OnInit {
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
   }
 
+  createChartCountRegisteredAndCompletedCourse() {
+    this.chartTotalUserOnlineInWeek = new Chart("ChartCountRegisteredAndCompletedCourse", {
+      type: 'line',
+      data: {
+        labels: ['Feb', 'Jan', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [
+          {
+            label: 'Đăng ký khoá học',
+            data: [12, 11, 11, 14, 16, 18, 15, 20, 19, 21, 26,30],
+            borderColor: '#914DF3',
+            backgroundColor: '#914DF3',
+            fill: true
+          },
+          {
+            label: 'Hoàn thành khoá học',
+            data: [32, 35, 39, 40, 48, 55, 59, 67, 69, 70, 72,79],
+            borderColor: '#F5A067',
+            backgroundColor: '#F5A067',
+            fill: true
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          filler: {
+            propagate: false,
+          },
+          title: {
+            display: false,
+            text: '(ctx) =>  + ctx.chart.options.plugins.filler.drawTime'
+          }
+        },
+        interaction: {
+          intersect: false,
+        }
+      },
+    });
+  }
 
 }
