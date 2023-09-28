@@ -31,6 +31,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/my-lessons',
     home: true,
   },
+  {
+    title: 'Người dùng ít hoạt động',
+    icon: 'people-outline',
+    link: '/pages/inactive-users',
+    home: true,
+  },
+  {
+    title: 'Truy vết người dùng',
+    icon: 'person-outline',
+    link: '/pages/tracking-users',
+    home: true,
+  },
   // {
   //   title: 'E-commerce',
   //   icon: 'shopping-cart-outline',
