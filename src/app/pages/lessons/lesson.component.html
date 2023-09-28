@@ -55,7 +55,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <td [nzChecked]="setOfCheckedId.has(data.no)" (nzCheckedChange)="onItemChecked(data.no, $event)"></td>
             <td>{{ data.no }}</td>
             <td>{{ data.title }}</td>
             <td>{{ data.haveCertification }}</td>
@@ -72,7 +72,7 @@
             <td>
               <a><nb-icon id="ico-eye" [icon]="'eye'" pack="ion" style="font-weight:lighter;"></nb-icon></a>&nbsp;
               <a routerLink="./lesson-report-activities"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
-              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a routerLink="./lesson-edit"><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
               <a><i id="ico-trash" class="fa fa-trash"></i></a>
             </td>
           </tr>
@@ -83,7 +83,7 @@
 </div>
 <nz-drawer [nzBodyStyle]="{ overflow: 'auto'}" [nzMaskClosable]="true" [nzWidth]="378" [nzVisible]="visible"
   nzTitle="Lọc" [nzFooter]="footerTpl" (nzOnClose)="close()" [nzZIndex]="1000">
-  <form nz-form *nzDrawerContent>
+  <div *nzDrawerContent>
     <div class="row">
       <div class="col-md-12">
         <label for="name"><b>Trạng thái</b></label><br />
@@ -122,7 +122,7 @@
         </nz-select>
       </div>
     </div>
-  </form>
+  </div>
 
   <ng-template #footerTpl>
     <div style="float: right">

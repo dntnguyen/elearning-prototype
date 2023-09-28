@@ -1,0 +1,89 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="float-left">Cập nhật bài học</h3>
+    <div class="float-right">
+      <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="onChangePublish()">
+        <i *ngIf="!published" class="far fa-check-circle"></i>&nbsp;
+        <i *ngIf="published" class="fas fa-edit"></i>&nbsp;
+        {{!published?'Xuất bản': 'Chỉnh sửa'}}
+      </button>
+      <button class="float-end" nz-button nzType="primary" class="mr-2" (click)="save()">
+        <i class="fa fa-check mr-1"></i> Lưu
+      </button>
+      <button nz-button nzType="default" (click)="back()">
+        Đóng
+      </button>
+
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        <div class="mt-2">
+          <label for="name">Tiêu đề</label><span> * </span>
+          <input [disabled]="published" nz-input placeholder="Nhập tiêu đề ..." autofocus
+            ngModel="ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)" />
+        </div>
+
+        <div class="mt-2">
+          <label for="name">Có chứng chỉ</label>
+          <nz-select [nzDisabled]="published" nzShowSearch nzAllowClear nzPlaceHolder="Chọn" ngModel="Yes"
+            style="width: 100%">
+            <nz-option nzLabel="Có" nzValue="Yes"></nz-option>
+            <nz-option nzLabel="Không" nzValue="No"></nz-option>
+          </nz-select>
+        </div>
+
+        <div class="mt-2">
+          <label for="name">Phân loại</label>
+          <nz-select [nzDisabled]="published" [nzMaxTagCount]="3" [nzMaxTagPlaceholder]="tagPlaceHolder"
+            nzMode="multiple" style="width: 100%" nzPlaceHolder="Chọn">
+            <nz-option *ngFor="let item of categoryLookup" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
+          </nz-select>
+          <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+        </div>
+        <div class="mt-2">
+          <label for="isActive">Trạng thái</label>
+          <div>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn" [ngModel]="selectedStatus" style="width: 100%"
+              disabled="true">
+              <nz-option nzLabel="Đã xuất bản" nzValue="Published"></nz-option>
+              <nz-option nzLabel="Đang sửa" nzValue="Editing"></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mt-2">
+          <label for="name">Mô tả</label>
+          <textarea [disabled]="published" rows="4" nz-input placeholder="Nhập mô tả ..."></textarea>
+        </div>
+
+        <div class="mt-2">
+          <label for="isActive">Công khai</label>
+          <div>
+            <nz-radio-group [nzDisabled]="published" ngModel="A">
+              <label nz-radio nzValue="A">Công khai</label>
+              <label nz-radio nzValue="B">Riêng</label>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div class="mt-2">
+          <nz-upload [nzDisabled]="published" class="avatar-uploader"
+            nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzName="avatar" nzListType="picture-card"
+            [(nzFileList)]="fileList" [nzPreview]="handlePreview" [nzShowButton]="fileList.length < 1">
+            <ng-container *ngIf="!avatarUrl">
+              <div style="margin-left: 30%;">
+                <i class="fas fa-plus"></i>
+                <div class="ant-upload-text">Upload</div>
+              </div>
+            </ng-container>
+            <img [src]="previewImage" style="width: 100%" />
+          </nz-upload>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
