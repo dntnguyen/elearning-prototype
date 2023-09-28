@@ -6,6 +6,7 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { ChangeTitleService } from '../../../change-title.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -50,7 +51,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UserData,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              public changeTitleService: ChangeTitleService,) {
+              public changeTitleService: ChangeTitleService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -97,7 +99,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
+    // this.menuService.navigateHome();
+    this.router.navigate(['pages','dashboard']);
     return false;
   }
 }

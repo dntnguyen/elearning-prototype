@@ -14,6 +14,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Phân loại bài học',
+    icon: 'calendar-outline',
+    link: '/pages/lesson-categories',
+    home: true,
+  },
+  {
+    title: 'Bài thi',
+    icon: 'calendar-outline',
+    link: '/pages/exams',
+    home: true,
+  },
+  {
     title: 'Assign bài học',
     icon: 'calendar-outline',
     link: '/pages/lesson-assigns',
@@ -32,16 +44,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'Người dùng ít hoạt động',
-    icon: 'people-outline',
-    link: '/pages/inactive-users',
-    home: true,
-  },
-  {
-    title: 'Truy vết người dùng',
-    icon: 'person-outline',
-    link: '/pages/tracking-users',
-    home: true,
+    title: 'Báo cáo',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Người dùng ít hoạt động',
+        icon: 'people-outline',
+        link: '/pages/inactive-users',
+      },
+      {
+        title: 'Truy vết người dùng',
+        icon: 'person-outline',
+        link: '/pages/tracking-users',
+      }
+    ],
   },
   // {
   //   title: 'E-commerce',
@@ -107,29 +123,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  // {
-  //   title: 'UI Features',
-  //   icon: 'keypad-outline',
-  //   link: '/pages/ui-features',
-  //   children: [
-  //     {
-  //       title: 'Grid',
-  //       link: '/pages/ui-features/grid',
-  //     },
-  //     {
-  //       title: 'Icons',
-  //       link: '/pages/ui-features/icons',
-  //     },
-  //     {
-  //       title: 'Typography',
-  //       link: '/pages/ui-features/typography',
-  //     },
-  //     {
-  //       title: 'Animated Searches',
-  //       link: '/pages/ui-features/search-fields',
-  //     },
-  //   ],
-  // },
+  {
+    title: 'UI Features',
+    icon: 'keypad-outline',
+    link: '/pages/ui-features',
+    children: [
+      {
+        title: 'Grid',
+        link: '/pages/ui-features/grid',
+      },
+      {
+        title: 'Icons',
+        link: '/pages/ui-features/icons',
+      },
+      {
+        title: 'Typography',
+        link: '/pages/ui-features/typography',
+      },
+      {
+        title: 'Animated Searches',
+        link: '/pages/ui-features/search-fields',
+      },
+    ],
+  },
   // {
   //   title: 'Modal & Overlays',
   //   icon: 'browser-outline',

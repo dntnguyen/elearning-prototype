@@ -11,6 +11,7 @@ interface UserAndGroup {
   email: string;
   groupCode?: string;
   groupName?: string;
+  name_english?: string;
 }
 
 @Component({
@@ -28,6 +29,7 @@ export class LessonAssignComponent {
       email: 'user1@gmail.com',
       groupCode: 'G0001',
       groupName: 'EDC',
+      name_english: "ly thi thanh tam",
     },
     {
       selected: false,
@@ -37,6 +39,7 @@ export class LessonAssignComponent {
       email: 'user2@gmail.com',
       groupCode: 'G0001',
       groupName: 'EDC',
+      name_english: "tran trung hieu",
     },
     {
       selected: false,
@@ -46,6 +49,7 @@ export class LessonAssignComponent {
       email: 'user3@gmail.com',
       groupCode: 'G0001',
       groupName: 'EDC',
+      name_english: "nguyen khanh tran",
     },
     {
       selected: false,
@@ -55,6 +59,7 @@ export class LessonAssignComponent {
       email: 'user4@gmail.com',
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
+      name_english: "nguyen van quy",
     },
     {
       selected: false,
@@ -64,6 +69,7 @@ export class LessonAssignComponent {
       email: 'user5@gmail.com',
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
+      name_english: "le thi ngoc thuy",
     },
     {
       selected: false,
@@ -73,6 +79,7 @@ export class LessonAssignComponent {
       email: 'user6@gmail.com',
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
+      name_english: "nguyen van khoi",
     },
     {
       selected: false,
@@ -82,6 +89,7 @@ export class LessonAssignComponent {
       email: 'user7@gmail.com',
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
+      name_english: "hoang minh tuan",
     },
     {
       selected: false,
@@ -91,6 +99,7 @@ export class LessonAssignComponent {
       email: 'user8@gmail.com',
       groupCode: 'G0001',
       groupName: 'EDC',
+      name_english: "nguyen thai hoa",
     },
     {
       selected: false,
@@ -100,6 +109,7 @@ export class LessonAssignComponent {
       email: 'user9@gmail.com',
       groupCode: 'G0001',
       groupName: 'EDC',
+      name_english: "vo thanh trung",
     },
     {
       selected: false,
@@ -128,13 +138,13 @@ export class LessonAssignComponent {
   searchText: string
   visible = false;
 
+  isCheckedAll: boolean
+
   constructor(iconsLibrary: NbIconLibraries,
     private router: Router,
-    private changeTitleService: ChangeTitleService
+    private changeTitleService: ChangeTitleService,
   ) {
-    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
+    this.changeTitleService.setDataTitle('Assign bài học')
 
     this.changeTitleService.setDataTitle('Assign bài học')
 
@@ -291,12 +301,15 @@ export class LessonAssignComponent {
       return
     }
 
-    value = value.toLocaleLowerCase()
+    value = value.toLocaleLowerCase().trim()
 
     let listSearch: UserAndGroup[] = []
     for (let i = 0; i < this.defaultData.length; i++) {
       let handled = this.defaultData[i]
-      if (handled.name?.toLocaleLowerCase().includes(value) || handled.email?.toLocaleLowerCase().includes(value)) {
+      if (handled.name?.toLocaleLowerCase().includes(value)
+        || handled.email?.toLocaleLowerCase().includes(value)
+        || handled.code?.toLocaleLowerCase().includes(value)
+        || handled.name_english?.toLocaleLowerCase().includes(value) ) {
         listSearch.push(handled)
       }
     }
@@ -307,6 +320,13 @@ export class LessonAssignComponent {
   clearSearch() {
     this.searchText = ''
     this.onKeyUp(null)
+  }
+
+  setSelectedAll(){
+    for (let i = 0; i < this.listOfData.length; i++) {
+      this.listOfData[i].selected = this.isCheckedAll
+      this.setSelected(this.listOfData[i])
+    }
   }
 }
 

@@ -1,0 +1,89 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="row mb-4">
+        <div class="col-lg-6">
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
+            <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;color:gray;opacity: 50%;"></nb-icon>
+          </ng-template>
+          &nbsp;
+          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"
+            nzPlaceHolder="Ngày tạo"></nz-date-picker>
+
+          <!-- <a class="btn btn-sm btn-default small-text ml-2"
+            style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+            <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
+              style="font-weight:lighter;opacity: 100%;"></nb-icon>
+
+            <span class="ml-1">Thêm điều kiện</span>
+          </a> -->
+        </div>
+        <div class="col-lg-6">
+          <div class="float-right">
+            <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="openFilterForm()">
+              <i class="fa fa-filter"></i>&nbsp;
+              Lọc
+            </button>
+            <button id="btn-delete" nz-button nzType="primary" class="mr-2">
+              Xóa
+            </button>
+            <button nz-button nzType="primary">
+              <i class="fa fa-plus"></i>&nbsp;
+              Thêm bài học
+            </button>
+          </div>
+        </div>
+      </div>
+      <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"
+        [nzScroll]="{ x: '800px' }">
+        <thead>
+          <tr>
+            <th nzWidth="50px"><b>STT </b></th>
+            <th nzWidth="300px"><b>Tiêu đề </b></th>
+            <th nzWidth="120px"><b>Tháng</b></th>
+            <th><b>Thời lượng </b></th>
+            <th ><b>Số câu hỏi </b></th>
+            <th><b>Thời gian bắt đầu</b></th>
+            <th><b>Thời gian kết thúc</b></th>
+            <th><b>Trạng thái </b></th>
+            <th ><b> </b></th>
+            <th ><b>Có hiệu lực </b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.no }}</td>
+            <td>{{ data.title }}</td>
+            <td>
+              <nz-tag [nzColor]="'#108ee9'">{{ data.month }}</nz-tag>
+              <nz-tag [nzColor]="'#108ee9'">{{ data.year }}</nz-tag>
+
+              </td>
+            <td>
+              {{data.duration}}
+            </td>
+            <td>
+              {{data.numberOfQuestions}}
+            </td>
+            <td>{{ data.timeBegin }}</td>
+            <td>{{ data.timeEnd }}</td>
+            <td>{{ data.status }}</td>
+            <td class="text-center">
+              <a><nb-icon id="ico-eye" [icon]="'eye'" pack="ion" style="font-weight:lighter;"></nb-icon></a>&nbsp;
+              <a routerLink="./lesson-report-activities"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
+              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a><i id="ico-trash" class="fa fa-trash"></i></a>
+            </td>
+            <td class="text-center">
+              <label nz-checkbox [(ngModel)]="data.isActive"></label>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nb-card-body>
+  </nb-card>
+</div>

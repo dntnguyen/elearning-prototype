@@ -7,27 +7,30 @@ import { NbIconLibraries } from '@nebular/theme';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { ChangeTitleService } from '../../change-title.service';
 
-interface Lesson {
+interface Exam {
   no: number;
   title: string;
-  haveCertification: string;
-  categogy: string[];
-  public: string;
+  month: string;
+  year: string;
+  duration: string;
+  numberOfQuestions: number;
+  timeBegin: string;
+  timeEnd: string;
   status: string;
-  createdDate: string;
+  isActive: boolean;
 }
 
 @Component({
-  selector: 'ngx-lesson',
-  styleUrls: ['./lesson.component.scss'],
-  templateUrl: './lesson.component.html',
+  selector: 'ngx-exam',
+  styleUrls: ['./exam.component.scss'],
+  templateUrl: './exam.component.html',
 })
-export class LessonComponent {
+export class ExamComponent {
   date = null;
   isEnglish = true;
   checked = false;
   indeterminate = false;
-  listOfCurrentPageData: readonly Lesson[] = [];
+  listOfCurrentPageData: readonly Exam[] = [];
   setOfCheckedId = new Set<number>();
   total = 50;
   pageSize = 10;
@@ -57,115 +60,127 @@ export class LessonComponent {
   ];
 
 
-  listOfData: Lesson[] = [
+  listOfData: Exam[] = [
     {
-      "no": 1,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo", "Kênh > Trang trại"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022",
+      no: 1,
+      title: "Bài thi kiểm tra năng lực nội bộ Elanco tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "90 phút",
+      numberOfQuestions: 30,
+      timeBegin: "30/10/2023 12:00",
+      timeEnd: "30/10/2023 21:00",
+      status: "Đang sửa",
+      isActive: true,
     },
     {
-      "no": 2,
-      "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
-      "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
-      "public": "Riêng",
-      "status": "Đang sửa",
-      "createdDate": "09\/12\/2022"
+      no: 2,
+      title: "Bài thi nội bộ Elanco Pet tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "60 phút",
+      numberOfQuestions: 20,
+      timeBegin: "20/10/2023 12:00",
+      timeEnd: "20/10/2023 21:00",
+      status: "Đang sửa",
+      isActive: true,
     },
     {
-      "no": 3,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
+      no: 3,
+      title: "Bài thi nội bộ Elanco Livestock tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "60 phút",
+      numberOfQuestions: 20,
+      timeBegin: "20/10/2023 12:00",
+      timeEnd: "20/10/2023 21:00",
+      status: "Đã xuất bản",
+      isActive: true,
     },
     {
-      "no": 4,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
-      "public": "Riêng",
-      "status": "Đang sửa",
-      "createdDate": "09\/12\/2022"
+      no: 4,
+      title: "Bài thi nội bộ Elanco Aqua tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "60 phút",
+      numberOfQuestions: 20,
+      timeBegin: "20/10/2023 12:00",
+      timeEnd: "20/10/2023 21:00",
+      status: "Đã xuất bản",
+      isActive: true,
     },
     {
-      "no": 5,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
+      no: 5,
+      title: "Bài kiểm tra nhận voucher GotIt tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "15 phút",
+      numberOfQuestions: 10,
+      timeBegin: "05/10/2023 18:00",
+      timeEnd: "06/10/2023 20:00",
+      status: "Đang sửa",
+      isActive: true,
     },
     {
-      "no": 6,
-      "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
-      "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
+      no: 6,
+      title: "Bài kiểm tra Aqua tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "90 phút",
+      numberOfQuestions: 15,
+      timeBegin: "23/10/2023 18:00",
+      timeEnd: "23/10/2023 20:00",
+      status: "Đang sửa",
+      isActive: true,
     },
     {
-      "no": 7,
-      "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
-      "haveCertification": "Không",
-      "categogy": ["Hướng dẫn chung"],
-      "public": "Riêng",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
+      no: 7,
+      title: "Bài kiểm tra Pet Health tháng 9/2023",
+      month: "09",
+      year: "2023",
+      duration: "60 phút",
+      numberOfQuestions: 14,
+      timeBegin: "23/09/2023 17:00",
+      timeEnd: "23/09/2023 18:30",
+      status: "Đã xuất bản",
+      isActive: true,
     },
     {
-      "no": 8,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Không",
-      "categogy": ["BU > PET "," Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
-      "public": "Riêng",
-      "status": "Đang sửa",
-      "createdDate": "09\/12\/2022"
+      no: 8,
+      title: "Bài kiểm tra Livestock tháng 10/2023",
+      month: "10",
+      year: "2023",
+      duration: "60 phút",
+      numberOfQuestions: 10,
+      timeBegin: "23/10/2023 17:00",
+      timeEnd: "23/10/2023 18:30",
+      status: "Đang sửa",
+      isActive: true,
     },
     {
-      "no": 9,
-      "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
-      "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
+      no: 9,
+      title: "Bài kiểm tra Livestock tháng 9/2023",
+      month: "09",
+      year: "2023",
+      duration: "30 phút",
+      numberOfQuestions: 10,
+      timeBegin: "23/09/2023 17:00",
+      timeEnd: "23/09/2023 18:30",
+      status: "Đã xuất bản",
+      isActive: true,
     },
     {
-      "no": 10,
-      "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
-      "haveCertification": "Có",
-      "categogy": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
-      "public": "Riêng",
-      "status": "Đang sửa",
-      "createdDate": "09\/12\/2022"
+      no: 10,
+      title: "Bài kiểm tra Pet Health tháng 8/2023",
+      month: "08",
+      year: "2023",
+      duration: "90 phút",
+      numberOfQuestions: 15,
+      timeBegin: "23/09/2023 17:00",
+      timeEnd: "23/09/2023 18:30",
+      status: "Đã xuất bản",
+      isActive: true,
     },
-    {
-      "no": 11,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Có",
-      "categogy": ["Hướng dẫn chung"],
-      "public": "Công khai",
-      "status": "Đã xuất bản",
-      "createdDate": "09\/12\/2022"
-    },
-    {
-      "no": 12,
-      "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
-      "haveCertification": "Có",
-      "categogy": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
-      "public": "Riêng",
-      "status": "Đang sửa",
-      "createdDate": "09\/12\/2022"
-    }
   ];
 
   evaIcons = [];
@@ -217,7 +232,7 @@ export class LessonComponent {
     iconsLibrary.setDefaultPack('far');
 
     this.i18n.setLocale(en_US);
-    this.changeTitleService.setDataTitle('Bài học')
+    this.changeTitleService.setDataTitle('Bài thi')
   }
 
   updateCheckedSet(id: number, checked: boolean): void {
@@ -238,7 +253,7 @@ export class LessonComponent {
     this.refreshCheckedStatus();
   }
 
-  onCurrentPageDataChange($event: readonly Lesson[]): void {
+  onCurrentPageDataChange($event: readonly Exam[]): void {
     this.listOfCurrentPageData = $event;
     this.refreshCheckedStatus();
   }
