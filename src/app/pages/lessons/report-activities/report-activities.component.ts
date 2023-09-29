@@ -193,8 +193,8 @@ export class ReportActivitiesComponent implements OnInit {
           {
             label: 'Đăng ký khoá học',
             data: [12, 11, 11, 14, 16, 18, 15, 20, 19, 21, 26, 30],
-            borderColor: '#914DF3',
-            backgroundColor: '#914DF3',
+            borderColor: '#1695df',
+            backgroundColor: '#1695df',
             fill: true
           },
           {
@@ -226,4 +226,5 @@ export class ReportActivitiesComponent implements OnInit {
   backToLesson() {
     this.router.navigate(['pages','lessons']);
   }
+
 }

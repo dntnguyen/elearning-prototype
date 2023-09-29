@@ -57,14 +57,6 @@ nb-card.inline-form-card nb-card-body {
   display: inline-flex
 }
 
-.private-value {
-  color: red;
-  font-size: 14px;
-  font-family: Inter;
-  font-weight: 400;
-  word-wrap: break-word
-}
-
 .private-div {
   width: 100%;
   height: 100%;
@@ -83,7 +75,7 @@ nb-card.inline-form-card nb-card-body {
 $default-status-font-size: 12px;
 
 .private-value {
-  color: red;
+  color: rgb(221, 1, 1);
   font-size: $default-status-font-size;
   // font-family: Inter;
   // font-weight: 400;
@@ -91,7 +83,7 @@ $default-status-font-size: 12px;
 }
 
 .public-value {
-  color: #00B432;
+  color: #029c2e;
   font-size: $default-status-font-size;
   // font-family: Inter;
   // font-weight: 400;
