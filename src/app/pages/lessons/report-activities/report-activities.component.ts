@@ -214,13 +214,131 @@ export class ReportActivitiesComponent implements OnInit {
           title: {
             display: false,
             text: '(ctx) =>  + ctx.chart.options.plugins.filler.drawTime'
-          }
+          },
+          tooltip: {
+            enabled: false,
+            external: this.externalReportCourseCompletedTooltipHandler,
+          },
         },
         interaction: {
           intersect: false,
         }
       },
     });
+  }
+
+  externalReportCourseCompletedTooltipHandler(context) {
+    const { chart, tooltip } = context;
+
+    let tooltipEl = chart.canvas.parentNode.querySelector('div');
+
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.style.background = 'rgba(255, 255, 255, 1)';
+      tooltipEl.style.borderRadius = '10px';
+      tooltipEl.style.color = 'black';
+      tooltipEl.style.borderWidth = '1px';
+      tooltipEl.style.borderColor = '#000000';
+      tooltipEl.style.opacity = 100;
+      tooltipEl.style.pointerEvents = 'none';
+      tooltipEl.style.position = 'absolute';
+      tooltipEl.style.transform = 'translate(-50%, -100%)';
+      tooltipEl.style.transition = 'all .1s ease';
+      tooltipEl.style.boxShadow = '10px 10px 10px rgba(148, 148, 148, 1)';
+
+      const table = document.createElement('table');
+      table.style.margin = '10px';
+
+      tooltipEl.appendChild(table);
+      chart.canvas.parentNode.appendChild(tooltipEl);
+    }
+
+    // Hide if no tooltip
+    if (tooltip.opacity === 0) {
+      tooltipEl.style.opacity = 0;
+      return;
+    }
+    if (tooltip.body) {
+      const titleLines = tooltip.title || [];
+      // const bodyLines = tooltip.body.map(b => b.lines);
+      const valueDataPoint = tooltip.dataPoints.map(x => x.formattedValue)
+      const labelDataPoint = tooltip.dataPoints.map(x => x.dataset.label)
+      console.log(valueDataPoint, labelDataPoint)
+
+      const tableHead = document.createElement('thead');
+
+      labelDataPoint.forEach((header, i) => {
+        const tr = document.createElement('tr');
+        tr.style.borderWidth = '0';
+
+        const th = document.createElement('th');
+        th.style.borderWidth = '0';
+        th.style.color = 'rgba(60, 60, 67, 0.60)';
+        th.style.fontSize='12px';
+
+        const text = document.createTextNode(header);
+
+        th.appendChild(text);
+        tr.appendChild(th);
+        tableHead.appendChild(tr);
+      });
+
+      const tableBody = document.createElement('tbody');
+      valueDataPoint.forEach((body, i) => {
+        const tr = document.createElement('tr');
+        tr.style.backgroundColor = 'inherit';
+        tr.style.borderWidth = '0';
+
+        const td = document.createElement('td');
+        td.style.borderWidth = '0';
+        td.style.color = '#11263C';
+        td.style.fontSize = '20px';
+        td.style.fontWeight = '1000';
+
+        const text = document.createTextNode(body);
+
+        td.appendChild(text);
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      });
+
+      titleLines.forEach((body, i) => {
+        const tr = document.createElement('tr');
+        tr.style.backgroundColor = 'inherit';
+        tr.style.borderWidth = '0';
+
+        const td = document.createElement('td');
+        td.style.borderWidth = '0';
+        td.style.color = 'rgba(60, 60, 67, 0.60)';
+        td.style.fontSize = '12px';
+
+        const text = document.createTextNode(body);
+
+        td.appendChild(text);
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      });
+
+      const tableRoot = tooltipEl.querySelector('table');
+
+      // Remove old children
+      while (tableRoot.firstChild) {
+        tableRoot.firstChild.remove();
+      }
+
+      // Add new children
+      tableRoot.appendChild(tableHead);
+      tableRoot.appendChild(tableBody);
+    }
+
+    const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
+
+    // Display, position, and set styles for font
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+    tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+    tooltipEl.style.font = tooltip.options.bodyFont.string;
+    tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
   }
 
   backToLesson() {
