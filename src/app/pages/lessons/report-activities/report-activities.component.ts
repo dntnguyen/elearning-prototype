@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { endOfMonth } from 'date-fns';
+import { ChangeTitleService } from '../../../change-title.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-report-activities',
@@ -13,10 +15,13 @@ export class ReportActivitiesComponent implements OnInit {
   date: any
   ranges = { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] };
   constructor(
-    private i18n: NzI18nService
+    private i18n: NzI18nService,
+    private changeTitleService: ChangeTitleService,
+    private router: Router
   ) {
     Chart.register(...registerables);
     this.i18n.setLocale(en_US);
+    this.changeTitleService.setDataTitle("Báo cáo hoạt động")
   }
 
   ngOnInit(): void {
@@ -36,7 +41,7 @@ export class ReportActivitiesComponent implements OnInit {
             backgroundColor: 'rgb(90, 74, 153)',
             pointRadius: 1,
             pointHoverRadius: 12,
-            borderWidth: 8
+            borderWidth: 4
           }
         ]
       },
@@ -218,4 +223,7 @@ export class ReportActivitiesComponent implements OnInit {
     });
   }
 
+  backToLesson() {
+    this.router.navigate(['pages','lessons']);
+  }
 }
