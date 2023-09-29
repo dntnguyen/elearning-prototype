@@ -1,19 +1,26 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="float-left">Cập nhật bài học</h3>
-    <div class="float-right">
-      <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="onChangePublish()">
-        <i *ngIf="!published" class="far fa-check-circle"></i>&nbsp;
-        <i *ngIf="published" class="fas fa-edit"></i>&nbsp;
-        {{!published?'Xuất bản': 'Chỉnh sửa'}}
-      </button>
-      <button class="float-end" nz-button nzType="primary" class="mr-2" (click)="save()">
-        <i class="fa fa-check mr-1"></i> Lưu
-      </button>
-      <button nz-button nzType="default" (click)="back()">
-        Đóng
-      </button>
+    <div class="row">
+      <div class="col-lg-6">
+        <span style="font-size:16px;font-weight: 600;">Cập nhật bài học</span>
+      </div>
+      <div class="col-lg-6 text-right">
+        <button *ngIf="!published" id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="onChangePublish()">
+          <i class="far fa-check-circle"></i>&nbsp;
+          Xuất bản
+        </button>
+        <button *ngIf="published" id="btn-filter" nz-button nzType="default" class="mr-2" (click)="onChangePublish()">
+          <i *ngIf="published" class="fas fa-edit"></i>&nbsp;
+          Chuyển sang chỉnh sửa
+        </button>
+        <button class="float-end" nz-button nzType="primary" class="mr-2" (click)="save()">
+          <i class="fa fa-check mr-1"></i> Lưu
+        </button>
+        <button nz-button nzType="default" (click)="back()">
+          Đóng
+        </button>
 
+      </div>
     </div>
   </div>
   <div class="card-body">
@@ -25,50 +32,39 @@
             ngModel="ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)" />
         </div>
 
-        <div class="mt-2">
-          <label for="name">Có chứng chỉ</label>
-          <nz-select [nzDisabled]="published" nzShowSearch nzAllowClear nzPlaceHolder="Chọn" ngModel="Yes"
-            style="width: 100%">
-            <nz-option nzLabel="Có" nzValue="Yes"></nz-option>
-            <nz-option nzLabel="Không" nzValue="No"></nz-option>
-          </nz-select>
-        </div>
-
-        <div class="mt-2">
+        <div class="mt-4">
           <label for="name">Phân loại</label>
-          <nz-select [nzDisabled]="published" [nzMaxTagCount]="3" [nzMaxTagPlaceholder]="tagPlaceHolder"
-            nzMode="multiple" style="width: 100%" nzPlaceHolder="Chọn">
-            <nz-option *ngFor="let item of categoryLookup" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
-          </nz-select>
-          <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
-        </div>
-        <div class="mt-2">
-          <label for="isActive">Trạng thái</label>
-          <div>
-            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn" [ngModel]="selectedStatus" style="width: 100%"
-              disabled="true">
-              <nz-option nzLabel="Đã xuất bản" nzValue="Published"></nz-option>
-              <nz-option nzLabel="Đang sửa" nzValue="Editing"></nz-option>
-            </nz-select>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="mt-2">
-          <label for="name">Mô tả</label>
-          <textarea [disabled]="published" rows="4" nz-input placeholder="Nhập mô tả ..."></textarea>
+          <nz-tree-select
+            style="width: 100%"
+            nzPlaceHolder="Chọn phân loại"
+            [(ngModel)]="value"
+            [nzMaxTagCount]="3"
+            [nzMaxTagPlaceholder]="omittedPlaceHolder"
+            [nzNodes]="nodes"
+            [nzDefaultExpandAll]="false"
+            [nzAllowClear]="false"
+            [nzMultiple]="true"
+            (ngModelChange)="onChange($event)"
+          ></nz-tree-select>
+          <ng-template #omittedPlaceHolder let-omittedValues>and {{ omittedValues.length }} more...</ng-template>
         </div>
 
-        <div class="mt-2">
-          <label for="isActive">Công khai</label>
-          <div>
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <label nz-checkbox [ngModel]="true">Có chứng chỉ?</label>
+          </div>
+          <div class="col-md-6">
             <nz-radio-group [nzDisabled]="published" ngModel="A">
               <label nz-radio nzValue="A">Công khai</label>
               <label nz-radio nzValue="B">Riêng</label>
             </nz-radio-group>
           </div>
         </div>
+
+      </div>
+      <div class="col-6">
         <div class="mt-2">
+          <label for="name">Ảnh bài học</label>
           <nz-upload [nzDisabled]="published" class="avatar-uploader"
             nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzName="avatar" nzListType="picture-card"
             [(nzFileList)]="fileList" [nzPreview]="handlePreview" [nzShowButton]="fileList.length < 1">
@@ -82,8 +78,16 @@
           </nz-upload>
         </div>
       </div>
-
     </div>
+    <div class="row">
+      <div class="col-lg-12 mt-2">
+        <div class="mt-4">
+          <label style="font-size: 16px;font-weight: 600;">Nội dung bài học</label>
+          <ckeditor [editor]="Editor" data="<img width='200' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Elanco.svg/1200px-Elanco.svg.png' />
+            <p>Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh</p>"></ckeditor>
+        </div>
+      </div>
   </div>
+</div>
 
 </div>

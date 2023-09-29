@@ -31,7 +31,9 @@ import { LessonEditComponent } from './lesson-edit/lesson-edit.component';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 
 @NgModule({
   imports: [
@@ -60,7 +62,10 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     LessonRoutingModule,
     NzRadioModule,
     NzUploadModule,
-    NzModalModule
+    NzModalModule,
+    NzTagModule,
+    CKEditorModule,
+    NzTreeSelectModule,
   ],
   declarations: [
     LessonComponent,

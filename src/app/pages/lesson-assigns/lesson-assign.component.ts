@@ -291,13 +291,13 @@ export class LessonAssignComponent {
       return
     }
 
-    if (!value) {
-      return
-    }
+    // if (!value) {
+    //   return
+    // }
 
-    if (value.length < 3) {
-      return
-    }
+    // if (value.length < 3) {
+    //   return
+    // }
 
     value = value.toLocaleLowerCase().trim()
 
@@ -325,6 +325,10 @@ export class LessonAssignComponent {
       this.listOfData[i].selected = this.isCheckedAll
       this.setSelected(this.listOfData[i])
     }
+  }
+
+  backToLesson() {
+    this.router.navigate(['pages','lessons']);
   }
 }
 

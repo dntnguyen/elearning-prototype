@@ -90,8 +90,8 @@
 
               <b class="ml-4">Đã chọn: {{ !listOfSelected ? 0 : listOfSelected?.length }}</b>
               <div class="float-right">
-                <button class="mr-4" nz-button nzType="default">Hủy</button>
-                <button nz-button nzType="primary">Lưu</button>
+                <button class="mr-4" nz-button nzType="default" (click)="backToLesson()">Hủy</button>
+                <button nz-button nzType="primary" (click)="backToLesson()">Lưu</button>
               </div>
             </div>
           </div>

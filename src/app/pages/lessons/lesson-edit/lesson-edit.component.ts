@@ -4,6 +4,7 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Location } from '@angular/common';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'ngx-lesson-edit',
@@ -11,6 +12,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./lesson-edit.component.scss']
 })
 export class LessonEditComponent implements OnInit {
+  public Editor = ClassicEditor;
   lessonEdit = {
     name: '',
     certificate: '',
@@ -56,6 +58,49 @@ export class LessonEditComponent implements OnInit {
   uploadCount: number = 0;
   previewImage: string | undefined = '';
   previewVisible = false;
+
+  value: string[] = [];
+  nodes = [
+    {
+      title: 'Livestock',
+      key: 'livestock',
+      children: [
+        {
+          title: 'Heo',
+          key: 'heo',
+          children: [
+            { title: 'Catosal', key: 'catosal', isLeaf: true },
+
+          ]
+        },
+        {
+          title: 'Gà',
+          key: 'ga',
+          isLeaf: true
+        },
+        {
+          title: 'Nutrition',
+          key: 'nutrition',
+          isLeaf: true
+        }
+      ]
+    },
+    {
+      title: 'Aqua',
+      key: 'aqua',
+      children: [
+        { title: 'Tôm thịt', key: 'tomthit', isLeaf: true },
+        { title: 'Tôm giống', key: 'tomgiong', isLeaf: true },
+        { title: 'Cá', key: 'ca', isLeaf: true },
+      ]
+    },
+    {
+      title: 'Pet Health',
+      key: 'pethealth',
+      isLeaf: true
+    }
+  ];
+
   constructor(
     // private msg: NzMessageService
     private location: Location,
@@ -75,7 +120,7 @@ export class LessonEditComponent implements OnInit {
       this.selectedStatus = 'Editing'
     }
   }
-    back() {
+  back() {
     this.location.back();
   }
   save() {
@@ -83,13 +128,14 @@ export class LessonEditComponent implements OnInit {
   }
 
   getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-  handlePreview(file: NzUploadFile){
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  handlePreview(file: NzUploadFile) {
     console.log(file)
     if (!file.url && !file.preview) {
       file.preview = this.getBase64(file.originFileObj!);
@@ -97,4 +143,8 @@ export class LessonEditComponent implements OnInit {
     this.previewImage = file.url || file.preview;
     this.previewVisible = true;
   };
+
+  onChange($event: string[]): void {
+    console.log($event);
+  }
 }

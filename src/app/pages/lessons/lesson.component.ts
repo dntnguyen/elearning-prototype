@@ -6,6 +6,7 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 import { NbIconLibraries } from '@nebular/theme';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { ChangeTitleService } from '../../change-title.service';
+import { Router } from '@angular/router';
 
 interface Lesson {
   no: number;
@@ -206,7 +207,8 @@ export class LessonComponent {
   constructor(
     iconsLibrary: NbIconLibraries,
     private i18n: NzI18nService,
-    private changeTitleService: ChangeTitleService
+    private changeTitleService: ChangeTitleService,
+    private router: Router
   ) {
     this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
       .filter(icon => icon.indexOf('outline') === -1);
@@ -274,5 +276,9 @@ export class LessonComponent {
     } else {
       return "private-div"
     }
+  }
+
+  lessonAssignUsers() {
+    this.router.navigate(['pages','lesson-assigns'], { queryParams: { id: 1 } });
   }
 }
