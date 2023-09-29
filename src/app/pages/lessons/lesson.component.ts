@@ -11,7 +11,7 @@ interface Lesson {
   no: number;
   title: string;
   haveCertification: string;
-  categogy: string[];
+  category: string[];
   public: string;
   status: string;
   createdDate: string;
@@ -62,7 +62,7 @@ export class LessonComponent {
       "no": 1,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo", "Kênh > Trang trại"],
+      "category": ["BU > LS > Heo", "Kênh > Trang trại"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022",
@@ -71,7 +71,7 @@ export class LessonComponent {
       "no": 2,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -80,7 +80,7 @@ export class LessonComponent {
       "no": 3,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -89,7 +89,7 @@ export class LessonComponent {
       "no": 4,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -98,7 +98,7 @@ export class LessonComponent {
       "no": 5,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -107,7 +107,7 @@ export class LessonComponent {
       "no": 6,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -116,7 +116,7 @@ export class LessonComponent {
       "no": 7,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Không",
-      "categogy": ["Hướng dẫn chung"],
+      "category": ["Hướng dẫn chung"],
       "public": "Riêng",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -125,7 +125,7 @@ export class LessonComponent {
       "no": 8,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Không",
-      "categogy": ["BU > PET "," Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET "," Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -134,7 +134,7 @@ export class LessonComponent {
       "no": 9,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Không",
-      "categogy": ["BU > LS > Heo","Kênh > Trang trại"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -143,7 +143,7 @@ export class LessonComponent {
       "no": 10,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Có",
-      "categogy": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -152,7 +152,7 @@ export class LessonComponent {
       "no": 11,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "categogy": ["Hướng dẫn chung"],
+      "category": ["Hướng dẫn chung"],
       "public": "Công khai",
       "status": "Đã xuất bản",
       "createdDate": "09\/12\/2022"
@@ -161,7 +161,7 @@ export class LessonComponent {
       "no": 12,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "categogy": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
