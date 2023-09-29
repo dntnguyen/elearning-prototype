@@ -38,39 +38,42 @@
         </div>
       </div>
       <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
-        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzTableLayout]="'fixed'">
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzScroll]="{ x: '800px' }">
         <thead>
           <tr>
-            <th style="width: 5%;" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
+            <th nzWidth="60px" [nzSelections]="listOfSelection" [(nzChecked)]="checked"
               [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
-            <th style="width: 5%;"><b>STT </b></th>
-            <th style="width: 30%;"><b>Tiêu đề </b></th>
-            <th><b>Có chứng chỉ </b></th>
-            <th style="width: 20%;"><b>Phân loại </b></th>
-            <th><b>Công khai </b></th>
-            <th><b>Trạng thái </b></th>
+            <th nzWidth="60px" class="text-center"><b>STT </b></th>
+            <th nzWidth="350px"><b>Tiêu đề </b></th>
+            <th><b>Phân loại </b></th>
+            <th class="text-center"><b>Có chứng chỉ </b></th>
+            <th nzWidth="100px" class="text-center"><b>Công khai </b></th>
+            <th class="text-center"><b>Trạng thái </b></th>
             <th><b>Ngày tạo </b></th>
-            <th><b>Hành động </b></th>
+            <th nzRight nzWidth="140px"><b>Hành động </b></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
             <td [nzChecked]="setOfCheckedId.has(data.no)" (nzCheckedChange)="onItemChecked(data.no, $event)"></td>
-            <td>{{ data.no }}</td>
+            <td class="text-center">{{ data.no }}</td>
             <td>{{ data.title }}</td>
-            <td>{{ data.haveCertification }}</td>
             <td>
               <div *ngFor="let value of data.category">{{ value }}</div>
             </td>
-            <td>
+            <td class="text-center">
+              <label nz-checkbox [ngModel]="data.haveCertification === 'Có' ? true : false"></label>
+            </td>
+            <td class="text-center">
               <div [className]="getHtmlClassByDivPublic(data.public)">
                 <div [className]="getHtmlClassByDataPublic(data.public)">{{ data.public }}</div>
               </div>
             </td>
-            <td>{{ data.status }}</td>
+            <td class="text-center">{{ data.status }}</td>
             <td>{{ data.createdDate }}</td>
-            <td>
-              <a (click)="lessonAssignUsers()"><nb-icon id="ico-eye" [icon]="'person-add-outline'" pack="eva"></nb-icon></a>&nbsp;
+            <td nzRight>
+              <a (click)="lessonAssignUsers()"><nb-icon id="ico-eye" [icon]="'person-add-outline'"
+                  pack="eva"></nb-icon></a>&nbsp;
               <a routerLink="./lesson-report-activities"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
               <a routerLink="./lesson-edit"><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
               <a><i id="ico-trash" class="fa fa-trash"></i></a>

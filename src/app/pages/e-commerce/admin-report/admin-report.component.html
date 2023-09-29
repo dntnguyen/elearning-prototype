@@ -6,10 +6,10 @@
           <div class="card-body text-black">
             <div class="row">
               <div class="col-2 d-flex align-items-center">
-                <img src="../../../../assets/images/ico-report-heart.png" width="40px" height="40px">
+                <img src="../../../../assets/images/ico-report-course.png" width="30px" height="30px">
               </div>
               <div class="col-10 text-left">
-                <h6><b>98</b></h6>
+                <h5><b>98</b></h5>
                 <p style="font-size: smaller;">Số lượng khóa học</p>
               </div>
             </div>
@@ -21,11 +21,11 @@
           <div class="card-body text-black">
             <div class="row">
               <div class="col-2 d-flex align-items-center">
-                <img src="../../../../assets/images/ico-report-heart.png" width="40px" height="40px">
+                <img src="../../../../assets/images/ico-active-user.png" width="40px" height="35px">
               </div>
               <div class="col-10 text-left">
-                <h6><b>123</b></h6>
-                <p style="font-size: smaller;">User đang online</p>
+                <h5><b>123</b></h5>
+                <p style="font-size: smaller;">Người dùng đang online</p>
               </div>
             </div>
           </div>
@@ -36,11 +36,11 @@
           <div class="card-body text-black">
             <div class="row">
               <div class="col-2 d-flex align-items-center">
-                <img src="../../../../assets/images/ico-report-heart.png" width="40px" height="40px">
+                <img src="../../../../assets/images/ico-report-published.png" width="35px" height="35px">
               </div>
               <div class="col-10 text-left">
-                <h6><b>56/102</b></h6>
-                <p style="font-size: smaller;">Bài thi đã xuất bản trên tổng</p>
+                <h5><b>56/102</b></h5>
+                <p style="font-size: smaller;">Bài thi đã xuất bản</p>
               </div>
             </div>
           </div>
@@ -51,11 +51,11 @@
           <div class="card-body text-black">
             <div class="row">
               <div class="col-2 d-flex align-items-center">
-                <img src="../../../../assets/images/ico-report-heart.png" width="40px" height="40px">
+                <img src="../../../../assets/images/ico-report-medal.png" width="40px" height="40px">
               </div>
               <div class="col-10 text-left">
-                <h6><b>76%</b></h6>
-                <p style="font-size: smaller;">Phần trăm bài thi hoàn thành</p>
+                <h5><b>76%</b></h5>
+                <p style="font-size: smaller;">Tỉ lệ bài thi hoàn thành</p>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@
       <div class="col-6">
         <div class="card">
           <div class="card-body">
-            <h6 class="float-left">Thống kê số lượng User truy cập</h6>
+            <div class="mb-2" style="font-size: 16px;font-weight: 600; float:left">Số lượng người dùng truy cập</div>
             <div class="float-right">
               <button nz-button nzType="default" (click)="onChangeHour()">Hằng giờ</button>
               <button nz-button nzType="default" (click)="onChangeDay()">Ngày</button>
@@ -83,7 +83,7 @@
       <div class="col-6">
         <div class="card">
           <div class="card-body">
-            <h6 class="float-left">Thống kê số lượt hoàn thành trên tổng số được giao</h6>
+            <div class="mb-2" style="font-size: 16px;font-weight: 600; float:left">Thống kê số lượt hoàn thành trên tổng số được giao</div>
             <div class="chart-container" style="width:100%;height:auto;">
               <canvas id="ChartStatisticalCompletedLesson" height="100%"></canvas>
             </div>
@@ -96,7 +96,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h6>Thống kê danh sách hoạt động nhiều nhất</h6>
+            <div style="font-size: 16px;font-weight: 600;">Thống kê danh sách hoạt động nhiều nhất</div>
           </div>
           <div class="card-body">
             <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
@@ -129,34 +129,34 @@
         </div>
       </div>
     </div>
-    <div class="row">
+
+    <div class="row mb-2">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h6>Thống kê danh sách bài học thu hút</h6>
+            <div style="font-size: 16px;font-weight: 600;">Thống kê danh sách bài học thu hút</div>
           </div>
-          <div clas="card-body">
-            <nz-table #basicTable1 [nzSize]="'small'" [nzData]="listOfDataListOfAttractiveLesson"
-              style="width:100%; font-size: 8px;" [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex"
-              [nzTableLayout]="'fixed'">
+          <div class="card-body">
+            <nz-table #tblAttractiveLesson [nzSize]="'small'" [nzData]="listOfDataListOfAttractiveLesson" style="width:100%; font-size: 8px;"
+              [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzScroll]="{ x: '800px' }">
               <thead>
                 <tr>
                   <th style="width: 40px;"><b>STT </b></th>
                   <th style="width: 40%;"><b>Tiêu đề </b></th>
                   <th style="width: 20%;"><b>Phân loại </b></th>
-                  <th><b>Trạng thái </b></th>
+                 
                   <th><b>Ngày tạo </b></th>
                   <th><b>Số lượt truy cập</b></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of basicTable1.data">
+                <tr *ngFor="let data of tblAttractiveLesson.data">
                   <td>{{ data.no }}</td>
                   <td>{{ data.title }}</td>
                   <td>
                     <div *ngFor="let value of data.category">{{ value }}</div>
                   </td>
-                  <td>{{ data.status }}</td>
+                  
                   <td>{{ data.createdDate }}</td>
                   <td>{{ data.numberOfAttractiveLesson }}</td>
                 </tr>
@@ -166,6 +166,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </div>

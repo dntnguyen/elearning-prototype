@@ -72,7 +72,7 @@ export class LessonComponent {
       "no": 2,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Không",
-      "category": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -90,7 +90,7 @@ export class LessonComponent {
       "no": 4,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "category": ["BU > LS > Heo","Kênh > Trang trại","Nhóm sản phẩm > LS Product"],
+      "category": ["BU > LS > Heo","Nhóm sản phẩm > LS Product"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -126,7 +126,7 @@ export class LessonComponent {
       "no": 8,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Không",
-      "category": ["BU > PET "," Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET "," Kênh > Khác"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -144,7 +144,7 @@ export class LessonComponent {
       "no": 10,
       "title": "TẬP HUẤN BDC - BAYOVAC SUISHOT",
       "haveCertification": "Có",
-      "category": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET","Nhóm sản phẩm > LS Product > Drontal"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"
@@ -162,7 +162,7 @@ export class LessonComponent {
       "no": 12,
       "title": "ELANCO PIG ACADEMY - BỆNH DO MYCOPLASMA HYOPNEUMONIAE (SUYỄN HEO)",
       "haveCertification": "Có",
-      "category": ["BU > PET","Kênh > Khác","Nhóm sản phẩm > LS Product > Drontal"],
+      "category": ["BU > PET","Kênh > Khác"],
       "public": "Riêng",
       "status": "Đang sửa",
       "createdDate": "09\/12\/2022"

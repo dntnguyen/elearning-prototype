@@ -212,10 +212,10 @@ export class AdminReportComponent implements OnInit {
           {
             label: 'Số người dùng được assign',
             data: [25,55,32,22,46,76,43,23,17,50,49,41],
-            backgroundColor: "#FF33FF",
+            backgroundColor: "#1695df",
           },
           {
-            label: 'Số lượt hoàn thành bài học',
+            label: 'Số lượng hoàn thành bài học',
             data: [20,40,12,21,46,36,13,22,14,20,47,40],
             backgroundColor: "#FF8000",
           },
@@ -226,7 +226,7 @@ export class AdminReportComponent implements OnInit {
         plugins: {
           title: {
             display: false,
-            text: 'Thống kê số lượt hoàn thành trên tổng số được giao',
+            text: 'Số lượng hoàn thành trên tổng số được giao',
             position: 'top'
           },
         },
@@ -267,7 +267,7 @@ export class AdminReportComponent implements OnInit {
           },
           title: {
             display: false,
-            text: 'Thống kê số lượt user truy cập',
+            text: 'Số lượt người dùng truy cập',
             position: 'top'
           },
         },
@@ -298,7 +298,7 @@ export class AdminReportComponent implements OnInit {
       labels: ['02/10/2023', '03/10/2023', '04/10/2023', '05/10/2023', '06/10/2023', '07/10/2023', '08/10/2023'],
       datasets: [
         {
-          label: 'Số lương User truy cập hằng ngày',
+          label: 'Số lượng người dùng truy cập hằng ngày',
           data: [40, 50, 60, 100, 105, 60, 0],
           borderColor: '#3399FF',
           backgroundColor: 'rgba(51,153,255,0.5)',
