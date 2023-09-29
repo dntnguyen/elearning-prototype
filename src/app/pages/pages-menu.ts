@@ -9,28 +9,28 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // },
   {
     title: 'Bài học',
-    icon: 'calendar-outline',
+    icon: 'book-outline',
     link: '/pages/lessons',
     home: true,
   },
   {
     title: 'Phân loại bài học',
-    icon: 'calendar-outline',
+    icon: 'browser',
     link: '/pages/lesson-categories',
     home: true,
   },
   {
     title: 'Bài thi',
-    icon: 'calendar-outline',
+    icon: 'book-open',
     link: '/pages/exams',
     home: true,
   },
-  {
-    title: 'Assign bài học',
-    icon: 'calendar-outline',
-    link: '/pages/lesson-assigns',
-    home: true,
-  },
+  // {
+  //   title: 'Assign bài học',
+  //   icon: 'calendar-outline',
+  //   link: '/pages/lesson-assigns',
+  //   home: true,
+  // },
   // {
   //   title: 'Bài thi',
   //   icon: 'book-outline',

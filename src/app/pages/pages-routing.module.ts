@@ -37,6 +37,10 @@ const routes: Routes = [{
       component: ReportActivitiesComponent,
     },
     {
+      path: 'lessons/lesson-edit',
+      component: LessonEditComponent,
+    },
+    {
       path: 'lesson-assigns',
       component: LessonAssignComponent,
     },

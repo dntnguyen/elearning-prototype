@@ -6,6 +6,7 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 import { NbIconLibraries } from '@nebular/theme';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { ChangeTitleService } from '../../change-title.service';
+import { Router } from '@angular/router';
 
 interface Lesson {
   no: number;
@@ -43,14 +44,14 @@ export class LessonComponent {
     {
       text: 'Select Odd Row',
       onSelect: () => {
-        this.listOfCurrentPageData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 !== 0));
+        this.listOfData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 !== 0));
         this.refreshCheckedStatus();
       }
     },
     {
       text: 'Select Even Row',
       onSelect: () => {
-        this.listOfCurrentPageData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 === 0));
+        this.listOfData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 === 0));
         this.refreshCheckedStatus();
       }
     }
@@ -206,7 +207,8 @@ export class LessonComponent {
   constructor(
     iconsLibrary: NbIconLibraries,
     private i18n: NzI18nService,
-    private changeTitleService: ChangeTitleService
+    private changeTitleService: ChangeTitleService,
+    private router: Router
   ) {
     this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
       .filter(icon => icon.indexOf('outline') === -1);
@@ -234,7 +236,7 @@ export class LessonComponent {
   }
 
   onAllChecked(value: boolean): void {
-    this.listOfCurrentPageData.forEach(item => this.updateCheckedSet(item.no, value));
+    this.listOfData.forEach(item => this.updateCheckedSet(item.no, value));
     this.refreshCheckedStatus();
   }
 
@@ -244,8 +246,8 @@ export class LessonComponent {
   }
 
   refreshCheckedStatus(): void {
-    this.checked = this.listOfCurrentPageData.every(item => this.setOfCheckedId.has(item.no));
-    this.indeterminate = this.listOfCurrentPageData.some(item => this.setOfCheckedId.has(item.no)) && !this.checked;
+    this.checked = this.listOfData.every(item => this.setOfCheckedId.has(item.no));
+    this.indeterminate = this.listOfData.some(item => this.setOfCheckedId.has(item.no)) && !this.checked;
   }
   onChange(result: Date): void {
     console.log('onChange: ', result);
@@ -274,5 +276,9 @@ export class LessonComponent {
     } else {
       return "private-div"
     }
+  }
+
+  lessonAssignUsers() {
+    this.router.navigate(['pages','lesson-assigns'], { queryParams: { id: 1 } });
   }
 }

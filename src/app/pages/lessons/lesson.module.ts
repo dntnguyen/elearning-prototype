@@ -26,7 +26,14 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReportActivitiesComponent } from './report-activities/report-activities.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
-// import { Chart } from 'chart.js';
+import { LessonRoutingModule } from './lesson-routing.module';
+import { LessonEditComponent } from './lesson-edit/lesson-edit.component';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 
 @NgModule({
   imports: [
@@ -52,11 +59,18 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
     NzCheckboxModule,
     NzSelectModule,
     NzStatisticModule,
-    // Chart
+    LessonRoutingModule,
+    NzRadioModule,
+    NzUploadModule,
+    NzModalModule,
+    NzTagModule,
+    CKEditorModule,
+    NzTreeSelectModule,
   ],
   declarations: [
     LessonComponent,
     ReportActivitiesComponent,
+    LessonEditComponent,
   ],
   providers: [
   ],

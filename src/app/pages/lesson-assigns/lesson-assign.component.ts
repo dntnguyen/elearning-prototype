@@ -146,8 +146,6 @@ export class LessonAssignComponent {
   ) {
     this.changeTitleService.setDataTitle('Assign bài học')
 
-    this.changeTitleService.setDataTitle('Assign bài học')
-
     this.listOfData = [...this.defaultData]
   }
 
@@ -293,13 +291,13 @@ export class LessonAssignComponent {
       return
     }
 
-    if (!value) {
-      return
-    }
+    // if (!value) {
+    //   return
+    // }
 
-    if (value.length < 3) {
-      return
-    }
+    // if (value.length < 3) {
+    //   return
+    // }
 
     value = value.toLocaleLowerCase().trim()
 
@@ -327,6 +325,10 @@ export class LessonAssignComponent {
       this.listOfData[i].selected = this.isCheckedAll
       this.setSelected(this.listOfData[i])
     }
+  }
+
+  backToLesson() {
+    this.router.navigate(['pages','lessons']);
   }
 }
 

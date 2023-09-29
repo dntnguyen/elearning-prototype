@@ -1,39 +1,93 @@
+<!-- <div class="row"> -->
+<!-- <nb-card style="width:100%">
+    <nb-card-body> -->
 <div class="row">
-  <nb-card style="width:100%">
-    <nb-card-body>
-      <div class="row">
-        <div class="col-lg-12">
-          <nz-input-group class="" [nzPrefix]="prefixIcon" style="width:250px">
-            <input type="text" nz-input placeholder="Tìm kiếm" [(ngModel)]="searchValue" />
-          </nz-input-group>
-          <ng-template #prefixIcon>
-            <span nz-icon nzType="search"></span>
-          </ng-template>
-          <nz-tree class="mt-4" [nzData]="nodes" [nzSearchValue]="searchValue" (nzClick)="nzEvent($event)"
-            (nzExpandChange)="nzEvent($event)" (nzSearchValueChange)="nzEvent($event)"
-            [nzTreeTemplate]="nzTreeTemplate">
+  <div class="col-lg-12">
+    <nb-card status="success" style="width:100%">
 
-            <ng-template #nzTreeTemplate let-node let-origin="origin">
-              <span class="custom-node">
-                <span (contextmenu)="contextMenu($event, menu, node)">
-                  <nb-icon icon="folder-outline" pack="eva" class="mr-2" style="font-size: 16px;"></nb-icon>
-                  <span class="file-name" style="font-size: 14px !important;">{{ node.title }}</span>
-                </span>
-              </span>
-              <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu>
-                  <li nz-menu-item (click)="selectDropdown(node)">
-                    <nb-icon icon="file-outline" pack="eva" class="mr-2"></nb-icon>Thêm mới</li>
-                  <li nz-menu-item (click)="selectDropdown(node)" *ngIf="node.key !== 'tatca'">
-                    <nb-icon icon="edit-outline" pack="eva" class="mr-2 ico-edit"></nb-icon>Sửa</li>
-                  <li nz-menu-item (click)="selectDropdown(node)" *ngIf="node.key !== 'tatca'">
-                    <nb-icon icon="trash-outline" pack="eva" class="mr-2 ico-trash"></nb-icon>Xóa</li>
-                </ul>
-              </nz-dropdown-menu>
+      <!-- <nb-card-header style="height:60px;background-color:rgba(gray, 0.6) !important">
+              abcdef
+            </nb-card-header> -->
+      <nb-card-body>
+        <div class="row">
+          <div class="col-lg-12">
+            <nz-input-group class="" [nzPrefix]="prefixIcon" style="width:250px">
+              <input type="text" nz-input placeholder="Tìm kiếm" [(ngModel)]="searchValue" />
+            </nz-input-group>
+            <ng-template #prefixIcon>
+              <span nz-icon nzType="search"></span>
             </ng-template>
-          </nz-tree>
+          </div>
+
+        </div>
+        <nz-tree class="mt-4" [nzData]="nodes" [nzSearchValue]="searchValue" (nzClick)="nzEvent($event)"
+          (nzExpandChange)="nzEvent($event)" (nzSearchValueChange)="nzEvent($event)" [nzTreeTemplate]="nzTreeTemplate"
+          style="width: 100%; min-height: 500px;">
+
+          <ng-template #nzTreeTemplate let-node let-origin="origin">
+            <div class="custom-node">
+              <span (contextmenu)="contextMenu($event, menu, node)">
+                <nb-icon icon="folder-outline" pack="eva" class="mr-2" style="font-size: 16px;"></nb-icon>
+                <span class="file-name" style="font-size: 14px !important;">{{ node.title }}</span>
+              </span>
+            </div>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item (click)="selectDropdown(node, 'add')">
+                  <nb-icon icon="file-outline" pack="eva" class="mr-2"></nb-icon>Thêm mới
+                </li>
+                <li nz-menu-item (click)="selectDropdown(node, 'edit')" *ngIf="node.key !== 'tatca'">
+                  <nb-icon icon="edit-outline" pack="eva" class="mr-2 ico-edit"></nb-icon>Sửa
+                </li>
+                <li nz-menu-item (click)="selectDropdown(node, 'delete')" *ngIf="node.key !== 'tatca'">
+                  <nb-icon icon="trash-outline" pack="eva" class="mr-2 ico-trash"></nb-icon>Xóa
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+          </ng-template>
+        </nz-tree>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+  <div class="col-lg-6">
+
+    <!-- <button nbButton (click)="openWithoutBackdropClick(null)">Open without backdrop click</button> -->
+
+  </div>
+</div>
+<!-- </nb-card-body>
+  </nb-card> -->
+<!-- </div> -->
+
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Cập nhật thông tin phân loại bài học</nb-card-header>
+    <nb-card-body>
+        <label>Tên phân loại:</label>
+        <input type="text" nz-input placeholder="" [(ngModel)]="input_title" />
+        <label class="mt-2">Mô tả:</label>
+        <textarea
+          nz-input
+          placeholder=""
+          [nzAutosize]="{ minRows: 4, maxRows: 6 }"
+      ></textarea>
+    </nb-card-body>
+    <nb-card-footer>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <button class="float-end" nz-button nzType="primary" class="mr-2" (click)="ref.close()">
+            <i class="fa fa-check mr-1"></i> Lưu
+          </button>
+        </div>
+        <div class="col-lg-6 text-right">
+          <button nz-button nzType="default" (click)="ref.close()">
+            Đóng
+          </button>
         </div>
       </div>
-    </nb-card-body>
+
+    </nb-card-footer>
   </nb-card>
-</div>
+</ng-template>
