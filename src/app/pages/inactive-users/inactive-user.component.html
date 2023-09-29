@@ -66,7 +66,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <td [nzChecked]="setOfCheckedId.has(data.no)" (nzCheckedChange)="onItemChecked(data.no, $event)"></td>
             <td>{{ data.no }}</td>
             <td>{{ data.name }}</td>
             <td>{{ data.email }}</td>

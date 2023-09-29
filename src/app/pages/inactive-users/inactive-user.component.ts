@@ -41,14 +41,14 @@ export class InActiveUserComponent {
     {
       text: 'Select Odd Row',
       onSelect: () => {
-        this.listOfCurrentPageData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 !== 0));
+        this.listOfData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 !== 0));
         this.refreshCheckedStatus();
       }
     },
     {
       text: 'Select Even Row',
       onSelect: () => {
-        this.listOfCurrentPageData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 === 0));
+        this.listOfData.forEach((data, index) => this.updateCheckedSet(data.no, index % 2 === 0));
         this.refreshCheckedStatus();
       }
     }
@@ -173,7 +173,7 @@ export class InActiveUserComponent {
   }
 
   onAllChecked(value: boolean): void {
-    this.listOfCurrentPageData.forEach(item => this.updateCheckedSet(item.no, value));
+    this.listOfData.forEach(item => this.updateCheckedSet(item.no, value));
     this.refreshCheckedStatus();
   }
 
@@ -183,8 +183,8 @@ export class InActiveUserComponent {
   }
 
   refreshCheckedStatus(): void {
-    this.checked = this.listOfCurrentPageData.every(item => this.setOfCheckedId.has(item.no));
-    this.indeterminate = this.listOfCurrentPageData.some(item => this.setOfCheckedId.has(item.no)) && !this.checked;
+    this.checked = this.listOfData.every(item => this.setOfCheckedId.has(item.no));
+    this.indeterminate = this.listOfData.some(item => this.setOfCheckedId.has(item.no)) && !this.checked;
   }
   onChange(result: Date): void {
     console.log('onChange: ', result);
