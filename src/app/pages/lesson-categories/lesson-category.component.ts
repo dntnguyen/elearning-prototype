@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { ChangeTitleService } from '../../change-title.service';
 import { NzFormatEmitEvent } from 'ng-zorro-antd/tree';
 import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
+import { NbDialogService } from '@nebular/theme';
+import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
+
 
 interface TreeNode {
   name: string;
@@ -98,11 +101,15 @@ export class LessonCategoryComponent {
     }
   ];
 
+  @ViewChild('dialog') pageDialog: TemplateRef<any>
+  input_title: string
+
   constructor(
 
     private i18n: NzI18nService,
     private changeTitleService: ChangeTitleService,
     private nzContextMenuService: NzContextMenuService,
+    private dialogService: NbDialogService
   ) {
 
     this.i18n.setLocale(en_US);
@@ -117,7 +124,39 @@ export class LessonCategoryComponent {
     this.nzContextMenuService.create($event, menu);
   }
 
-  selectDropdown(e): void {
-    console.log(e)
+  selectDropdown(e, action): void {
+    if (action === 'add') {
+      this.input_title = ''
+      this.openWithoutBackdropClick(null)
+    } else if (action === 'edit') {
+      this.input_title = e.title
+      this.openWithoutBackdropClick(null)
+    } else {
+      this.deleteNode(e)
+    }
   }
+
+  deleteNode(node) {
+
+  }
+  
+  open() {
+    this.dialogService.open(ShowcaseDialogComponent, {
+      context: {
+        title: 'This is a title passed to the dialog component',
+      },
+    });
+  }
+  openWithoutBackdropClick(dialog: TemplateRef<any>) {
+    if (!dialog) {
+      dialog = this.pageDialog
+    }
+    this.dialogService.open(
+      dialog,
+      {
+        context: 'this is some additional data passed to dialog',
+        closeOnBackdropClick: false,
+      });
+  }
+
 }

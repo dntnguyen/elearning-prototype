@@ -9,6 +9,8 @@ import {
   NbSelectModule,
   NbListModule,
   NbCheckboxModule,
+  NbDialogModule,
+  NbWindowModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -29,6 +31,9 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTreeViewModule } from 'ng-zorro-antd/tree-view';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { ModalOverlaysComponent } from '../modal-overlays/modal-overlays.component';
+import { DialogComponent } from '../modal-overlays/dialog/dialog.component';
+import { ShowcaseDialogComponent } from '../modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
 
 @NgModule({
   imports: [
@@ -58,6 +63,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzTreeViewModule,
     NzTreeModule,
     NzDropDownModule,
+    NbDialogModule.forChild(),
+    NbWindowModule.forChild(),
   ],
   declarations: [
     LessonCategoryComponent,
