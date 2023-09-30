@@ -6,6 +6,15 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Location } from '@angular/common';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+interface LessonDetail
+{
+  no: number;
+  title: string;
+  category: string;
+  duration: string;
+  createdDate: string;
+}
+
 @Component({
   selector: 'ngx-lesson-edit',
   templateUrl: './lesson-edit.component.html',
@@ -58,7 +67,8 @@ export class LessonEditComponent implements OnInit {
   uploadCount: number = 0;
   previewImage: string | undefined = '';
   previewVisible = false;
-
+  certificateDurationValue: string = 'A'
+  certificateDurationDays: number = 0
   value: string[] = [];
   nodes = [
     {
@@ -100,6 +110,44 @@ export class LessonEditComponent implements OnInit {
       isLeaf: true
     }
   ];
+
+  lessonDetail: LessonDetail[] = [
+    {
+      no: 1,
+      title: "Bài 1: Tổng quan về bài học",
+      category: "",
+      duration: '00:15:00',
+      createdDate: "09/12/2022",
+    },
+    {
+      no: 2,
+      title: "Bài 2: ELANCO PIG ACADEMY là gì?",
+      category: "",
+      duration: '00:15:00',
+      createdDate: "09/12/2022",
+    },
+    {
+      no: 3,
+      title: "Bài 3: Các dấu hiệu bệnh",
+      category: "",
+      duration: '00:15:00',
+      createdDate: "09/12/2022",
+    },
+    {
+      no: 4,
+      title: "Bài 4: Phương pháp chữa trị",
+      category: "",
+      duration: '00:15:00',
+      createdDate: "09/12/2022",
+    },
+    {
+      no: 5,
+      title: "Bài 5: Cách thức phòng ngừa",
+      category: "",
+      duration: '00:15:00',
+      createdDate: "09/12/2022",
+    }
+  ]
 
   constructor(
     // private msg: NzMessageService
@@ -146,5 +194,12 @@ export class LessonEditComponent implements OnInit {
 
   onChange($event: string[]): void {
     console.log($event);
+  }
+
+  checkClearCertificateDurationDays() {
+    console.log(this.certificateDurationValue)
+    if (this.certificateDurationValue == 'A') {
+      this.certificateDurationDays = 0
+    }
   }
 }

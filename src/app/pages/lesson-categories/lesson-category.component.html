@@ -2,7 +2,7 @@
 <!-- <nb-card style="width:100%">
     <nb-card-body> -->
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <nb-card status="success" style="width:100%">
 
       <!-- <nb-card-header style="height:60px;background-color:rgba(gray, 0.6) !important">
@@ -27,7 +27,8 @@
           <ng-template #nzTreeTemplate let-node let-origin="origin">
             <div class="custom-node">
               <span (contextmenu)="contextMenu($event, menu, node)">
-                <nb-icon icon="folder-outline" pack="eva" class="mr-2" style="font-size: 16px;"></nb-icon>
+                <nb-icon icon="folder" pack="eva" class="mr-2" 
+                  style="font-size: 16px; color: #0067B1;"></nb-icon>
                 <span class="file-name" style="font-size: 14px !important;">{{ node.title }}</span>
               </span>
             </div>
