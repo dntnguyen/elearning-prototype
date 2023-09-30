@@ -34,37 +34,39 @@
 
         <div class="mt-4">
           <label for="name">Phân loại</label>
-          <nz-tree-select
-            style="width: 100%"
-            nzPlaceHolder="Chọn phân loại"
-            [(ngModel)]="value"
-            [nzMaxTagCount]="3"
-            [nzMaxTagPlaceholder]="omittedPlaceHolder"
-            [nzNodes]="nodes"
-            [nzDefaultExpandAll]="false"
-            [nzAllowClear]="false"
-            [nzMultiple]="true"
-            (ngModelChange)="onChange($event)"
-          ></nz-tree-select>
+          <nz-tree-select style="width: 100%" nzPlaceHolder="Chọn phân loại" [(ngModel)]="value" [nzMaxTagCount]="3"
+            [nzMaxTagPlaceholder]="omittedPlaceHolder" [nzNodes]="nodes" [nzDefaultExpandAll]="false"
+            [nzAllowClear]="false" [nzMultiple]="true" (ngModelChange)="onChange($event)"></nz-tree-select>
           <ng-template #omittedPlaceHolder let-omittedValues>and {{ omittedValues.length }} more...</ng-template>
         </div>
 
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <label nz-checkbox [ngModel]="true">Có chứng chỉ?</label>
-          </div>
-          <div class="col-md-6">
-            <nz-radio-group [nzDisabled]="published" ngModel="A">
-              <label nz-radio nzValue="A">Công khai</label>
-              <label nz-radio nzValue="B">Riêng</label>
-            </nz-radio-group>
-          </div>
+        <div class="mt-4">
+          <nz-radio-group [nzDisabled]="published" ngModel="A">
+            <label nz-radio nzValue="A">Công khai</label>
+            <label nz-radio nzValue="B">Riêng</label>
+          </nz-radio-group>
         </div>
-
+        <div class="mt-4">
+          <label nz-checkbox [ngModel]="true">Có hiệu lực</label>
+        </div>
       </div>
       <div class="col-6">
         <div class="mt-2">
-          <label for="name">Ảnh bài học</label>
+          <label nz-checkbox [ngModel]="true">Có chứng chỉ</label>
+        </div>
+        <div class="mt-4">
+          <label>Thời hạn của chứng chỉ (*)</label>
+          <br />
+          <nz-radio-group [nzDisabled]="published" [(ngModel)]="certificateDurationValue"
+            (ngModelChange)="checkClearCertificateDurationDays()">
+            <label nz-radio nzValue="A">Không giới hạn</label>
+            <label nz-radio nzValue="B">Cấu hình thời gian (ngày):</label>
+            <nz-input-number [nzDisabled]="published || certificateDurationValue === 'A'"
+              [ngModel]="certificateDurationDays" [nzMin]="1" [nzMax]="99999" [nzStep]="1"></nz-input-number>
+          </nz-radio-group>
+        </div>
+        <div class="mt-4">
+          <label for="name">Ảnh cover</label>
           <nz-upload [nzDisabled]="published" class="avatar-uploader"
             nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzName="avatar" nzListType="picture-card"
             [(nzFileList)]="fileList" [nzPreview]="handlePreview" [nzShowButton]="fileList.length < 1">
@@ -80,14 +82,156 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 mt-2">
-        <div class="mt-4">
-          <label style="font-size: 16px;font-weight: 600;">Nội dung bài học</label>
-          <ckeditor [editor]="Editor" data="<img width='200' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Elanco.svg/1200px-Elanco.svg.png' />
+      <div class="col-lg-12">
+        <div class="mt-2">
+          <label style="font-size: 16px;font-weight: 600;">Mô tả bài học</label>
+          <ckeditor [editor]="Editor" data="
             <p>Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh</p>"></ckeditor>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
+<div class="card mt-4">
+  <div class="card-body">
+    <nz-tabset>
+      <nz-tab nzTitle="Chi tiết bài học">
+        <div class="row mb-4">
+          <div class="col-md-12 text-right">
+            <button nz-button nzType="primary" nz-dropdown [nzDropdownMenu]="menu4">
+              KT Giữa bài học
+              <nb-icon [icon]="'arrow-down-outline'" class="ml-1"
+                  pack="eva"></nb-icon>
+            </button>
+            <nz-dropdown-menu #menu4="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Trắc nghiệm nhiều lựa chọn</li>
+                <li nz-menu-item>Trắc nghiệm đơn</li>
+              </ul>
+            </nz-dropdown-menu>
+
+            <button class="ml-2" nz-button nzType="primary">
+              <nb-icon [icon]="'plus-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Thêm chương
+            </button>
+          </div>
+        </div>
+        <nz-table #basicTable [nzSize]="'small'" [nzData]="lessonDetail" style="width:100%; font-size: 8px;"
+          [nzScroll]="{ x: '800px' }">
+          <thead>
+            <tr>
+              <th nzWidth="60px" class="text-center"><b>STT </b></th>
+              <th nzWidth="350px"><b>Tiêu đề </b></th>
+              <th><b>Loại </b></th>
+              <th class="text-center"><b>Thời lượng </b></th>
+              <th><b>Ngày tạo </b></th>
+              <th nzRight nzWidth="140px"><b>Hành động </b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+
+              <td class="text-center">{{ data.no }}</td>
+              <td>{{ data.title }}</td>
+              <td>{{ data.category }}</td>
+              <td>{{ data.duration }}</td>
+              <td>{{ data.createdDate }}</td>
+              <td>
+                <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+                <a><i id="ico-trash" class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+      <nz-tab nzTitle="Kiểm tra cuối bài học">
+        <div class="row mb-4">
+          <div class="col-md-12 text-right">
+            <button class="ml-2" nz-button nzType="primary">
+              <nb-icon [icon]="'plus-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Tạo KT cuối bài học
+            </button>
+          </div>
+        </div>
+        <nz-table [nzSize]="'small'" [nzData]="lessonDetail" style="width:100%; font-size: 8px;"
+          [nzScroll]="{ x: '800px' }">
+          <thead>
+            <tr>
+              <th nzWidth="60px" class="text-center"><b>STT </b></th>
+              <th><b>Bài kiểm tra </b></th>
+
+              <th nzWidth="140px"><b>Số câu hỏi </b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td>Bài kiểm tra 1</td>
+              <td>Số câu hỏi: 5</td>
+            </tr>
+            <tr>
+              <td class="text-center">2</td>
+              <td>Bài kiểm tra 2</td>
+              <td>Số câu hỏi: 5</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+      <nz-tab nzTitle="Tập tin đính kèm">
+        <div class="row">
+          <div class="col-md-12 text-right mb-4">
+            <button nz-button nzType="primary" nzDanger>
+              <nb-icon [icon]="'trash-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Xóa
+            </button>
+            <button class="ml-2" nz-button nzType="primary">
+              <nb-icon [icon]="'cloud-download-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Tải xuống
+            </button>
+  
+            <button class="ml-2" nz-button nzType="default">
+              <nb-icon [icon]="'refresh-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Tải lại
+            </button>
+            <button class="ml-2" nz-button nzType="primary">
+              <nb-icon [icon]="'upload-outline'" class="mr-1"
+                  pack="eva"></nb-icon>
+              Tải lên
+            </button>
+          </div>
+        </div>
+        <nz-table [nzSize]="'small'" [nzData]="lessonDetail" style="width:100%; font-size: 8px;"
+          [nzScroll]="{ x: '800px' }">
+          <thead>
+            <tr>
+              <th nzWidth="60px" class="text-center"><b>STT </b></th>
+              <th><b>Đề tựa </b></th>
+              <th><b>Tên tập tin </b></th>
+              <th><b>Thời gian tạo </b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td>Danh sách ảnh hướng dẫn</td>
+              <td>guide_images.rar</td>
+              <td>09/12/2022</td>
+            </tr>
+            <tr>
+              <td class="text-center">2</td>
+              <td>Các loại thuốc</td>
+              <td>cac_loai_thuoc.rar</td>
+              <td>09/12/2022</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </nz-tab>
+    </nz-tabset>
+  </div>
 </div>

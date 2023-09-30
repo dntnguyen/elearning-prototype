@@ -34,6 +34,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   imports: [
@@ -66,6 +69,9 @@ import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
     NzTagModule,
     CKEditorModule,
     NzTreeSelectModule,
+    NzInputNumberModule,
+    NzTabsModule,
+    NzDropDownModule,
   ],
   declarations: [
     LessonComponent,
