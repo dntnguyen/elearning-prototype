@@ -8,12 +8,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'Trang chủ',
-    icon: 'home-outline',
-    link: '/pages/my-user-dashboard',
-    home: true,
-  },
-  {
     title: 'Bài học',
     icon: 'book-outline',
     link: '/pages/lessons',

@@ -55,9 +55,6 @@ export class PagesComponent {
         if (this.menu[i].link === '/pages/my-lessons') {
           this.menu.splice(i, 1)
         }
-        if (this.menu[i].link === '/pages/my-user-dashboard') {
-          this.menu.splice(i, 1)
-        }
         if (this.menu[i].link === '/pages/new-lessons') {
           this.menu.splice(i, 1)
         }
@@ -65,7 +62,6 @@ export class PagesComponent {
     } else if (this.viewAs === 'user') {
       for (let i = this.menu.length - 1; i >= 0; i--) {
         if (this.menu[i].link !== '/pages/my-lessons'
-          && this.menu[i].link !== '/pages/my-user-dashboard'
           && this.menu[i].link !== '/pages/new-lessons') {
           this.menu.splice(i, 1)
         }

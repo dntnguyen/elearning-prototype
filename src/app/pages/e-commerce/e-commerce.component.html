@@ -2,7 +2,8 @@
   <div class="col-xxl-12">
     <div class="row">
       <div class="col-md-12">
-        <ngx-admin-report></ngx-admin-report>
+        <ngx-admin-report *ngIf="currentViewAs === 'admin'"></ngx-admin-report>
+        <ngx-user-report *ngIf="currentViewAs === 'user'"></ngx-user-report>
       </div>
     </div>
   </div>
