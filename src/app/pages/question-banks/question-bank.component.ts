@@ -7,30 +7,25 @@ import { NbIconLibraries } from '@nebular/theme';
 import { en_US, NzI18nService, zh_CN } from 'ng-zorro-antd/i18n';
 import { ChangeTitleService } from '../../change-title.service';
 
-interface Exam {
+interface QuestionBank {
   no: number;
   title: string;
-  month: string;
-  year: string;
-  duration: string;
-  numberOfQuestions: number;
-  timeBegin: string;
-  timeEnd: string;
-  status: string;
-  isActive: boolean;
+  type: string;
+  dateModified: string;
+  isActive: boolean,
 }
 
 @Component({
-  selector: 'ngx-exam',
-  styleUrls: ['./exam.component.scss'],
-  templateUrl: './exam.component.html',
+  selector: 'ngx-question-bank',
+  styleUrls: ['./question-bank.component.scss'],
+  templateUrl: './question-bank.component.html',
 })
-export class ExamComponent {
+export class QuestionBankComponent {
   date = null;
   isEnglish = true;
   checked = false;
   indeterminate = false;
-  listOfCurrentPageData: readonly Exam[] = [];
+  listOfCurrentPageData: readonly QuestionBank[] = [];
   setOfCheckedId = new Set<number>();
   total = 50;
   pageSize = 10;
@@ -60,125 +55,75 @@ export class ExamComponent {
   ];
 
 
-  listOfData: Exam[] = [
+  listOfData: QuestionBank[] = [
     {
       no: 1,
-      title: "Bài thi kiểm tra năng lực nội bộ Elanco tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "90 phút",
-      numberOfQuestions: 30,
-      timeBegin: "30/10/2023 12:00",
-      timeEnd: "30/10/2023 21:00",
-      status: "Đang sửa",
+      title: "Sử dụng Berocca có tác dụng phụ không?",
+      type: 'Essay',
+      dateModified: "30/10/2023 12:00",
       isActive: true,
     },
     {
       no: 2,
-      title: "Bài thi nội bộ Elanco Pet tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "60 phút",
-      numberOfQuestions: 20,
-      timeBegin: "20/10/2023 12:00",
-      timeEnd: "20/10/2023 21:00",
-      status: "Đang sửa",
-      isActive: true,
+      title: "Bao lâu cần tiêm ngừa bệnh dại cho chó mèo?",
+      type: "SCQ",
+      dateModified: "20/10/2023 12:00",
+      isActive: false,
     },
     {
       no: 3,
-      title: "Bài thi nội bộ Elanco Livestock tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "60 phút",
-      numberOfQuestions: 20,
-      timeBegin: "20/10/2023 12:00",
-      timeEnd: "20/10/2023 21:00",
-      status: "Đã xuất bản",
+      title: "Những chất dinh dưỡng nào cần thiết nhất cho cây?",
+      type: "MCQ",
+      dateModified: "20/10/2023 12:00",
       isActive: true,
     },
     {
       no: 4,
-      title: "Bài thi nội bộ Elanco Aqua tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "60 phút",
-      numberOfQuestions: 20,
-      timeBegin: "20/10/2023 12:00",
-      timeEnd: "20/10/2023 21:00",
-      status: "Đã xuất bản",
+      title: "Tác dụng của ni tơ với cây trồng là gì?",
+      type: "MCQ",
+      dateModified: "20/10/2023 12:00",
       isActive: true,
     },
     {
       no: 5,
-      title: "Bài kiểm tra nhận voucher GotIt tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "15 phút",
-      numberOfQuestions: 10,
-      timeBegin: "05/10/2023 18:00",
-      timeEnd: "06/10/2023 20:00",
-      status: "Đang sửa",
+      title: "Nên bón phân như thế nào cho mùa vụ mới?",
+      type: "Essay",
+      dateModified: "05/10/2023 18:00",
       isActive: true,
     },
     {
       no: 6,
-      title: "Bài kiểm tra Aqua tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "90 phút",
-      numberOfQuestions: 15,
-      timeBegin: "23/10/2023 18:00",
-      timeEnd: "23/10/2023 20:00",
-      status: "Đang sửa",
+      title: "Những nguyên nhân nào  gây ra bệnh vàng lá ở lúa?",
+      type: "MCG",
+      dateModified: "23/10/2023 18:00",
       isActive: true,
     },
     {
       no: 7,
-      title: "Bài kiểm tra Pet Health tháng 9/2023",
-      month: "09",
-      year: "2023",
-      duration: "60 phút",
-      numberOfQuestions: 14,
-      timeBegin: "23/09/2023 17:00",
-      timeEnd: "23/09/2023 18:30",
-      status: "Đã xuất bản",
+      title: "Nên tưới nước cho cây ăn quả vào những thời điểm nào trong ngày?",
+      type: "MCQ",
+      dateModified: "23/09/2023 17:00",
       isActive: true,
     },
     {
       no: 8,
-      title: "Bài kiểm tra Livestock tháng 10/2023",
-      month: "10",
-      year: "2023",
-      duration: "60 phút",
-      numberOfQuestions: 10,
-      timeBegin: "23/10/2023 17:00",
-      timeEnd: "23/10/2023 18:30",
-      status: "Đang sửa",
+      title: "Những phương pháp phòng bệnh lỡ mồm long móng ở vật nuôi?",
+      type: "MCQ",
+      dateModified: "23/10/2023 17:00",
       isActive: true,
     },
     {
       no: 9,
-      title: "Bài kiểm tra Livestock tháng 9/2023",
-      month: "09",
-      year: "2023",
-      duration: "30 phút",
-      numberOfQuestions: 10,
-      timeBegin: "23/09/2023 17:00",
-      timeEnd: "23/09/2023 18:30",
-      status: "Đã xuất bản",
+      title: "Nhãn hiệu Elanco không kinh doanh?",
+      type: "SCQ",
+      dateModified: "23/09/2023 17:00",
       isActive: true,
     },
     {
       no: 10,
-      title: "Bài kiểm tra Pet Health tháng 8/2023",
-      month: "08",
-      year: "2023",
-      duration: "90 phút",
-      numberOfQuestions: 15,
-      timeBegin: "23/09/2023 17:00",
-      timeEnd: "23/09/2023 18:30",
-      status: "Đã xuất bản",
+      title: "Loại phân bón nào tốt nhất cho cam?",
+      type: "MCQ",
+      dateModified: "23/09/2023 17:00",
       isActive: true,
     },
   ];
@@ -232,7 +177,7 @@ export class ExamComponent {
     iconsLibrary.setDefaultPack('far');
 
     this.i18n.setLocale(en_US);
-    this.changeTitleService.setDataTitle('Danh sách bài thi')
+    this.changeTitleService.setDataTitle('Ngân hàng câu hỏi')
   }
 
   updateCheckedSet(id: number, checked: boolean): void {
@@ -253,7 +198,7 @@ export class ExamComponent {
     this.refreshCheckedStatus();
   }
 
-  onCurrentPageDataChange($event: readonly Exam[]): void {
+  onCurrentPageDataChange($event: readonly QuestionBank[]): void {
     this.listOfCurrentPageData = $event;
     this.refreshCheckedStatus();
   }

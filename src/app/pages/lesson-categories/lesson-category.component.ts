@@ -29,44 +29,56 @@ export class LessonCategoryComponent {
       expanded: true,
       children: [
         {
-          title: 'Livestock',
-          key: 'livestock',
+          title: 'Hướng dẫn chung',
+          key: 'huongdanchung',
+          isLeaf: true
+        },
+        {
+          title: 'BU',
+          key: 'bu',
           expanded: true,
           children: [
             {
-              title: 'Heo',
-              key: 'heo',
-              expanded: true,
+              title: 'LS',
+              key: 'livestock',
+              expanded: false,
               children: [
-                { title: 'Catosal', key: 'catosal', isLeaf: true },
+                {
+                  title: 'Heo',
+                  key: 'heo',
+                  expanded: false,
+                  children: [
+                    { title: 'Catosal', key: 'catosal', isLeaf: true },
 
+                  ]
+                },
+                {
+                  title: 'Gà',
+                  key: 'ga',
+                  isLeaf: true
+                },
+                {
+                  title: 'Nutrition',
+                  key: 'nutrition',
+                  isLeaf: true
+                }
               ]
             },
             {
-              title: 'Gà',
-              key: 'ga',
-              isLeaf: true
+              title: 'AQUA',
+              key: 'aqua',
+              children: [
+                { title: 'Tôm thịt', key: 'tomthit', isLeaf: true },
+                { title: 'Tôm giống', key: 'tomgiong', isLeaf: true },
+                { title: 'Cá', key: 'ca', isLeaf: true },
+              ]
             },
             {
-              title: 'Nutrition',
-              key: 'nutrition',
+              title: 'Pet Health',
+              key: 'pethealth',
               isLeaf: true
-            }
+            },
           ]
-        },
-        {
-          title: 'Aqua',
-          key: 'aqua',
-          children: [
-            { title: 'Tôm thịt', key: 'tomthit', isLeaf: true },
-            { title: 'Tôm giống', key: 'tomgiong', isLeaf: true },
-            { title: 'Cá', key: 'ca', isLeaf: true },
-          ]
-        },
-        {
-          title: 'Pet Health',
-          key: 'pethealth',
-          isLeaf: true
         },
         {
           title: 'Khác',
@@ -103,6 +115,7 @@ export class LessonCategoryComponent {
 
   @ViewChild('dialog') pageDialog: TemplateRef<any>
   input_title: string
+  input_parent: string
 
   constructor(
 
@@ -127,9 +140,11 @@ export class LessonCategoryComponent {
   selectDropdown(e, action): void {
     if (action === 'add') {
       this.input_title = ''
+      this.input_parent = e.title
       this.openWithoutBackdropClick(null)
     } else if (action === 'edit') {
       this.input_title = e.title
+      this.input_parent = ''
       this.openWithoutBackdropClick(null)
     } else {
       this.deleteNode(e)
@@ -139,7 +154,7 @@ export class LessonCategoryComponent {
   deleteNode(node) {
 
   }
-  
+
   open() {
     this.dialogService.open(ShowcaseDialogComponent, {
       context: {
