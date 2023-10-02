@@ -5,21 +5,36 @@
     </a>
     <img src="../../../../assets/images/logo.svg" height="30px" width="80px" />
     <a class="logo elanco-color" href="#" (click)="navigateHome()"
-    style="font-size:18px; font-weight: 600; padding:0px;margin:0px">
-    <span>E-learning</span></a>
+      style="font-size:18px; font-weight: 600; padding:0px;margin:0px">
+      <span>E-learning</span></a>
   </div>
   <!-- <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
     <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
   </nb-select> -->
 </div>
-<div class="header-container text-left" style="width:100%; border-left: 0.5px rgb(228, 228, 228) solid;">
-  <div class="elanco-color title-border-line-left"
-    style="font-size:18px; height:2rem; margin-left: 1.5rem;padding-left: 1rem; padding-top:0.3rem; font-weight: 600">
-    {{pageTitle}}</div>
+<div class="header-container" style="width:100%; border-left: 0.5px rgb(228, 228, 228) solid;">
+  <div class="row mt-2" style="width:100%;">
+    <div class="col-lg-7 text-left">
+      <span class="elanco-color title-border-line-left"
+        style="font-size:18px; height:2rem; margin-left: 1.5rem;padding-left: 1rem; padding-top:0.3rem; font-weight: 600">
+        {{pageTitle}}
+      </span>
+    </div>
+    <div class="col-lg-5 text-right">
+      <a nz-button nzType="default" [nzSize]="'default'" nzShape="round" (click)="changeViewAs()">
+
+        <ng-container *ngIf="currentViewAs === 'admin'">
+          Góc nhìn học viên
+        </ng-container>
+        <ng-container *ngIf="currentViewAs === 'user'">
+          Góc nhìn quản trị
+        </ng-container>
+      </a>
+    </div>
+  </div>
 </div>
 <div class="header-container">
   <nb-actions size="small">
-
     <!-- <nb-action class="control-item">
       <nb-search type="rotate-layout"></nb-search>
     </nb-action> -->

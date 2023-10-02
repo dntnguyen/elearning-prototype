@@ -1,8 +1,7 @@
 <div class="row">
   <nb-card style="width:100%">
     <nb-card-body>
-      <nz-tabset>
-        <nz-tab nzTitle="Đang học">
+
           <div class="row mb-2" style="padding-left:14px;">
             <div class="col-md-12">
               <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
@@ -79,72 +78,7 @@
             </tbody>
           </nz-table>
 
-        </nz-tab>
-        <nz-tab nzTitle="Đã hoàn thành">
-          <div class="row mb-2">
-            <div class="col-md-12">
-              <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
-                <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
-              </nz-input-group>
-              <ng-template #suffixIconSearch>
-                <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
-              </ng-template>
-            </div>
-            <div class="col col-lg-12 mt-2">
-              <a class="btn btn-sm btn-default small-text"
-                style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
-                <span>Ngày công bố</span>
-                <span class="ml-2">>=</span>
-                <span class="ml-2" style="font-weight: bold;">01/09/2023</span>
-              </a>
-              <a class="btn btn-sm btn-default small-text ml-2"
-                style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
-                <span>Phân loại bài học:</span>
-                <span class="ml-2" style="font-weight: bold;">Tất cả</span>
-              </a>
-            </div>
-          </div>
 
-          <nz-table #tableCompleted [nzData]="listOfDataCompleted" style="width:100%" [nzShowPagination]="true"
-            [nzPageSize]="12">
-
-            <tbody>
-              <tr>
-                <td>
-                  <div class="row">
-                    <div class="col-md-3 mb-4" *ngFor="let data of tableCompleted.data">
-                      <img src="{{data.imageUrl}}" width="100%" height="173px"
-                        style="cursor: pointer;" (click)="viewLesson()" />
-                      <div class="grid-tile-name" style="cursor: pointer;" (click)="viewLesson()">
-                        {{data.name}}
-                      </div>
-                      <div class="grid-tile-description">
-                        {{data.description}}
-                      </div>
-                      <div>
-                        <nz-progress [nzPercent]="data.progressPercent" nzSize="small"></nz-progress>
-                      </div>
-                      <div>
-                        <span>
-                          {{data.publishedDate}}
-                        </span>
-                        <span class="ml-2">
-                          <ng-container *ngIf="data.isPrivate === true">
-                            <nz-tag nzColor="error">Riêng tư</nz-tag>
-                          </ng-container>
-                          <ng-container *ngIf="data.isPrivate === false">
-                            <nz-tag nzColor="success">Công khai</nz-tag>
-                          </ng-container>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </nz-table>
-        </nz-tab>
-      </nz-tabset>
     </nb-card-body>
   </nb-card>
 </div>

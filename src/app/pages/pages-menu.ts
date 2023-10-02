@@ -1,12 +1,18 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  // {
-  //   title: 'Phân loại bài học',
-  //   icon: 'book-outline',
-  //   link: '/pages/lesson-categories',
-  //   home: true,
-  // },
+  {
+    title: 'Trang chủ',
+    icon: 'home-outline',
+    link: '/pages/dashboard',
+    home: true,
+  },
+  {
+    title: 'Trang chủ',
+    icon: 'home-outline',
+    link: '/pages/my-user-dashboard',
+    home: true,
+  },
   {
     title: 'Bài học',
     icon: 'book-outline',
@@ -21,26 +27,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Bài thi',
-    icon: 'book-open',
-    link: '/pages/exams',
-    home: true,
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Danh sách bài thi',
+        icon: 'book-open',
+        link: '/pages/exams',
+        home: true,
+      },
+      {
+        title: 'Ngân hàng câu hỏi',
+        icon: 'layers-outline',
+        link: '/pages/question-banks',
+        home: true,
+      },
+    ]
   },
-  // {
-  //   title: 'Assign bài học',
-  //   icon: 'calendar-outline',
-  //   link: '/pages/lesson-assigns',
-  //   home: true,
-  // },
-  // {
-  //   title: 'Bài thi',
-  //   icon: 'book-outline',
-  //   link: '/pages/exams',
-  //   home: true,
-  // },
   {
     title: 'Khóa học của tôi',
-    icon: 'calendar-outline',
+    icon: 'book-open',
     link: '/pages/my-lessons',
+    home: true,
+  },
+  {
+    title: 'Khám phá khóa học mới',
+    icon: 'calendar-outline',
+    link: '/pages/new-lessons',
     home: true,
   },
   {
@@ -59,12 +71,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ],
   },
-  // {
-  //   title: 'E-commerce',
-  //   icon: 'shopping-cart-outline',
-  //   link: '/pages/dashboard',
-  //   home: true,
-  // },
   // {
   //   title: 'IoT Dashboard',
   //   icon: 'home-outline',

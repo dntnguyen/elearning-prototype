@@ -89,7 +89,7 @@
 <nz-drawer [nzBodyStyle]="{ overflow: 'auto'}" [nzMaskClosable]="true" [nzWidth]="378" [nzVisible]="visible"
   nzTitle="Lọc" [nzFooter]="footerTpl" (nzOnClose)="close()" [nzZIndex]="1000">
   <div *nzDrawerContent>
-    <div class="row">
+    <div class="row mb-2">
       <div class="col-md-12">
         <label for="name"><b>Trạng thái</b></label><br />
         <label nz-checkbox nzValue="Tất cả">Tất cả</label>
@@ -97,15 +97,15 @@
         <label nz-checkbox nzValue="Đang sửa">Đang sửa</label>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
       <div class="col-md-12">
         <label for="name"><b>Công khai</b></label><br />
         <label nz-checkbox nzValue="Tất cả">Tất cả</label>
-        <label nz-checkbox [ngModel]="true" nzValue="Đã xuất bản">Đã xuất bản</label>
-        <label nz-checkbox nzValue="Đang sửa">Đang sửa</label>
+        <label nz-checkbox [ngModel]="true" nzValue="Đã xuất bản">Công khai</label>
+        <label nz-checkbox nzValue="Đang sửa">Riêng</label>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
       <div class="col-md-12">
         <label for="name"><b>Có chứng chỉ</b></label><br />
         <label nz-checkbox nzValue="Tất cả">Tất cả</label>
@@ -113,7 +113,7 @@
         <label nz-checkbox nzValue="Đang sửa">Không</label>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-2">
       <div class="col-md-12">
         <label for="name"><b>Phân loại</b></label>
         <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Kênh" style="width:100%; margin-bottom:5px">

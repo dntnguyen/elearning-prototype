@@ -17,42 +17,42 @@ interface Lesson {
 }
 
 @Component({
-  selector: 'ngx-my-lesson',
-  styleUrls: ['./my-lesson.component.scss'],
-  templateUrl: './my-lesson.component.html',
+  selector: 'ngx-new-lesson',
+  styleUrls: ['./new-lesson.component.scss'],
+  templateUrl: './new-lesson.component.html',
 })
-export class MyLessonComponent {
+export class NewLessonComponent {
   listOfData: Lesson[] = [
-    {
-      imageUrl: '../../../assets/images/z1.jpeg',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 56,
-      publishedDate: '12/09/2023',
-      isPrivate: true
-    },
     {
       imageUrl: '../../../assets/images/my-lesson-sample-image.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 90,
-      publishedDate: '12/09/2023',
+      progressPercent: 0,
+      publishedDate: '01/10/2023',
+      isPrivate: true
+    },
+    {
+      imageUrl: '../../../assets/images/z1.jpeg',
+      name: 'Nội ký sinh trùng',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 0,
+      publishedDate: '01/10/2023',
       isPrivate: false
     },
     {
       imageUrl: '../../../assets/images/z2.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 32,
-      publishedDate: '12/09/2023',
+      progressPercent: 0,
+      publishedDate: '01/10/2023',
       isPrivate: false
     },
     {
       imageUrl: '../../../assets/images/z3.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 77,
-      publishedDate: '12/09/2023',
+      progressPercent: 0,
+      publishedDate: '02/10/2023',
       isPrivate: true
     },
     {
@@ -79,11 +79,40 @@ export class MyLessonComponent {
       publishedDate: '12/09/2023',
       isPrivate: true
     },
-  ];
-
-  listOfDataCompleted: Lesson[] = [
     {
       imageUrl: '../../../assets/images/z7.jpg',
+      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 10,
+      publishedDate: '12/09/2023',
+      isPrivate: false
+    },
+    {
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 23,
+      publishedDate: '12/09/2023',
+      isPrivate: true
+    },
+    {
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 80,
+      publishedDate: '12/09/2023',
+      isPrivate: true
+    },
+    {
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 69,
+      publishedDate: '12/09/2023',
+      isPrivate: true
+    },
+    {
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
       progressPercent: 100,
@@ -94,20 +123,28 @@ export class MyLessonComponent {
       imageUrl: '../../../assets/images/my-lesson-sample-image.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 100,
+      progressPercent: 42,
       publishedDate: '12/09/2023',
       isPrivate: false
     },
     {
-      imageUrl: '../../../assets/images/z1.jpeg',
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 100,
+      progressPercent: 0,
       publishedDate: '12/09/2023',
-      isPrivate: true
+      isPrivate: false
     },
     {
-      imageUrl: '../../../assets/images/z3.png',
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+      progressPercent: 80,
+      publishedDate: '12/09/2023',
+      isPrivate: false
+    },
+    {
+      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
       name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
       description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
       progressPercent: 100,
@@ -124,10 +161,10 @@ export class MyLessonComponent {
     iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
     iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
 
-    this.changeTitleService.setDataTitle('Khóa học của tôi')
+    this.changeTitleService.setDataTitle('Khóa học mới')
   }
 
   viewLesson() {
-    this.router.navigate(['pages','my-lessons','view'], { queryParams: { id: 1 } });
+    this.router.navigate(['pages','new-lessons','view'], { queryParams: { id: 1 } });
   }
 }
