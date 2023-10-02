@@ -15,6 +15,10 @@ import { InActiveUserComponent } from './inactive-users/inactive-user.component'
 import { TrackingUserComponent } from './tracking-users/tracking-user.component';
 import { ExamComponent } from './exams/exam.component';
 import { LessonCategoryComponent } from './lesson-categories/lesson-category.component';
+import { MyUserDashboardComponent } from './my-user-dashboard/my-user-dashboard.component';
+import { NewLessonComponent } from './new-lessons/new-lesson.component';
+import { NewLessonViewComponent } from './new-lessons-view/new-lesson-view.component';
+import { QuestionBankComponent } from './question-banks/question-bank.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +35,10 @@ const routes: Routes = [{
     {
       path: 'exams',
       component: ExamComponent,
+    },
+    {
+      path: 'question-banks',
+      component: QuestionBankComponent,
     },
     {
       path: 'lessons/lesson-report-activities',
@@ -52,6 +60,14 @@ const routes: Routes = [{
       path: 'my-lessons/view',
       component: MyLessonViewComponent,
     },
+     {
+      path: 'new-lessons',
+      component: NewLessonComponent,
+    },
+    {
+      path: 'new-lessons/view',
+      component: NewLessonViewComponent,
+    },
     {
       path: 'inactive-users',
       component: InActiveUserComponent,
@@ -63,6 +79,10 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: ECommerceComponent,
+    },
+    {
+      path: 'my-user-dashboard',
+      component: MyUserDashboardComponent,
     },
     {
       path: 'iot-dashboard',

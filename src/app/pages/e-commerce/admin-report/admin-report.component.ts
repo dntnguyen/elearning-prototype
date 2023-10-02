@@ -192,12 +192,22 @@ export class AdminReportComponent implements OnInit {
       "numberOfAttractiveLesson": 20
     },
   ]
+
+  currentViewAs: string = 'admin'
+
   constructor(
   ) {
     Chart.register(...registerables);
   }
 
   ngOnInit(): void {
+    let viewAs = localStorage.getItem("viewAs")
+    if (!viewAs) {
+      viewAs = 'admin'
+    }
+
+    this.currentViewAs = viewAs
+
     this.initDataReportAccessedUser()
 
     this.createChartStatisticalAccessedUser()
@@ -207,7 +217,7 @@ export class AdminReportComponent implements OnInit {
     let config = new Chart("ChartStatisticalCompletedLesson", {
       type: 'bar',
       data: {
-        labels: ['Feb', 'Jan', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
         datasets: [
           {
             label: 'Số người dùng được assign',
@@ -244,10 +254,10 @@ export class AdminReportComponent implements OnInit {
   }
   initDataReportAccessedUser() {
     this.dataReportAccessedUser = {
-      labels: ['Feb', 'Jan', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      labels: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
       datasets: [
         {
-          label: 'Số lương User truy cập theo tháng',
+          label: 'Số lượng người dùng truy cập theo tháng',
           data: [120, 110, 101, 140, 160, 180, 150, 200, 190, 210, 260, 300],
           borderColor: '#3399FF',
           backgroundColor: 'rgba(51,153,255,0.5)',
@@ -267,7 +277,7 @@ export class AdminReportComponent implements OnInit {
           },
           title: {
             display: false,
-            text: 'Số lượt người dùng truy cập',
+            text: 'Số lượng người dùng truy cập',
             position: 'top'
           },
         },
@@ -282,7 +292,7 @@ export class AdminReportComponent implements OnInit {
       labels: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
       datasets: [
         {
-          label: 'Số lương User truy cập hằng giờ',
+          label: 'Số lượng người dùng truy cập hàng giờ',
           data: [4, 5, 6, 10, 15, 6, 17, 4, 7, 23, 8],
           borderColor: '#3399FF',
           backgroundColor: 'rgba(51,153,255,0.5)',
@@ -314,7 +324,7 @@ export class AdminReportComponent implements OnInit {
       labels: ['Tuần 40', 'Tuần 41', 'Tuần 42', 'Tuần 43', 'Tuần 44', 'Tuần 45', 'Tuần 46'],
       datasets: [
         {
-          label: 'Số lương User truy cập hằng tuần',
+          label: 'Số lượng người dùng truy cập hằng tuần',
           data: [200, 250, 300, 500, 505, 360, 52],
           borderColor: '#3399FF',
           backgroundColor: 'rgba(51,153,255,0.5)',

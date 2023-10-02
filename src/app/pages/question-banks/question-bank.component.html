@@ -30,7 +30,7 @@
 
             <button nz-button nzType="primary">
               <i class="fa fa-plus"></i>&nbsp;
-              Thêm bài thi
+              Thêm câu hỏi
             </button>
           </div>
         </div>
@@ -40,44 +40,28 @@
         [nzScroll]="{ x: '800px' }">
         <thead>
           <tr>
-            <th nzWidth="50px"><b>STT </b></th>
-            <th nzWidth="300px"><b>Tiêu đề </b></th>
-            <th nzWidth="120px"><b>Tháng</b></th>
-            <th><b>Thời lượng </b></th>
-            <th ><b>Số câu hỏi </b></th>
-            <th><b>Thời gian bắt đầu</b></th>
-            <th><b>Thời gian kết thúc</b></th>
-            <th><b>Trạng thái </b></th>
-            <th ><b> </b></th>
-            <th ><b>Có hiệu lực </b></th>
+            <th class="text-center" nzWidth="50px"><b>STT </b></th>
+            <th nzWidth="40%"><b>Tiêu đề </b></th>
+            <th class="text-center"><b>Loại</b></th>
+            <th class="text-center" ><b>Có hiệu lực </b></th>
+            <th><b>Thời gian sửa</b></th>
+            <th class="text-center"><b> </b></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td>{{ data.no }}</td>
+            <td class="text-center">{{ data.no }}</td>
             <td>{{ data.title }}</td>
-            <td>
-              <nz-tag [nzColor]="'#108ee9'">{{ data.month }}</nz-tag>
-              <nz-tag [nzColor]="'#108ee9'">{{ data.year }}</nz-tag>
-
-              </td>
-            <td>
-              {{data.duration}}
-            </td>
-            <td>
-              {{data.numberOfQuestions}}
-            </td>
-            <td>{{ data.timeBegin }}</td>
-            <td>{{ data.timeEnd }}</td>
-            <td>{{ data.status }}</td>
             <td class="text-center">
-              <a><nb-icon id="ico-eye" [icon]="'eye'" pack="ion" style="font-weight:lighter;"></nb-icon></a>&nbsp;
-              <a routerLink="./lesson-report-activities"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
-              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
-              <a><i id="ico-trash" class="fa fa-trash"></i></a>
+              {{data.type}}
             </td>
             <td class="text-center">
               <label nz-checkbox [(ngModel)]="data.isActive"></label>
+            </td>
+            <td>{{ data.dateModified }}</td>
+            <td class="text-center">
+              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a><i id="ico-trash" class="fa fa-trash"></i></a>
             </td>
           </tr>
         </tbody>

@@ -14,6 +14,10 @@ import { TrackingUserModule } from './tracking-users/tracking-user.module';
 import { ExamModule } from './exams/exam.module';
 import { LessonCategoryModule } from './lesson-categories/lesson-category.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
+import { MyUserDashboardModule } from './my-user-dashboard/my-user-dashboard.module';
+import { NewLessonModule } from './new-lessons/new-lesson.module';
+import { NewLessonViewModule } from './new-lessons-view/new-lesson-view.module';
+import { QuestionBankModule } from './question-banks/question-bank.module';
 
 @NgModule({
   imports: [
@@ -29,8 +33,12 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
     InActiveUserModule,
     TrackingUserModule,
     ExamModule,
+    QuestionBankModule,
     LessonCategoryModule,
     ECommerceModule,
+    MyUserDashboardModule,
+    NewLessonModule,
+    NewLessonViewModule,
   ],
   declarations: [
     PagesComponent,
