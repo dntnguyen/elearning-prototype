@@ -58,6 +58,7 @@ import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earni
 import { AdminReportComponent } from './admin-report/admin-report.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { UserReportComponent } from './user-report/user-report.component';
 
 @NgModule({
   imports: [
@@ -111,6 +112,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     EarningPieChartComponent,
     EarningLiveUpdateChartComponent,
     AdminReportComponent,
+    UserReportComponent,
   ],
   providers: [
     CountryOrdersMapService,

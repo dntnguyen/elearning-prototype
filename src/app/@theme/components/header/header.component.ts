@@ -118,11 +118,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    if (this.currentViewAs === 'user') {
-      location.href = '/pages/my-user-dashboard';
-    } else {
-      location.href = '/pages/dashboard';
-    }
+    location.href = '/';
     return false;
   }
 }
