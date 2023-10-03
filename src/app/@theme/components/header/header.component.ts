@@ -98,7 +98,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     localStorage.setItem("viewAs", this.currentViewAs)
-    this.navigateHome()
+    this.refreshPage()
   }
 
   ngOnDestroy() {
@@ -118,6 +118,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
+    this.router.navigate(['']);
+    return false;
+  }
+
+  refreshPage() {
     location.href = '/';
     return false;
   }
