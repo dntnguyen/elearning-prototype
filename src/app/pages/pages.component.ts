@@ -62,7 +62,8 @@ export class PagesComponent {
     } else if (this.viewAs === 'user') {
       for (let i = this.menu.length - 1; i >= 0; i--) {
         if (this.menu[i].link !== '/pages/my-lessons'
-          && this.menu[i].link !== '/pages/new-lessons') {
+          && this.menu[i].link !== '/pages/new-lessons'
+          && this.menu[i].link !== '/pages/dashboard') {
           this.menu.splice(i, 1)
         }
       }
