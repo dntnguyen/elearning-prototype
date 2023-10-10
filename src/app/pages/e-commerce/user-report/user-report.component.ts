@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 
 interface EventElearning {
@@ -6,6 +7,7 @@ interface EventElearning {
   name: string;
   type: string;
   time: string;
+  location: string;
   status: string;
 }
 
@@ -59,6 +61,7 @@ export class UserReportComponent implements OnInit {
       name: "Giới thiệu các khóa học năm 2024",
       type: "Online",
       time: "20/10/2023",
+      location: 'Zoom',
       status: "Đã đăng ký",
     },
     {
@@ -66,13 +69,15 @@ export class UserReportComponent implements OnInit {
       name: "Giới thiệu sản phẩm mới tháng 10/2023",
       type: "Online",
       time: "30/10/2023",
+      location: 'Zoom',
       status: "Đã từ chối",
     },
     {
       no: 3,
       name: "Giới thiệu sản phẩm mới tháng 09/2023",
-      type: "Offline",
+      type: "Online",
       time: "20/10/2023",
+      location: 'Google Meet',
       status: "Đã tham gia",
     },
   ];
@@ -98,6 +103,7 @@ export class UserReportComponent implements OnInit {
   currentViewAs: string = 'admin'
 
   constructor(
+    private router: Router
   ) {
     Chart.register(...registerables);
   }
@@ -196,5 +202,12 @@ export class UserReportComponent implements OnInit {
     this.indeterminate = this.listOfData.some(item => this.setOfCheckedId.has(item.no)) && !this.checked;
   }
 
+  myExams() {
+    this.router.navigate(['pages','my-exams']);
+  }
+
+  goToMyExamView() {
+    this.router.navigate(['pages','my-exam-views'], { queryParams: { id: 1 } });
+  }
 }
 

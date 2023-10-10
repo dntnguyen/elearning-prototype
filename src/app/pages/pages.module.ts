@@ -17,6 +17,8 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { NewLessonModule } from './new-lessons/new-lesson.module';
 import { NewLessonViewModule } from './new-lessons-view/new-lesson-view.module';
 import { QuestionBankModule } from './question-banks/question-bank.module';
+import { MyExamModule } from './my-exams/my-exam.module';
+import { MyExamViewModule } from './my-exam-views/my-exam-view.module';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { QuestionBankModule } from './question-banks/question-bank.module';
     ECommerceModule,
     NewLessonModule,
     NewLessonViewModule,
+    MyExamModule,
+    MyExamViewModule,
   ],
   declarations: [
     PagesComponent,

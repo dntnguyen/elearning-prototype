@@ -14,7 +14,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { ExamComponent } from './exam.component';
+import { MyExamViewComponent } from './my-exam-view.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -26,8 +26,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { ExamReportComponent } from './exam-reports/exam-report.component';
 // import { Chart } from 'chart.js';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({
   imports: [
@@ -54,13 +54,13 @@ import { ExamReportComponent } from './exam-reports/exam-report.component';
     NzSelectModule,
     NzStatisticModule,
     NzTagModule,
+    NzRadioModule,
     // Chart
   ],
   declarations: [
-    ExamComponent,
-    ExamReportComponent,
+    MyExamViewComponent,
   ],
   providers: [
   ],
 })
-export class ExamModule { }
+export class MyExamViewModule { }

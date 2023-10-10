@@ -1,0 +1,122 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <ng-container *ngIf="id === '1'">
+        <div class="row mb-4">
+          <div class="col-sm-12 mb-3">
+            <span class="elanco-color" style="font-size:18px;font-weight: 600;padding-bottom: 10px;display: inline-block;">
+              Bài thi nội bộ Elanco Pet tháng 10/2023
+            </span>
+          </div>
+          <div class="col-lg-6">
+            <button nz-button nzType="primary" (click)="back()">
+              Nộp bài thi
+            </button>
+          </div>
+          <div class="col-lg-6 text-right">
+
+            <button nz-button nzType="primary" class="ml-3" nzDanger (click)="back()">
+              Dừng làm bài thi
+            </button>
+
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Review only -->
+      <ng-container *ngIf="id === '2'">
+        <div class="row mb-4">
+          <div class="col-sm-12 mb-3">
+            <span class="elanco-color" style="font-size:18px;font-weight: 600;padding-bottom: 10px;display: inline-block;">
+              Bài thi nội bộ Elanco Pet tháng 10/2023
+            </span>
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+          <div class="col-lg-6 text-right">
+
+            <button nz-button nzType="default" class="ml-3" (click)="back()">
+              Thoát
+            </button>
+
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <span style="font-size: 16px;font-weight: 600;">
+            1. Hãy chọn những câu trả lời đúng khi nói về loài mèo</span>
+          <span style="float:right">20 điểm</span>
+        </div>
+        <div class="card-body">
+          <label nz-checkbox>Có thị lực rất tốt về đêm</label>
+          <br />
+          <label nz-checkbox>Mèo là loài động vật xã hội</label>
+          <br />
+          <label nz-checkbox>Triệt sản sẽ khiến mèo giảm tuổi thọ</label>
+          <br />
+          <label nz-checkbox>Khứu giác của mèo không thua gì chó</label>
+          <br />
+          <label nz-checkbox>Mèo không cần uống nước thường xuyên</label>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <span style="font-size: 16px;font-weight: 600;">
+            2. Hãy cho biết đây là giống mèo nào?</span>
+          <span style="float:right">20 điểm</span>
+        </div>
+        <div class="card-body">
+          <div class="text-center" style="width:100%">
+            <img src="../../../assets/images/meo-anh.png" width="400px" height="250px">
+          </div>
+          <input nz-input class="mt-4" placeholder="Nhập vào câu trả lời của bạn" />
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-header">
+          <span style="font-size: 16px;font-weight: 600;">
+            3. Elanco đang kinh doanh bao nhiêu loại thức ăn cho mèo</span>
+          <span style="float:right">20 điểm</span>
+        </div>
+        <div class="card-body">
+          <nz-radio-group [ngModel]="">
+            <label nz-radio nzValue="2">2</label>
+            <label nz-radio nzValue="3">3</label>
+            <label nz-radio nzValue="4">4</label>
+            <label nz-radio nzValue="5">5</label>
+          </nz-radio-group>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <span style="font-size: 16px;font-weight: 600;">
+            4. Chân trước của mèo có bao nhiêu ngón</span>
+          <span style="float:right">20 điểm</span>
+        </div>
+        <div class="card-body">
+          <input nz-input placeholder="Nhập vào câu trả lời của bạn" type="number" />
+        </div>
+      </div>
+
+
+      <div class="card mt-4">
+        <div class="card-header">
+          <span style="font-size: 16px;font-weight: 600;">
+            5. Hãy mô tả những việc bạn cần làm khi nuôi mèo</span>
+          <span style="float:right">20 điểm</span>
+        </div>
+        <div class="card-body">
+          <textarea nz-input rows="3" placeholder="Nhập vào câu trả lời của bạn"></textarea>
+        </div>
+      </div>
+
+    </nb-card-body>
+  </nb-card>
+</div>

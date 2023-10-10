@@ -1,0 +1,109 @@
+nb-checkbox {
+  margin-bottom: 1rem;
+}
+
+.form-inline [fullWidth] {
+  flex: 1;
+}
+
+.form-inline>* {
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+nb-card.inline-form-card nb-card-body {
+  padding-bottom: 0;
+}
+
+.do-exam {
+  color: #00B432
+}
+
+#ico-analytics {
+  color: #FF7A00;
+}
+
+#ico-edit {
+  color: #2D68FE;
+}
+
+#ico-trash {
+  color: red;
+}
+
+#btn-filter {
+  background-color: #EBF3FF;
+  border: 0px;
+  color: #0067B1;
+}
+
+#btn-delete {
+  background-color: #EBF3FF;
+  border: 0px;
+  color: #0067B1;
+}
+
+.incoming-div {
+  width: 80%;
+  height: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: #0067B1;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  color:white;
+}
+
+.ongoing-div {
+  width: 80%;
+  height: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: #00a838;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  color:white;
+}
+
+.complete-div {
+  width: 80%;
+  height: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: rgba(199, 199, 199, 0.527);
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex
+}
+
+$default-status-font-size: 12px;
+
+.private-value {
+  color: red;
+  font-size: $default-status-font-size;
+  // font-family: Inter;
+  // font-weight: 400;
+  word-wrap: break-word
+}
+
+.public-value {
+  color: #00B432;
+  font-size: $default-status-font-size;
+  // font-family: Inter;
+  // font-weight: 400;
+  word-wrap: break-word
+}
+
