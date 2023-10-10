@@ -18,6 +18,9 @@ import { LessonCategoryComponent } from './lesson-categories/lesson-category.com
 import { NewLessonComponent } from './new-lessons/new-lesson.component';
 import { NewLessonViewComponent } from './new-lessons-view/new-lesson-view.component';
 import { QuestionBankComponent } from './question-banks/question-bank.component';
+import { ExamReportComponent } from './exams/exam-reports/exam-report.component';
+import { MyExamComponent } from './my-exams/my-exam.component';
+import { MyExamViewComponent } from './my-exam-views/my-exam-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +37,18 @@ const routes: Routes = [{
     {
       path: 'exams',
       component: ExamComponent,
+    },
+    {
+      path: 'exam-reports',
+      component: ExamReportComponent,
+    },
+    {
+      path: 'my-exams',
+      component: MyExamComponent,
+    },
+    {
+      path: 'my-exam-views',
+      component: MyExamViewComponent,
     },
     {
       path: 'question-banks',
