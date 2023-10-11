@@ -78,7 +78,7 @@
                 </a>
               </ng-container>
               <ng-container *ngIf="data.status === 'Đã kết thúc'">
-                <a>
+                <a (click)="goToMyExamView(true)">
                   <nb-icon [icon]="'file-text-outline'" pack="eva"></nb-icon>
                   Xem kết quả
                 </a>
