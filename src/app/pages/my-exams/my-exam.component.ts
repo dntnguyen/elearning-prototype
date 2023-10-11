@@ -170,7 +170,12 @@ export class MyExamComponent {
     this.router.navigate(['pages','exam-reports'], { queryParams: { id: 1 } });
   }
 
-  goToMyExamView() {
+  goToMyExamView(isViewResult: boolean = false) {
+    if (isViewResult) {
+      this.router.navigate(['pages','my-exam-views'], { queryParams: { id: 99 } });
+      return
+    }
+
     this.router.navigate(['pages','my-exam-views'], { queryParams: { id: 1 } });
   }
 

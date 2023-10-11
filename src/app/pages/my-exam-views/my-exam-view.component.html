@@ -24,7 +24,7 @@
       </ng-container>
 
       <!-- Review only -->
-      <ng-container *ngIf="id === '2'">
+      <ng-container *ngIf="id === '2' || id === '99'">
         <div class="row mb-4">
           <div class="col-sm-12 mb-3">
             <span class="elanco-color" style="font-size:18px;font-weight: 600;padding-bottom: 10px;display: inline-block;">
@@ -51,7 +51,7 @@
           <span style="float:right">20 điểm</span>
         </div>
         <div class="card-body">
-          <label nz-checkbox>Có thị lực rất tốt về đêm</label>
+          <label nz-checkbox [ngModel]="id === '99' ? true : false">Có thị lực rất tốt về đêm</label>
           <br />
           <label nz-checkbox>Mèo là loài động vật xã hội</label>
           <br />
@@ -59,7 +59,7 @@
           <br />
           <label nz-checkbox>Khứu giác của mèo không thua gì chó</label>
           <br />
-          <label nz-checkbox>Mèo không cần uống nước thường xuyên</label>
+          <label nz-checkbox [ngModel]="id === '99' ? true : false">Mèo không cần uống nước thường xuyên</label>
         </div>
       </div>
 
@@ -73,19 +73,19 @@
           <div class="text-center" style="width:100%">
             <img src="../../../assets/images/meo-anh.png" width="400px" height="250px">
           </div>
-          <input nz-input class="mt-4" placeholder="Nhập vào câu trả lời của bạn" />
+          <input nz-input class="mt-4" [ngModel]="id === '99' ? 'Mèo Anh lông ngắn' : ''" placeholder="Nhập vào câu trả lời của bạn" />
         </div>
       </div>
 
 
-      <div class="card">
+      <div class="card mt-4">
         <div class="card-header">
           <span style="font-size: 16px;font-weight: 600;">
             3. Elanco đang kinh doanh bao nhiêu loại thức ăn cho mèo</span>
           <span style="float:right">20 điểm</span>
         </div>
         <div class="card-body">
-          <nz-radio-group [ngModel]="">
+          <nz-radio-group [ngModel]="id === '99' ? '3' : ''">
             <label nz-radio nzValue="2">2</label>
             <label nz-radio nzValue="3">3</label>
             <label nz-radio nzValue="4">4</label>
@@ -101,7 +101,7 @@
           <span style="float:right">20 điểm</span>
         </div>
         <div class="card-body">
-          <input nz-input placeholder="Nhập vào câu trả lời của bạn" type="number" />
+          <input nz-input [ngModel]="id === '99' ? '5' : ''" placeholder="Nhập vào câu trả lời của bạn" type="number" />
         </div>
       </div>
 
@@ -113,7 +113,7 @@
           <span style="float:right">20 điểm</span>
         </div>
         <div class="card-body">
-          <textarea nz-input rows="3" placeholder="Nhập vào câu trả lời của bạn"></textarea>
+          <textarea nz-input rows="3" [ngModel]="id === '99' ? 'Cho ăn, tiêm ngừa, tỉa lông' : ''" placeholder="Nhập vào câu trả lời của bạn"></textarea>
         </div>
       </div>
 
