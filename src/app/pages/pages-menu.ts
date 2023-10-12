@@ -50,6 +50,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Bài thi của tôi',
+    icon: 'book-open',
+    link: '/pages/my-exams',
+    home: true,
+  },
+  {
     title: 'Báo cáo',
     icon: 'layout-outline',
     children: [
