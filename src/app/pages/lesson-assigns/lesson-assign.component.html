@@ -7,7 +7,7 @@
       <div class="row mt-4">
         <div class="col-lg-6 mb-4 pr-4" style="border-right:0.5px solid rgb(204, 204, 204);">
           <nz-input-group [nzPrefix]="prefixIconSearch" [nzSuffix]="suffixTemplate" style="width:100%;" class="mb-2">
-            <input type="text" [(ngModel)]="searchText" nz-input size="small" placeholder="Tìm kiếm"
+            <input type="text" [(ngModel)]="searchText" nz-input size="small" placeholder="Tìm kiếm theo mã, tên, email"
               (keyup)="onKeyUp($event)" />
           </nz-input-group>
           <ng-template #prefixIconSearch>
