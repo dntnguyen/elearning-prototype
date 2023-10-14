@@ -21,6 +21,7 @@ import { QuestionBankComponent } from './question-banks/question-bank.component'
 import { ExamReportComponent } from './exams/exam-reports/exam-report.component';
 import { MyExamComponent } from './my-exams/my-exam.component';
 import { MyExamViewComponent } from './my-exam-views/my-exam-view.component';
+import { ExamEditComponent } from './exams/exam-edit/exam-edit.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,6 +38,10 @@ const routes: Routes = [{
     {
       path: 'exams',
       component: ExamComponent,
+    },
+    {
+      path: 'exam-edit',
+      component: ExamEditComponent,
     },
     {
       path: 'exam-reports',

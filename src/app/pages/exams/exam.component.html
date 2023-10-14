@@ -28,10 +28,10 @@
               Lọc
             </button>
 
-            <button nz-button nzType="primary">
+            <a nz-button nzType="primary" (click)="examEdit()" style="color:white" >
               <i class="fa fa-plus"></i>&nbsp;
               Thêm bài thi
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
             <td class="text-center">
               <a (click)="goToMyExamView()"><nb-icon id="ico-eye" [icon]="'eye'" pack="ion" style="font-weight:lighter;"></nb-icon></a>&nbsp;
               <a (click)="examReport()"><i id="ico-analytics" class="fa fa-chart-line"></i></a>&nbsp;
-              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a (click)="examEdit()" ><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
               <a><i id="ico-trash" class="fa fa-trash"></i></a>
             </td>
             <td class="text-center">

@@ -1,0 +1,162 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <span style="font-size:16px;font-weight: 600;">Cập nhật bài thi</span>
+      </div>
+      <div class="col-lg-6 text-right">
+        <button class="float-end" nz-button nzType="primary" class="mr-3" (click)="save()">
+          <i class="fa fa-check mr-1"></i> Lưu
+        </button>
+
+        <button nz-button nzType="default" class="mr-3" (click)="goToMyExamView()">
+          Xem trước
+        </button>
+        <button *ngIf="!published" id="btn-filter" nz-button nzType="primary" class="mr-3" (click)="onChangePublish()">
+          <i class="far fa-check-circle"></i>&nbsp;
+          Xuất bản
+        </button>
+        <button *ngIf="published" id="btn-filter" nz-button nzType="default" class="mr-3" (click)="onChangePublish()">
+          <i *ngIf="published" class="fas fa-edit"></i>&nbsp;
+          Chuyển sang chỉnh sửa
+        </button>
+        <button nz-button nzType="default" (click)="back()">
+          Đóng
+        </button>
+
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-6">
+        <div class="mt-2">
+          <label for="name">Tiêu đề</label><span> * </span>
+          <input [disabled]="published" nz-input placeholder="Nhập tiêu đề ..." autofocus
+            ngModel="Bài thi kiểm tra năng lực nội bộ tháng 11/2023" />
+        </div>
+        <div class="mt-2">
+          <label for="name">Mô tả</label><span> </span>
+          <textarea [disabled]="published" rows="3" nz-input placeholder="Nhập mô tả..." autofocus
+            ngModel=""></textarea>
+        </div>
+
+        <div class="mt-4">
+          <label nz-checkbox [ngModel]="true">Được tính vào báo cáo</label>
+        </div>
+
+        <div class="mt-4">
+          <label nz-checkbox [ngModel]="true">Có hiệu lực</label>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="mt-2">
+          <label for="name">Tháng</label><span> * </span> <br />
+          <nz-date-picker nzMode="month" [ngModel]="chosenMonth"></nz-date-picker>
+        </div>
+        <div class="mt-2">
+          <label for="name">Giờ bắt đầu - kết thúc</label><span> * </span> <br />
+          <nz-range-picker [nzShowTime]="true" [(ngModel)]="date"></nz-range-picker>
+        </div>
+
+        <div class="mt-2">
+          <label for="name">Thời gian (phút)</label><span> * </span> <br />
+          <nz-input-number [nzDisabled]="published" [nzMin]="1" [nzMax]="99999" [nzStep]="1"></nz-input-number>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <span class="mt-2" style="font-size:16px;font-weight: bold;">Câu hỏi được chọn | Tổng câu chọn: <b>3</b></span>  
+    <nz-table class="mt-3" #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
+      [nzTotal]="'10'" [nzPageSize]="'10'" [nzPageIndex]="'1'" [nzScroll]="{ x: '800px' }" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th nzWidth="50px"><b>STT </b></th>
+          <th nzWidth="300px"><b>Nhãn hiệu </b></th>
+          <th class="text-center"><b>Tổng tự luận</b></th>
+          <th class="text-center"><b>Tự luận được chọn</b></th>
+          <th class="text-center"><b>Tổng MCQ/SCQ</b></th>
+          <th class="text-center"><b>MCQ/SCQ được chọn</b></th>
+          <th><b></b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.no}}</td>
+          <td>{{data.brand}}</td>
+          <td class="text-center">{{data.total}}</td>
+          <td class="text-center">{{data.totalChoose}}</td>
+          <td class="text-center">{{data.totalChoice}}</td>
+          <td class="text-center">{{data.totalChoiceChoose}}</td>
+          <td class="text-center">
+            <nb-icon class="elanco-color" id="ico-eye" [icon]="'plus-square-outline'" pack="eva" style="font-weight:lighter;"></nb-icon>
+            
+          </td>
+        
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr style="background-color:rgb(235, 235, 235)">
+          <td colspan="2"><b>TỔNG CỘNG</b></td>
+          <td class="text-center"><b></b></td>
+          <td class="text-center"><b>1</b></td>
+          <td class="text-center"><b></b></td>
+          <td class="text-center"><b>2</b></td>
+          <td>
+          </td>
+        </tr>
+      </tfoot>
+    </nz-table>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <span class="mt-2" style="font-size:16px;font-weight: bold;">Câu hỏi ngẫu nhiên | Tổng yêu cầu: <b>0</b> | Tổng ngẫu nhiên: <b>0</b></span>  
+    <nz-table class="mt-3" #basicTableRandom [nzSize]="'small'" [nzData]="listOfDataRandom" style="width:100%; font-size: 8px;"
+      [nzTotal]="'10'" [nzPageSize]="'10'" [nzPageIndex]="'1'" [nzScroll]="{ x: '800px' }" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th nzWidth="50px"><b>STT </b></th>
+          <th nzWidth="300px"><b>Nhãn hiệu</b></th>
+          <th class="text-center"><b>Yêu cầu / Còn lại Tự luận </b></th>
+          <th class="text-center"><b>Tự luận ngẫu nhiên thực tế</b></th>
+          <th class="text-center"><b>Yêu cầu / Còn lại MCQ/SCQ</b></th>
+          <th class="text-center"><b>MCQ/SCQ ngẫu nhiên thực tế</b></th>
+          <th><b></b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTableRandom.data">
+          <td>{{data.no}}</td>
+          <td>{{data.brand}}</td>
+          <td ><nz-input-number style="margin-left:40px" [nzStep]="1"></nz-input-number> {{data.total}}</td>
+          <td class="text-center">{{data.totalChoose}}</td>
+          <td ><nz-input-number style="margin-left:40px" [nzStep]="1"></nz-input-number> {{data.totalChoice}}</td>
+          <td class="text-center">{{data.totalChoiceChoose}}</td>
+          <td class="text-center">
+            <nb-icon class="elanco-color" id="ico-eye" [icon]="'plus-square-outline'" pack="eva" style="font-weight:lighter;"></nb-icon>
+            
+          </td>
+        
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr style="background-color:rgb(235, 235, 235)">
+          <td colspan="2"><b>TỔNG CỘNG</b></td>
+          <td class="text-center"><b>0</b></td>
+          <td class="text-center"><b>0</b></td>
+          <td class="text-center"><b>0</b></td>
+          <td class="text-center"><b>0</b></td>
+          <td>
+          </td>
+        </tr>
+      </tfoot>
+    </nz-table>
+  </div>
+</div>
