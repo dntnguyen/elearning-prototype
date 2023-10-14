@@ -4,25 +4,36 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Location } from '@angular/common';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Router } from '@angular/router';
 import { ChangeTitleService } from '../../../change-title.service';
+import { vi_VN, NzI18nService } from 'ng-zorro-antd/i18n';
 
 interface LessonDetail
 {
   no: number;
-  title: string;
-  category: string;
-  duration: string;
-  createdDate: string;
+  brand: string;
+  total: string;
+  totalChoose: string;
+  totalChoice: string;
+  totalChoiceChoose: string;
+}
+
+interface LessonDetailRandom
+{
+  no: number;
+  brand: string;
+  total: string;
+  totalChoose: string;
+  totalChoice: string;
+  totalChoiceChoose: string;
 }
 
 @Component({
-  selector: 'ngx-lesson-edit',
-  templateUrl: './lesson-edit.component.html',
-  styleUrls: ['./lesson-edit.component.scss']
+  selector: 'ngx-exam-edit',
+  templateUrl: './exam-edit.component.html',
+  styleUrls: ['./exam-edit.component.scss']
 })
-export class LessonEditComponent implements OnInit {
-  public Editor = ClassicEditor;
+export class ExamEditComponent implements OnInit {
   lessonEdit = {
     name: '',
     certificate: '',
@@ -112,50 +123,88 @@ export class LessonEditComponent implements OnInit {
     }
   ];
 
-  lessonDetail: LessonDetail[] = [
+  listOfData: LessonDetail[] = [
     {
       no: 1,
-      title: "Bài 1: Tổng quan về bài học",
-      category: "",
-      duration: '00:15:00',
-      createdDate: "09/12/2022",
-    },
+      brand: "HP brand",
+      total: "0",
+      totalChoose: '0',
+      totalChoice: "0",
+      totalChoiceChoose: "0",
+    },  
     {
       no: 2,
-      title: "Bài 2: ELANCO PIG ACADEMY là gì?",
-      category: "",
-      duration: '00:15:00',
-      createdDate: "09/12/2022",
-    },
+      brand: "Nutri",
+      total: "0",
+      totalChoose: '0',
+      totalChoice: "12",
+      totalChoiceChoose: "0",
+    },  
     {
       no: 3,
-      title: "Bài 3: Các dấu hiệu bệnh",
-      category: "",
-      duration: '00:15:00',
-      createdDate: "09/12/2022",
-    },
+      brand: "MPharma",
+      total: "5",
+      totalChoose: '0',
+      totalChoice: "9",
+      totalChoiceChoose: "0",
+    },  
     {
       no: 4,
-      title: "Bài 4: Phương pháp chữa trị",
-      category: "",
-      duration: '00:15:00',
-      createdDate: "09/12/2022",
-    },
-    {
-      no: 5,
-      title: "Bài 5: Cách thức phòng ngừa",
-      category: "",
-      duration: '00:15:00',
-      createdDate: "09/12/2022",
-    }
+      brand: "Lemonade",
+      total: "5",
+      totalChoose: '1',
+      totalChoice: "13",
+      totalChoiceChoose: "2",
+    },  
   ]
+
+  listOfDataRandom: LessonDetailRandom[] = [
+    {
+      no: 1,
+      brand: "HP brand",
+      total: "/10",
+      totalChoose: '0',
+      totalChoice: "/20",
+      totalChoiceChoose: "0",
+    },  
+    {
+      no: 2,
+      brand: "Nutri",
+      total: "/0",
+      totalChoose: '0',
+      totalChoice: "/5",
+      totalChoiceChoose: "0",
+    },  
+    {
+      no: 3,
+      brand: "MPharma",
+      total: "/9",
+      totalChoose: '0',
+      totalChoice: "/12",
+      totalChoiceChoose: "0",
+    },  
+    {
+      no: 4,
+      brand: "Lemonade",
+      total: "/6",
+      totalChoose: '0',
+      totalChoice: "/11",
+      totalChoiceChoose: "0",
+    },  
+  ]
+
+  chosenMonth: Date = new Date('2023-11-01')
+  date: Date
 
   constructor(
     // private msg: NzMessageService
     private location: Location,
-    private changeTitleService: ChangeTitleService
+    private router: Router,
+    private changeTitleService: ChangeTitleService,
+    private i18n: NzI18nService,
   ) {
-    this.changeTitleService.setDataTitle('Cập nhật bài học')
+    this.changeTitleService.setDataTitle('Cập nhật bài thi')
+
   }
 
   ngOnInit(): void {
@@ -203,5 +252,9 @@ export class LessonEditComponent implements OnInit {
     if (this.certificateDurationValue == 'A') {
       this.certificateDurationDays = 0
     }
+  }
+
+  goToMyExamView() {
+    this.router.navigate(['pages','my-exam-views'], { queryParams: { id: 2 } });
   }
 }

@@ -293,6 +293,10 @@ export class ExamComponent {
     }
   }
 
+  examEdit() {
+    this.router.navigate(['pages','exam-edit'], { queryParams: { id: 1 } });
+  }
+
   examReport() {
     this.router.navigate(['pages','exam-reports'], { queryParams: { id: 1 } });
   }

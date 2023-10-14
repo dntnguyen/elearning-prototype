@@ -27,6 +27,11 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { ExamReportComponent } from './exam-reports/exam-report.component';
+import { ExamEditComponent } from './exam-edit/exam-edit.component';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 // import { Chart } from 'chart.js';
 
 @NgModule({
@@ -53,12 +58,16 @@ import { ExamReportComponent } from './exam-reports/exam-report.component';
     NzCheckboxModule,
     NzSelectModule,
     NzStatisticModule,
+    NzRadioModule,
     NzTagModule,
-    // Chart
+    NzTabsModule,
+    NzDropDownModule,
+    NzInputNumberModule
   ],
   declarations: [
     ExamComponent,
     ExamReportComponent,
+    ExamEditComponent,
   ],
   providers: [
   ],
