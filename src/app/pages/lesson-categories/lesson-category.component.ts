@@ -58,8 +58,8 @@ export class LessonCategoryComponent {
                   isLeaf: true
                 },
                 {
-                  title: 'Nutrition',
-                  key: 'nutrition',
+                  title: 'Bò',
+                  key: 'bo',
                   isLeaf: true
                 }
               ]
