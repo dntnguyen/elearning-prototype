@@ -81,34 +81,78 @@ export class LessonCategoryComponent {
           ]
         },
         {
-          title: 'Khác',
-          key: 'khac',
+          title: 'Kênh',
+          key: 'kenh',
+          expanded: true,
           children: [
             {
-              title: 'Phân loại 1', key: 'phanloai1', children: [
-                {
-                  title: 'Phân loại 1.1', key: 'phanloai1-1', children: [
-                    { title: 'Phân loại 1.1.1', key: 'phanloai1.1.1', isLeaf: true },
-                    { title: 'Phân loại 1.1.2', key: 'phanloai1.1.2', isLeaf: true },
-                    { title: 'Phân loại 1.1.3', key: 'phanloai1.1.3', isLeaf: true },
-                  ]
-                },
-              ]
+              title: 'Trang trại',
+              key: 'trangtrai',
+              isLeaf: true
             },
             {
-              title: 'Phân loại 2', key: 'phanloai2', children: [
-                {
-                  title: 'Phân loại 2.1', key: 'phanloai2-1', children: [
-                    { title: 'Phân loại 2.1.1', key: 'phanloai2.1.1', isLeaf: true },
-                    { title: 'Phân loại 2.1.2', key: 'phanloai2.1.2', isLeaf: true },
-                    { title: 'Phân loại 2.1.3', key: 'phanloai2.1.3', isLeaf: true },
-                  ]
-                },
-              ]
+              title: 'Khác',
+              key: 'kenhkhac',
+              isLeaf: true
             },
-            { title: 'Phân loại 3', key: 'phanloai3', isLeaf: true },
           ]
-        }
+        },
+        {
+          title: 'Nhóm sản phẩm',
+          key: 'nhomsanpham',
+          expanded: true,
+          children: [
+            {
+              title: 'LS Products',
+              key: 'lsproducts',
+              expanded: true,
+              children: [{
+                title: 'Drontal',
+                key: 'drontal',
+                isLeaf: true
+              }]
+            },
+            {
+              title: 'AQUA Products',
+              key: 'aquaproducts',
+              isLeaf: true
+            },
+            {
+              title: 'Pet Products',
+              key: 'petproducts',
+              isLeaf: true
+            },
+          ]
+        },
+        // {
+        //   title: 'Khác',
+        //   key: 'khac',
+        //   children: [
+        //     {
+        //       title: 'Phân loại 1', key: 'phanloai1', children: [
+        //         {
+        //           title: 'Phân loại 1.1', key: 'phanloai1-1', children: [
+        //             { title: 'Phân loại 1.1.1', key: 'phanloai1.1.1', isLeaf: true },
+        //             { title: 'Phân loại 1.1.2', key: 'phanloai1.1.2', isLeaf: true },
+        //             { title: 'Phân loại 1.1.3', key: 'phanloai1.1.3', isLeaf: true },
+        //           ]
+        //         },
+        //       ]
+        //     },
+        //     {
+        //       title: 'Phân loại 2', key: 'phanloai2', children: [
+        //         {
+        //           title: 'Phân loại 2.1', key: 'phanloai2-1', children: [
+        //             { title: 'Phân loại 2.1.1', key: 'phanloai2.1.1', isLeaf: true },
+        //             { title: 'Phân loại 2.1.2', key: 'phanloai2.1.2', isLeaf: true },
+        //             { title: 'Phân loại 2.1.3', key: 'phanloai2.1.3', isLeaf: true },
+        //           ]
+        //         },
+        //       ]
+        //     },
+        //     { title: 'Phân loại 3', key: 'phanloai3', isLeaf: true },
+        //   ]
+        // }
       ]
     }
   ];
