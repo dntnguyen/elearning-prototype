@@ -23,6 +23,8 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   imports: [
@@ -46,6 +48,8 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
     NzTagModule,
     NzListModule,
     NzCollapseModule,
+    NzButtonModule,
+    NzModalModule
   ],
   declarations: [
     MyLessonViewComponent,
