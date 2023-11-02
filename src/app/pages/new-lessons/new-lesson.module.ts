@@ -21,6 +21,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     NzTabsModule,
     NzProgressModule,
     NzTagModule,
+    NzRateModule
   ],
   declarations: [
     NewLessonComponent,
