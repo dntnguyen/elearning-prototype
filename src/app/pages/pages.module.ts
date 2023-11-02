@@ -19,6 +19,7 @@ import { NewLessonViewModule } from './new-lessons-view/new-lesson-view.module';
 import { QuestionBankModule } from './question-banks/question-bank.module';
 import { MyExamModule } from './my-exams/my-exam.module';
 import { MyExamViewModule } from './my-exam-views/my-exam-view.module';
+import { LearningViewModule } from './learning-view/learning-view.module';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { MyExamViewModule } from './my-exam-views/my-exam-view.module';
     NewLessonViewModule,
     MyExamModule,
     MyExamViewModule,
+    LearningViewModule
   ],
   declarations: [
     PagesComponent,
