@@ -4,12 +4,12 @@
       <source src="../../../assets/videos/valley.mp4" type="video/mp4">
     </video>
 
-    <div>
-      <h3>Bài 2: ELANCO PIG ACADEMY là gì?</h3>
+    <div class="mt-2">
+      <h4>{{currentSelectedLesson.name}}</h4>
       <p>Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh ký sinh trùng đường máu, được ghi nhận phổ biến ở
         các đàn heo trên thế giới</p>
       <button class="float-left" nz-button nzType="primary" nzShape="round">
-        <i class="fas fa-check"></i><span class="mr-2"></span> Đã học xong</button>
+        <i class="fas fa-check"></i><span class="mr-2"></span> Đánh dấu đã học</button>
       <button class="float-right" nz-button nzType="white" (click)="open()" nzShape="round"><i
           class="far fa-question-circle"></i><span class="mr-2"></span> Hỏi
         đáp</button>
@@ -21,14 +21,6 @@
           <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="card shadow-0 border" style="background-color: #f0f2f5;">
               <div class="card-body p-4">
-                <div class="form-outline mb-4">
-                  <input type="text" id="addAComment" class="form-control" [(ngModel)]="valueOfComment"
-                    placeholder="Bạn có thắc mắc gì trong bài học này?" (keyup.enter)="onEnterAddComment($event)" />
-                  <img style="border-radius: 50%;" src="../../../assets/images/nick.png" alt="avatar" width="25"
-                    height="25" />
-                  <label>Super admin</label>
-                </div>
-
                 <div class="card mb-4" *ngFor="let item of listOfCommentInLesson">
                   <div class="card-body">
                     <p>{{item.comment}}</p>
@@ -36,13 +28,13 @@
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
                         <img style="border-radius: 50%;" src="{{item.avatarUrl}}" alt="avatar" width="25" height="25" />
-                        <p class="small mb-0 ms-2">{{item.name}}</p>
+                        <p class="small mb-0 ms-2 ml-2">{{item.name}}</p>
                       </div>
-                      <div class="d-flex flex-row align-items-center" [ngClass]="item.liked?'text-primary':''">
+                      <!-- <div class="d-flex flex-row align-items-center" [ngClass]="item.liked?'text-primary':''">
                         <p class="small text-muted mb-0">Thích?</p>
                         <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
                         <p class="small text-muted mb-0" *ngIf="item.upVote>0">{{item.upVote}}</p>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -55,52 +47,34 @@
     </nz-drawer>
   </div>
   <div class="col-4 col-lg-4 col-md-4 col-sm-4">
-    <!-- <ul class="list-group">
-      <li class="list-group-item" [ngClass]="onClickLesson(item)" *ngFor="let item of listLessonVideos;let i=index; ">
-        <a>
-          <div>{{i+1}}. {{item.name}}</div>
-          <div><i class="far fa-play-circle"></i><span class="ml-2">{{item.time}}</span>
-            <div class="float-right">
-              <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: green;"></i>
-              <i *ngIf="!item.isLearned" class="far fa-check-circle"></i>
-            </div>
-          </div>
-        </a>
-      </li>
-    </ul> -->
     <div class="card">
       <ul class="list-group">
-        <li class="list-group-item" [ngClass]="valueOfClick===item.id?'active':''"
-          *ngFor="let item of listLessonVideos; let i = index;">
-          <a (click)="getActive(item)">
-            <div><b>{{i+1}}. {{item.name}}</b></div>
-            <div>
-              <i class="far fa-play-circle"></i><span class="ml-2">{{item.time}}</span>
-              <div class="float-right">
-                <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: green;"></i>
-                <i *ngIf="!item.isLearned" class="far fa-check-circle"></i>
-              </div>
-            </div>
+        <li class="list-group-item"
+          *ngFor="let item of listLessonVideos; let i = index;"
+            style="padding: 0px;">
+          <a (click)="setActive(item)">
+            <table style="width:100%;">
+              <tbody>
+                <tr style="height:60px;">
+                  <td class="text-center" [ngClass]="getSelectedLessonClassOrderedNumber(item.isSelected)" style="width:40px;">
+                    <b>{{i+1}}</b>
+                  </td>
+                  <td class="pl-3" [ngClass]="getSelectedLessonClass(item.isSelected)" >
+                    <div><b>{{item.name}}</b></div>
+                    <div class="mt-1">
+                      <i class="far fa-play-circle"></i><span class="ml-2" style="font-size: 12px;">{{item.time}}</span>
+                    </div>
+                  </td>
+                  <td class="text-center" style="width:60px" [ngClass]="getSelectedLessonClass(item.isSelected)">
+                      <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: #00B432;; font-size: 20px;"></i>
+                      <!-- <i *ngIf="!item.isLearned" class="far fa-check-circle" style="font-size: 20px;"></i> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </a>
         </li>
       </ul>
-      <!-- <nz-list nzBordered>
-        <nz-list-item class="active" *ngFor="let item of listLessonVideos; let i = index;" style="border: 1px solid #e8e8e8;">
-          <a href="pages/learning-view/#" >
-            <div>{{i+1}}. {{item.name}}</div>
-            <div><i class="far fa-play-circle"></i><span class="ml-2">{{item.time}}</span>
-            </div>
-          </a>
-          <ul nz-list-item-actions>
-            <nz-list-item-action>
-              <div>
-                <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: green;"></i>
-                <i *ngIf="!item.isLearned" class="far fa-check-circle"></i>
-              </div>
-            </nz-list-item-action>
-          </ul>
-        </nz-list-item>
-      </nz-list> -->
     </div>
 
 

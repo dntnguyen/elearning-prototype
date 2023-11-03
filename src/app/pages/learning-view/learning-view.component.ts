@@ -10,38 +10,46 @@ export class LearningViewComponent {
   visible = false;
   size: 'large' | 'default' = 'large';
   valueOfComment: string;
-  constructor() { }
+  currentSelectedLesson: any
 
+  constructor() {
+    this.currentSelectedLesson = this.listLessonVideos.find(item => item.id === 2)
+  }
 
   listLessonVideos = [{
     id:1,
     name: "Bài 1: Tổng quan về khóa học",
-    time: "00:20:19",
-    isLearned: true
+    time: "3:00",
+    isLearned: true,
+    isSelected: false,
   },
   {
     id:2,
     name: "Bài 2: ELANCO PIG ACADEMY là gì?",
-    time: "00:25:03",
-    isLearned: false
+    time: "10:23",
+    isLearned: false,
+    isSelected: true,
   },
   {
     id:3,
     name: "Bài 3: Các dấu hiệu bệnh",
-    time: "00:20:54",
-    isLearned: false
+    time: "6:21",
+    isLearned: false,
+    isSelected: false,
   },
   {
     id:4,
     name: "Bài 4: Phương pháp chữa trị",
-    time: "00:15:16",
-    isLearned: false
+    time: "4:00",
+    isLearned: false,
+    isSelected: false,
   },
   {
     id:5,
     name: "Bài 5: Cách thức phòng ngừa",
-    time: "00:10:04",
-    isLearned: false
+    time: "3:04",
+    isLearned: false,
+    isSelected: false,
   },
   ]
 
@@ -74,8 +82,29 @@ export class LearningViewComponent {
       { name: 'Super admin', comment: e.target.value, avatarUrl: '../../../assets/images/nick.png', upVote: 0, liked: false }
       ]
   }
-  getActive(item){
-    console.log(item.id)
-    this.valueOfClick = item.id
+  setActive(item){
+    for (let index in this.listLessonVideos) {
+      if (this.listLessonVideos[index].id === item.id) {
+        this.listLessonVideos[index].isSelected = true
+        this.currentSelectedLesson = this.listLessonVideos[index]
+      } else {
+        this.listLessonVideos[index].isSelected = false
+      }
+    }
+  }
+
+  getSelectedLessonClass(isSelected: boolean) {
+    if (isSelected) {
+      return 'selected-lesson-bg-color'
+    } else {
+      return 'unselected-lesson-bg-color'
+    }
+  }
+  getSelectedLessonClassOrderedNumber(isSelected: boolean) {
+    if (isSelected) {
+      return 'selected-lesson-bg-color-ordered-number'
+    } else {
+      return 'unselected-lesson-bg-color-ordered-number'
+    }
   }
 }
