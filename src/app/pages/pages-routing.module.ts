@@ -22,6 +22,7 @@ import { ExamReportComponent } from './exams/exam-reports/exam-report.component'
 import { MyExamComponent } from './my-exams/my-exam.component';
 import { MyExamViewComponent } from './my-exam-views/my-exam-view.component';
 import { ExamEditComponent } from './exams/exam-edit/exam-edit.component';
+import { LearningViewComponent } from './learning-view/learning-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -86,6 +87,10 @@ const routes: Routes = [{
     {
       path: 'new-lessons/view',
       component: NewLessonViewComponent,
+    },
+    {
+      path: 'learning-view',
+      component: LearningViewComponent,
     },
     {
       path: 'inactive-users',
