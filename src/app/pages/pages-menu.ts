@@ -44,6 +44,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Lộ trình học',
+    icon: 'book-open',
+    link: '/pages/my-learning-paths',
+    home: true,
+  },
+  {
     title: 'Khám phá khóa học mới',
     icon: 'calendar-outline',
     link: '/pages/new-lessons',

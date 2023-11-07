@@ -9,6 +9,7 @@ import { LessonComponent } from './lessons/lesson.component';
 import { ReportActivitiesComponent } from './lessons/report-activities/report-activities.component';
 import { MyLessonComponent } from './my-lessons/my-lesson.component';
 import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
+import { MyLearningPathComponent } from './my-learning-paths/my-learning-path.component';
 import { LessonAssignComponent } from './lesson-assigns/lesson-assign.component';
 import { LessonEditComponent } from './lessons/lesson-edit/lesson-edit.component';
 import { InActiveUserComponent } from './inactive-users/inactive-user.component';
@@ -75,6 +76,10 @@ const routes: Routes = [{
     {
       path: 'my-lessons',
       component: MyLessonComponent,
+    },
+    {
+      path: 'my-learning-paths',
+      component: MyLearningPathComponent,
     },
     {
       path: 'my-lessons/view',

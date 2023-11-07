@@ -2,14 +2,14 @@
   style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
   <span>{{title}}</span>
   <ng-container *ngIf="!isChoosing">
-    <span (click)="isChoosing = true" class="ml-2" style="font-weight: bold;">{{labelListDisplay === '' ? 'Tất cả' :
-      labelListDisplay}}</span>
+
+    <span *ngIf="date" (click)="isChoosing = true" class="ml-2" style="font-weight: bold;">{{date | date: 'dd/MM/yyyy'}}</span>
+    <span *ngIf="!date" (click)="isChoosing = true" class="ml-2" style="font-weight: bold;">{{defaultDateLabelDisplay}}</span>
   </ng-container>
   <ng-container *ngIf="isChoosing">
     <span class="ml-2">
-      <nz-select [(ngModel)]="values" [nzSize]="'small'" nzMode="multiple" nzAllowClear [nzMaxTagCount]="3">
-        <nz-option *ngFor="let option of list" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-      </nz-select>
+      <nz-date-picker [(ngModel)]="date"></nz-date-picker>
+
       <!-- [nzMaxTagPlaceholder]="tagPlaceHolder" -->
       <!-- <ng-template #tagPlaceHolder let-selectedList> + {{ selectedList.length }} đã chọn</ng-template> -->
       <span class="ml-1">

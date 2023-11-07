@@ -1,0 +1,83 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+
+      <div class="row mb-2" style="padding-left:14px;">
+        <div class="col-md-12">
+          <nz-input-group [nzPrefix]="suffixIconSearch" [nzSuffix]="suffixTemplate" style="width:250px;">
+            <input type="text" nz-input size="small" placeholder="Tìm theo tên khóa học" [(ngModel)]="searchText" (keyup)="onKeyUp($event)" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
+          </ng-template>
+          <ng-template #suffixTemplate>
+            <nb-icon [icon]="'close'" pack="eva" style="font-weight:lighter;opacity: 50%;color:gray;"
+              (click)="clearSearch()"></nb-icon>
+          </ng-template>
+        </div>
+        <div class="col col-lg-12 mt-2">
+          <a class="btn btn-sm btn-default small-text"
+            style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+            <span>Ngày</span>
+            <span class="ml-2">>=</span>
+            <span class="ml-2" style="font-weight: bold;">01/09/2023</span>
+          </a>
+          <a class="btn btn-sm btn-default small-text"
+            style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+            <span>Ngày</span>
+            <span class="ml-2"><=</span>
+            <span class="ml-2" style="font-weight: bold;">31/12/2023</span>
+          </a>
+          <ngx-filter-dropdown class="ml-2" title="Trạng thái:" [list]="listStatus" [values]="selectedStatuses" (valuesChange)="listStatusChange($event)"></ngx-filter-dropdown>
+        </div>
+      </div>
+
+
+      <nz-table #basicTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="true" [nzPageSize]="12">
+
+        <tbody>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="col-md-3 mb-4" *ngFor="let data of basicTable.data">
+                  <img src="{{data.imageUrl}}" width="100%" height="173px" style="cursor: pointer;"
+                    (click)="viewLesson()" />
+                  <div style="min-height: 100px;">
+                    <div class="grid-tile-name" style="cursor: pointer;" (click)="viewLesson()">
+                      {{data.name}}
+                    </div>
+                    <div class="gray-description">
+                      {{data.description}}
+                    </div>
+                  </div>
+                  <div>
+                    <nz-progress [nzPercent]="data.progressPercent" nzSize="small"
+                      [nzStrokeColor]="'orange'"></nz-progress>
+                  </div>
+                  <div>
+                    <span>
+                      {{data.publishedDate}}
+                    </span>
+                    <span class="ml-2">
+                      <ng-container *ngIf="data.status === 'inprogress'">
+                        <nz-tag nzColor="#87d068">Đang học</nz-tag>
+                      </ng-container>
+                      <ng-container *ngIf="data.status === 'todo'">
+                        <nz-tag nzColor="#bbbdbf">Chưa học</nz-tag>
+                      </ng-container>
+                      <ng-container *ngIf="data.status === 'completed'">
+                        <nz-tag nzColor="#2db7f5">Đã học</nz-tag>
+                      </ng-container>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+
+    </nb-card-body>
+  </nb-card>
+</div>
