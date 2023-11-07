@@ -26,6 +26,7 @@ export class MyLearningPathComponent {
   searchText: string = ''
   listStatus: any = [{ label: "Đang học", value: "inprogress" }, { label: "Chưa học", value: "todo" }, { label: "Đã học", value: "completed" }]
   selectedStatuses: string[] = []
+  selectedStatusValue : string
   listOfData: Lesson[]
   listOfDataDefault: Lesson[] = [
     {
@@ -143,8 +144,8 @@ export class MyLearningPathComponent {
     let listSearch: Lesson[] = []
     for (let i = 0; i < this.listOfDataDefault.length; i++) {
       let handled = this.listOfDataDefault[i]
-      if (this.selectedStatuses.length > 0) {
-        if (this.selectedStatuses.includes(handled.status) === false) {
+      if (this.selectedStatusValue) {
+        if (this.selectedStatusValue.includes(handled.status) === false) {
           continue
         }
       }

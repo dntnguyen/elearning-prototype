@@ -22,7 +22,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   imports: [
@@ -45,7 +45,7 @@ import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.mod
     NzProgressModule,
     NzTagModule,
     NzRateModule,
-    FilterDropdownModule,
+    NzSelectModule,
   ],
   declarations: [
     MyLearningPathComponent,
