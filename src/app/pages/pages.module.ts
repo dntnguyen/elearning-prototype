@@ -21,6 +21,8 @@ import { MyExamModule } from './my-exams/my-exam.module';
 import { MyExamViewModule } from './my-exam-views/my-exam-view.module';
 import { LearningViewModule } from './learning-view/learning-view.module';
 import { MyLearningPathModule } from './my-learning-paths/my-learning-path.module';
+import { UserModule } from './users/user.module';
+import { UserAssignLessonModule } from './user-assign-lessons/user-assign-lesson.module';
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ import { MyLearningPathModule } from './my-learning-paths/my-learning-path.modul
     MyExamViewModule,
     LearningViewModule,
     MyLearningPathModule,
+    UserModule,
+    UserAssignLessonModule,
   ],
   declarations: [
     PagesComponent,

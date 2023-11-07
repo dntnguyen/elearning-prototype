@@ -14,15 +14,17 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { FilterDateTimeComponent } from './filter-datetime.component';
+import { UserAssignLessonComponent } from './user-assign-lesson.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
 
 @NgModule({
   imports: [
@@ -44,16 +46,15 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzTabsModule,
     NzProgressModule,
     NzTagModule,
-    NzSelectModule,
-    NzDatePickerModule,
+    NzCheckboxModule,
+    NzButtonModule,
+    NzDrawerModule,
+    FilterDropdownModule,
   ],
   declarations: [
-    FilterDateTimeComponent,
+    UserAssignLessonComponent,
   ],
   providers: [
   ],
-  exports: [
-    FilterDateTimeComponent
-  ]
 })
-export class FilterDateTimeModule { }
+export class UserAssignLessonModule { }

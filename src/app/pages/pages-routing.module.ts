@@ -24,14 +24,24 @@ import { MyExamComponent } from './my-exams/my-exam.component';
 import { MyExamViewComponent } from './my-exam-views/my-exam-view.component';
 import { ExamEditComponent } from './exams/exam-edit/exam-edit.component';
 import { LearningViewComponent } from './learning-view/learning-view.component';
+import { UserComponent } from './users/user.component';
+import { UserAssignLessonComponent } from './user-assign-lessons/user-assign-lesson.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
     {
+      path: 'users',
+      component: UserComponent,
+    },
+    {
       path: 'lessons',
       component: LessonComponent,
+    },
+    {
+      path: 'user-assign-lessons',
+      component: UserAssignLessonComponent,
     },
     {
       path: 'lesson-categories',

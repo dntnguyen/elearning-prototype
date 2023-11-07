@@ -22,13 +22,13 @@
             <span class="ml-2">>=</span>
             <span class="ml-2" style="font-weight: bold;">01/09/2023</span>
           </a>
-          <a class="btn btn-sm btn-default small-text"
+          <a class="btn btn-sm btn-default small-text ml-1"
             style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
             <span>Ngày</span>
             <span class="ml-2"><=</span>
             <span class="ml-2" style="font-weight: bold;">31/12/2023</span>
           </a>
-          <ngx-filter-dropdown class="ml-2" title="Trạng thái:" [list]="listStatus" [values]="selectedStatuses" (valuesChange)="listStatusChange($event)"></ngx-filter-dropdown>
+          <ngx-filter-dropdown class="ml-1" title="Trạng thái:" [list]="listStatus" [values]="selectedStatuses" (valuesChange)="listStatusChange($event)"></ngx-filter-dropdown>
         </div>
       </div>
 
@@ -55,7 +55,14 @@
                       [nzStrokeColor]="'orange'"></nz-progress>
                   </div>
                   <div>
-                    <span>
+                    <span style="min-width: 200px; font-size: 12px;">
+                    <ng-container [ngSwitch]="data.status">
+                      <span *ngSwitchCase="'inprogress'">Lần học gần nhất:</span>
+                      <span *ngSwitchCase="'todo'">Ngày đăng:</span>
+                      <span *ngSwitchDefault>Ngày hoàn thành:</span>
+                    </ng-container>
+                    </span>
+                    <span class="ml-2">
                       {{data.publishedDate}}
                     </span>
                     <span class="ml-2">

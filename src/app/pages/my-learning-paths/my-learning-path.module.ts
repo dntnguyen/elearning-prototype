@@ -23,7 +23,6 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
-import { FilterDateTimeModule } from '../filter-datetime/filter-datetime.module';
 
 @NgModule({
   imports: [
@@ -47,7 +46,6 @@ import { FilterDateTimeModule } from '../filter-datetime/filter-datetime.module'
     NzTagModule,
     NzRateModule,
     FilterDropdownModule,
-    FilterDateTimeModule,
   ],
   declarations: [
     MyLearningPathComponent,

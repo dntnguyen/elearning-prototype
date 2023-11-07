@@ -1,0 +1,74 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="row mb-4">
+        <div class="col-lg-6">
+          <nz-input-group [nzPrefix]="suffixIconSearch" style="width:200px;">
+            <input type="text" nz-input size="small" placeholder="Tìm kiếm" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;color:gray;opacity: 50%;"></nb-icon>
+          </ng-template>
+          &nbsp;
+          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"
+            nzPlaceHolder="Ngày tạo"></nz-date-picker>
+
+          <!-- <a class="btn btn-sm btn-default small-text ml-2"
+            style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+            <nb-icon class="elanco-color" [icon]="'plus'" pack="eva"
+              style="font-weight:lighter;opacity: 100%;"></nb-icon>
+
+            <span class="ml-1">Thêm điều kiện</span>
+          </a> -->
+        </div>
+        <div class="col-lg-6">
+          <div class="float-right">
+            <button id="btn-filter" nz-button nzType="primary" class="mr-2" (click)="openFilterForm()">
+              <i class="fa fa-filter"></i>&nbsp;
+              Lọc
+            </button>
+            <a nz-button nzType="primary" id="btn-add">
+              <i class="fa fa-plus"></i>&nbsp;
+              Thêm bài học
+            </a>
+          </div>
+        </div>
+      </div>
+      <nz-table #basicTable [nzSize]="'small'" [nzData]="listOfData" style="width:100%; font-size: 8px;"
+        [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzScroll]="{ x: '800px' }">
+        <thead>
+          <tr>
+            <th nzWidth="60px" class="text-center"><b>STT </b></th>
+            <th nzWidth="150px"><b>Tên đăng nhập </b></th>
+            <th><b>Email </b></th>
+            <th nzWidth="250px"><b>Họ tên </b></th>
+            <th><b>Số ĐT </b></th>
+            <th><b>Ngày tạo </b></th>
+            <th class="text-center"><b>Đang hoạt động </b></th>
+            <th nzRight nzWidth="140px" class="text-center"><b>Hành động </b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data; index as i">
+
+            <td class="text-center">{{ i + 1 }}</td>
+            <td>{{ data.userName }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.fullName }}</td>
+            <td>{{ data.phoneNumber }}</td>
+            <td>{{ data.createdDate }}</td>
+            <td class="text-center">
+              <label nz-checkbox [ngModel]="data.isActive"></label>
+            </td>
+            <td nzRight class="text-center">
+              <a (click)="userAssignLessons()"><nb-icon id="ico-eye" [icon]="'folder-add-outline'"
+                  pack="eva"></nb-icon></a>&nbsp;
+              <a><i id="ico-edit" class="fa fa-pen"></i></a>&nbsp;
+              <a><i id="ico-trash" class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nb-card-body>
+  </nb-card>
+</div>
