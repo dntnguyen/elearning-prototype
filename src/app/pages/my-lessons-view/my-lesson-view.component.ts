@@ -23,6 +23,8 @@ interface Lesson {
   templateUrl: './my-lesson-view.component.html',
 })
 export class MyLessonViewComponent {
+  isOpenEvalution=false;
+
   data = [
     {name:'Bài 1: Tổng quan về khóa học', percent: 100, timeSpent: '00:20:19'},
     {name:'Bài 2: ELANCO PIG ACADEMY là gì?', percent: 100, timeSpent: '00:25:03'},
@@ -30,6 +32,14 @@ export class MyLessonViewComponent {
     {name:'Bài 4: Phương pháp chữa trị', percent: 50, timeSpent: '00:15:16'},
     {name:'Bài 5: Cách thức phòng ngừa', percent: 0, timeSpent: '00:10:04'},
   ];
+  listOfEvalution=[
+    {name:'Jack', createdOn:'02/10/2023', image:'jack.png', evalute:'M.hyopneumoniae khi xâm nhập vào cơ thể, nó bám vào lông nhung đường hô hấp và phá huỷ lớp lông nhung đường hô hấp (tác dụng giữ bụi và ngăn cản mầm bệnh đi sâu vào đường hô hấp), làm suy yếu hệ thống phòng vệ màng nhày – lông nhung, mở đường và tạo cơ hội cho các mầm bệnh đường hô hấp khác bội nhiễm như: Pasterella multocida (Tụ huyết trùng), APP (viêm phổi dính sườn), Haemophillus parasuis (Glasser’s), Bordertella bronchiseptica (Viêm teo mũi truyền nhiễm), Streptococcus suis (Bệnh liên cầu), PRRS (Tai xanh) và PCV2 (Circo) xâm nhập và tấn công gây bệnh hô hấp phức hợp (PRDC), làm tăng tỷ lệ chết và loại thải heo.'},
+    {name:'Kate', createdOn:'05/10/2023', image:'kate.png', evalute:'Khóa học cực kỳ chất lượng.'},
+    {name:'Lee', createdOn:'02/10/2023', image:'lee.png', evalute:'Nên thêm nhiều ví dụ'},
+    {name:'Alan', createdOn:'02/10/2023', image:'alan.png', evalute:'Nên thêm nhiều ví dụ'},
+    {name:'Eva', createdOn:'02/10/2023', image:'eva.png', evalute:'Nên thêm nhiều ví dụ'},
+    {name:'Jack', createdOn:'02/10/2023', image:'jack.png', evalute:'Nên thêm nhiều ví dụ'},
+  ]
 
   // dataAdvanced = [
   //   {name:'Racing car sprays burning fuel into crowd.', steps: 0, percent: 100, showInfo: true},
@@ -53,5 +63,17 @@ export class MyLessonViewComponent {
 
   backToMyLesson() {
     this.router.navigate(['pages','my-lessons']);
+  }
+  startLesson(){
+    this.router.navigate(['pages','learning-view']);
+  }
+  openModalToEvalute(){
+    this.isOpenEvalution = true
+  }
+  handleCancel(){
+    this.isOpenEvalution=false
+  }
+  handleOk(){
+    this.isOpenEvalution=false
   }
 }

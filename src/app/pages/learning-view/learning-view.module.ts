@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LearningViewComponent } from './learning-view.component';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzListModule } from 'ng-zorro-antd/list';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   imports: [
     CommonModule,
     NzDrawerModule,
-    NzButtonModule
+    NzButtonModule,
+    NzListModule
   ]
 })
 export class LearningViewModule { }
