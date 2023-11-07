@@ -3,16 +3,16 @@ import { NbIconLibraries } from '@nebular/theme';
 import { Router } from '@angular/router';
 import { ChangeTitleService } from '../../change-title.service';
 
-interface UserAndGroup {
+interface Lesson {
   selected: boolean;
   code: string;
   name: string;
-  type: string;
-  email: string;
-  groupCode?: string;
-  groupName?: string;
-  name_english?: string;
-  area: string
+  namePlainText: string;
+  haveCertification: string;
+  category: string[];
+  public: string;
+  status: string;
+  createdDate: string;
 }
 
 @Component({
@@ -23,131 +23,100 @@ interface UserAndGroup {
 export class UserAssignLessonComponent {
   listGroup: any = []
   listArea: any = []
-  defaultData: UserAndGroup[] = [
+  defaultData: Lesson[] = [
     {
-      selected: false,
-      code: 'U0001',
-      name: 'Lý Thị Thanh Tâm',
-      type: 'User',
-      email: 'user1@gmail.com',
-      groupCode: 'G0001',
-      groupName: 'EDC',
-      name_english: "ly thi thanh tam",
-      area: "Cần Thơ",
+      "selected": false,
+      "code": '001',
+      "name": 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+      "namePlainText": 'benh tieu chay cap ped va viem ruot truyen nhiem',
+      "haveCertification": "Có",
+      "category": ["BU > LS > Heo", "Kênh > Trang trại"],
+      "public": "Công khai",
+      "status": "Đã xuất bản",
+      "createdDate": "09\/12\/2022",
     },
     {
-      selected: false,
-      code: 'U0002',
-      name: 'Trần Trung Hiếu',
-      type: 'User',
-      email: 'user2@gmail.com',
-      groupCode: 'G0001',
-      groupName: 'EDC',
-      name_english: "tran trung hieu",
-      area: "Cần Thơ",
+      "selected": false,
+      "code": '002',
+      "name": 'Nội ký sinh trùng',
+      "namePlainText": 'noi ky sinh trung',
+      "haveCertification": "Không",
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
+      "public": "Riêng",
+      "status": "Đang sửa",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0003',
-      name: 'Nguyễn Khánh Trân',
-      type: 'User',
-      email: 'user3@gmail.com',
-      groupCode: 'G0001',
-      groupName: 'EDC',
-      name_english: "nguyen khanh tran",
-      area: "Đồng Nai",
+      "selected": false,
+      "code": '003',
+      "name": 'Cách nuôi chó theo từng giai đoạn',
+      "namePlainText": 'cach nuoi cho theo tung giai doan',
+      "haveCertification": "Có",
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
+      "public": "Công khai",
+      "status": "Đã xuất bản",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0004',
-      name: 'Nguyễn Văn Quý',
-      type: 'User',
-      email: 'user4@gmail.com',
-      groupCode: 'G0002',
-      groupName: 'Giảng viên Đại Học',
-      name_english: "nguyen van quy",
-      area: "Sóc Trăng",
+      "selected": false,
+      "code": '004',
+      "name": 'Cách để giúp chó và mèo sống hòa thuận',
+      "namePlainText": 'cach de giup cho va meo song hoa thuan',
+      "haveCertification": "Có",
+      "category": ["BU > LS > Heo","Nhóm sản phẩm > LS Product"],
+      "public": "Riêng",
+      "status": "Đang sửa",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0005',
-      name: 'Lê Thị Ngọc Thủy',
-      type: 'User',
-      email: 'user5@gmail.com',
-      groupCode: 'G0002',
-      groupName: 'Giảng viên Đại Học',
-      name_english: "le thi ngoc thuy",
-      area: "Bến Tre",
+      "selected": false,
+      "code": '005',
+      "name": 'Phát triển chăn nuôi bền vững, hiệu quả',
+      "namePlainText": 'phat trien chan nuoi ben vung, hieu qua',
+      "haveCertification": "Không",
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
+      "public": "Công khai",
+      "status": "Đã xuất bản",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0006',
-      name: 'Nguyễn Văn Khối',
-      type: 'User',
-      email: 'user6@gmail.com',
-      groupCode: 'G0002',
-      groupName: 'Giảng viên Đại Học',
-      name_english: "nguyen van khoi",
-      area: "Nha Trang",
+      "selected": false,
+      "code": '006',
+      "name": 'Giới thiệu sản phẩm mới Proquatic B-Color',
+      "namePlainText": 'gioi thieu san pham moi proquatic b-color',
+      "haveCertification": "Không",
+      "category": ["BU > LS > Heo","Kênh > Trang trại"],
+      "public": "Công khai",
+      "status": "Đã xuất bản",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0007',
-      name: 'Hoàng Minh Tuấn',
-      type: 'User',
-      email: 'user7@gmail.com',
-      groupCode: 'G0002',
-      groupName: 'Giảng viên Đại Học',
-      name_english: "hoang minh tuan",
-      area: "Nha Trang",
+      "selected": false,
+      "code": '007',
+      "name": 'Hướng dẫn sử dụng sản phẩm Deocare® A cho Cá',
+      "namePlainText": 'huong dan su dung san pham deocare a cho ca',
+      "haveCertification": "Không",
+      "category": ["Hướng dẫn chung"],
+      "public": "Riêng",
+      "status": "Đã xuất bản",
+      "createdDate": "09\/12\/2022"
     },
     {
-      selected: false,
-      code: 'U0008',
-      name: 'Nguyễn Thái Hòa',
-      type: 'User',
-      email: 'user8@gmail.com',
-      groupCode: 'G0001',
-      groupName: 'EDC',
-      name_english: "nguyen thai hoa",
-      area: "Bến Tre",
-    },
-    {
-      selected: false,
-      code: 'U0009',
-      name: 'Võ Thành Trung',
-      type: 'User',
-      email: 'user9@gmail.com',
-      groupCode: 'G0001',
-      groupName: 'EDC',
-      name_english: "vo thanh trung",
-      area: "Sóc Trăng",
-    },
-    {
-      selected: false,
-      code: 'G0001',
-      name: 'EDC',
-      type: 'Group',
-      email: '',
-      groupCode: null,
-      groupName: null,
-      area: "",
-    },
-    {
-      selected: false,
-      code: 'G0002',
-      name: 'Giảng viên Đại Học',
-      type: 'Group',
-      email: '',
-      groupCode: null,
-      groupName: null,
-      area: "",
+      "selected": false,
+      "code": '008',
+      "name": '10 cách cơ bản để nuôi tôm hiệu quả',
+      "namePlainText": '10 cach co ban de nuoi tom hieu qua',
+      "haveCertification": "Không",
+      "category": ["BU > PET "," Kênh > Khác"],
+      "public": "Riêng",
+      "status": "Đang sửa",
+      "createdDate": "09\/12\/2022"
     },
   ];
 
-  listOfData: UserAndGroup[]
+  listOfData: Lesson[]
 
-  listOfSelected: UserAndGroup[]
+  listOfSelected: Lesson[]
 
   searchText: string
   visible = false;
@@ -161,7 +130,7 @@ export class UserAssignLessonComponent {
     private router: Router,
     private changeTitleService: ChangeTitleService,
   ) {
-    this.changeTitleService.setDataTitle('Assign bài học')
+    this.changeTitleService.setDataTitle('Chỉ định khóa học cho học viên')
 
     this.listOfData = [...this.defaultData]
 
@@ -169,15 +138,14 @@ export class UserAssignLessonComponent {
     this.getListArea()
   }
 
-  setSelected(data: UserAndGroup) {
+  setSelected(data: Lesson) {
     if (data === null || data === undefined) {
       return;
     }
     if (!this.listOfSelected) {
-      this.listOfSelected = [] as UserAndGroup[]
+      this.listOfSelected = [] as Lesson[]
     }
     if (data.selected) {
-      if (data.type === 'User') {
         let isExists = false;
         for (let i = 0; i < this.listOfSelected.length; i++) {
           if (this.listOfSelected[i].code === data.code) {
@@ -188,94 +156,22 @@ export class UserAssignLessonComponent {
         if (!isExists) {
           this.listOfSelected.push(data)
         }
-      } //if (data.type === 'User')
-      else if (data.type === 'Group') {
-        for (let i = 0; i < this.defaultData.length; i++) {
-          let handledUserOfListOfData = this.defaultData[i]
-          if (handledUserOfListOfData.type !== 'User') {
-            continue
-          }
 
-          if (handledUserOfListOfData.groupCode !== data.code) {
-            continue
-          }
-
-          this.defaultData[i].selected = true
-
-          let isExists = false
-          for (let s = 0; s < this.listOfSelected.length; s++) {
-            if (this.listOfSelected[s].code === handledUserOfListOfData.code) {
-              isExists = true
-              break
-            }
-          }
-
-          if (isExists === false) {
-            this.listOfSelected.push(handledUserOfListOfData)
-          }
-        }
-      }
     } else {
-      if (data.type === 'User') {
+
         for (let i = this.listOfSelected.length - 1; i >= 0; i--) {
           if (this.listOfSelected[i].code === data.code) {
             this.listOfSelected.splice(i, 1)
           }
         }
-        this.unSelectedGroupIfNoUser(data.groupCode)
-      } //if (data.type === 'User')
-      else if (data.type === 'Group') {
-        for (let i = 0; i < this.defaultData.length; i++) {
-          let handledUserOfListOfData = this.defaultData[i]
-
-          if (handledUserOfListOfData.type !== 'User') {
-            continue
-          }
-
-          if (handledUserOfListOfData.groupCode !== data.code) {
-            continue
-          }
-
-          this.defaultData[i].selected = false
-
-          for (let s = this.listOfSelected.length - 1; s >= 0; s--)
-            if (this.listOfSelected[s].code === handledUserOfListOfData.code) {
-              this.listOfSelected.splice(s, 1)
-            }
-        }
-      }
     }
 
     this.listOfSelected = [...this.listOfSelected]
     this.listOfData = [...this.listOfData]
   }
 
-  unSelectedGroupIfNoUser(groupCode: string) {
-    let count = 0
-
-    for (let x = 0; x < this.listOfData.length; x++) {
-      let checked = this.listOfData[x]
-
-      if (checked.groupCode == groupCode && checked.type == 'User' && checked.selected == true) {
-        count = count + 1
-      }
-    }
-
-    if (count <= 0) {
-      for (let i = 0; i < this.listOfData.length; i++) {
-        let handled = this.listOfData[i]
-        if (handled.type === 'Group' && handled.code === groupCode) {
-          this.listOfData[i].selected = false
-          this.listOfData = [...this.listOfData]
-          return
-        }
-      }
-    }
-  }
-
-  removeUserFromListSelected(data: UserAndGroup) {
+  removeUserFromListSelected(data: Lesson) {
     let code = data.code
-    let groupCode = data.groupCode
 
     for (let i = this.listOfSelected.length - 1; i >= 0; i--) {
       if (this.listOfSelected[i].code === code) {
@@ -289,7 +185,6 @@ export class UserAssignLessonComponent {
       let handled = this.listOfData[x]
       if (handled.code === code) {
         this.listOfData[x].selected = false
-        this.unSelectedGroupIfNoUser(groupCode)
         break
       }
     }
@@ -314,25 +209,23 @@ export class UserAssignLessonComponent {
       value = value.toLocaleLowerCase().trim()
     }
 
-    let listSearch: UserAndGroup[] = []
+    let listSearch: Lesson[] = []
     for (let i = 0; i < this.defaultData.length; i++) {
       let handled = this.defaultData[i]
-      if (this.selectedGroups.length > 0) {
-        if (this.selectedGroups.includes(handled.groupName) === false) {
-          continue
-        }
-      }
+      // if (this.selectedGroups.length > 0) {
+      //   if (this.selectedGroups.includes(handled.groupName) === false) {
+      //     continue
+      //   }
+      // }
 
-      if (this.selectedAreas.length > 0) {
-        if (this.selectedAreas.includes(handled.area) === false) {
-          continue
-        }
-      }
+      // if (this.selectedAreas.length > 0) {
+      //   if (this.selectedAreas.includes(handled.area) === false) {
+      //     continue
+      //   }
+      // }
 
       if (value === '' || handled.name?.toLocaleLowerCase().includes(value)
-        || handled.email?.toLocaleLowerCase().includes(value)
-        || handled.code?.toLocaleLowerCase().includes(value)
-        || handled.name_english?.toLocaleLowerCase().includes(value) ) {
+        || handled.namePlainText?.toLocaleLowerCase().includes(value) ) {
         listSearch.push(handled)
       }
     }
@@ -352,8 +245,8 @@ export class UserAssignLessonComponent {
     }
   }
 
-  backToLesson() {
-    this.router.navigate(['pages','lessons']);
+  backToUser() {
+    this.router.navigate(['pages','users']);
   }
 
   getListGroup(){

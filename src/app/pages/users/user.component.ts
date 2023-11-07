@@ -252,6 +252,6 @@ export class UserComponent {
   }
 
   userAssignLessons() {
-    this.router.navigate(['pages','lesson-assigns'], { queryParams: { id: 1 } });
+    this.router.navigate(['pages','user-assign-lessons'], { queryParams: { id: 1 } });
   }
 }
