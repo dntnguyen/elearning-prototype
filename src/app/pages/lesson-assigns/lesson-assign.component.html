@@ -3,7 +3,6 @@
     <nb-card-body>
       <div class="elanco-color" style="font-size:16px;font-weight: 600;">Bệnh tiêu chảy cấp PED và viêm ruột truyền
         nhiễm</div>
-
       <div class="row mt-4">
         <div class="col-lg-6 mb-4 pr-4" style="border-right:0.5px solid rgb(204, 204, 204);">
           <nz-input-group [nzPrefix]="prefixIconSearch" [nzSuffix]="suffixTemplate" style="width:100%;" class="mb-2">
@@ -19,16 +18,8 @@
           </ng-template>
 
           <div class="mb-2">
-            <a class="btn btn-sm btn-default small-text"
-              style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
-              <span>Nhóm:</span>
-              <span class="ml-2" style="font-weight: bold;">EDC,Giảng viên đại học</span>
-            </a>
-            <a class="btn btn-sm btn-default small-text ml-2"
-              style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
-              <span>Khu vực:</span>
-              <span class="ml-2" style="font-weight: bold;">Đồng Nai,Cần Thơ</span>
-            </a>
+            <ngx-filter-dropdown title="Nhóm:" [list]="listGroup" [values]="selectedGroups" (valuesChange)="listGroupChange($event)"></ngx-filter-dropdown>
+            <ngx-filter-dropdown class="ml-1" title="Khu vực:" [list]="listArea" [values]="selectedAreas" (valuesChange)="listAreaChange($event)"></ngx-filter-dropdown>
 
           </div>
 
