@@ -17,11 +17,11 @@ interface Lesson {
 }
 
 @Component({
-  selector: 'ngx-user-assign-lesson',
-  styleUrls: ['./user-assign-lesson.component.scss'],
-  templateUrl: './user-assign-lesson.component.html',
+  selector: 'ngx-user-learning-history',
+  styleUrls: ['./user-learning-history.component.scss'],
+  templateUrl: './user-learning-history.component.html',
 })
-export class UserAssignLessonComponent {
+export class UserLearningHistoryComponent {
   listGroup: any = []
   listArea: any = []
   defaultData: Lesson[] = [
@@ -287,17 +287,13 @@ export class UserAssignLessonComponent {
     }
     this.listOfSelected = [...this.listOfSelected]
 
-    data.selected = false
-    this.listOfData.push(data)
-    this.defaultData.push(data)
-
-    // for (let x = this.listOfData.length - 1; x >= 0; x--) {
-    //   let handled = this.listOfData[x]
-    //   if (handled.code === code) {
-    //     this.listOfData[x].selected = false
-    //     break
-    //   }
-    // }
+    for (let x = this.listOfData.length - 1; x >= 0; x--) {
+      let handled = this.listOfData[x]
+      if (handled.code === code) {
+        this.listOfData[x].selected = false
+        break
+      }
+    }
 
     this.listOfData = [...this.listOfData]
   }
@@ -305,24 +301,6 @@ export class UserAssignLessonComponent {
   removeAllSelected() {
     for (let i = this.listOfSelected.length - 1; i >= 0; i--) {
       this.removeUserFromListSelected(this.listOfSelected[i])
-    }
-  }
-
-  setSelectedAll() {
-    for (let i = 0; i < this.listOfData.length; i++) {
-      this.listOfData[i].selected = this.isCheckedAll
-      // this.setSelected(this.listOfData[i])
-    }
-  }
-
-  assignCurrentSelected() {
-    const tempList = [...this.listOfData]
-    for (let i = tempList.length - 1; i >= 0; i--) {
-      if (tempList[i].selected) {
-        this.setSelected(tempList[i])
-        this.listOfData.splice(i, 1)
-        this.defaultData.splice(i, 1)
-      }
     }
   }
 
@@ -341,7 +319,7 @@ export class UserAssignLessonComponent {
     for (let i = 0; i < this.defaultData.length; i++) {
       let handled = this.defaultData[i]
 
-      if (this.selectedLessonCategories?.length > 0) {
+      if (this.selectedLessonCategories.length > 0) {
         let isInFilteringLessonCategory = false
         if (handled.categoryPlainText?.length > 0) {
           for (let xxx = 0; xxx < this.selectedLessonCategories.length; xxx++) {
@@ -376,6 +354,13 @@ export class UserAssignLessonComponent {
   clearSearch() {
     this.searchText = ''
     this.onKeyUp(null)
+  }
+
+  setSelectedAll() {
+    for (let i = 0; i < this.listOfData.length; i++) {
+      this.listOfData[i].selected = this.isCheckedAll
+      this.setSelected(this.listOfData[i])
+    }
   }
 
   backToUser() {

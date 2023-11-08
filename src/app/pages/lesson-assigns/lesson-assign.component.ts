@@ -161,7 +161,7 @@ export class LessonAssignComponent {
     private router: Router,
     private changeTitleService: ChangeTitleService,
   ) {
-    this.changeTitleService.setDataTitle('Chỉ định học viên vào khóa học')
+    this.changeTitleService.setDataTitle('')
 
     this.listOfData = [...this.defaultData]
 

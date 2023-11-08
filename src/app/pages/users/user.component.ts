@@ -254,4 +254,9 @@ export class UserComponent {
   userAssignLessons() {
     this.router.navigate(['pages','user-assign-lessons'], { queryParams: { id: 1 } });
   }
+
+  userLearningHistories() {
+    this.router.navigate(['pages','user-learning-histories'], { queryParams: { id: 1 } });
+  }
+
 }

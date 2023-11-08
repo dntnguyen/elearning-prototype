@@ -26,6 +26,7 @@ import { ExamEditComponent } from './exams/exam-edit/exam-edit.component';
 import { LearningViewComponent } from './learning-view/learning-view.component';
 import { UserComponent } from './users/user.component';
 import { UserAssignLessonComponent } from './user-assign-lessons/user-assign-lesson.component';
+import { UserLearningHistoryComponent } from './user-learning-histories/user-learning-history.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +35,10 @@ const routes: Routes = [{
     {
       path: 'users',
       component: UserComponent,
+    },
+    {
+      path: 'user-learning-histories',
+      component: UserLearningHistoryComponent,
     },
     {
       path: 'lessons',

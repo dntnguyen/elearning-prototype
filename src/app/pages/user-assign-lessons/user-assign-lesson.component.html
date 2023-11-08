@@ -3,55 +3,65 @@
     <nb-card-body>
       <div class="row mt-4">
         <div class="col-lg-6 mb-4 pr-4" style="border-right:0.5px solid rgb(204, 204, 204);">
-          <div class="elanco-color mb-2" style="font-size:16px;font-weight: 600;">Bệnh tiêu chảy cấp PED và viêm ruột truyền
-            nhiễm</div>
+          <div class="mb-3" style="font-size:16px;font-weight: 600;">
+            <span>Đăng ký khóa học cho học viên: </span>
+            <span class="elanco-color">Trần Trung Hiếu</span>
+          </div>
+          <div class="row">
+            <div class="col-lg-5">
+              <nz-input-group [nzPrefix]="prefixIconSearch" [nzSuffix]="suffixTemplate" style="width:100%;" class="mb-2">
+                <input type="text" [(ngModel)]="searchText" nz-input size="small" placeholder="Tìm kiếm tên khóa học"
+                  (keyup)="onKeyUp($event)" />
+              </nz-input-group>
+              <ng-template #prefixIconSearch>
+                <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
+              </ng-template>
+              <ng-template #suffixTemplate>
+                <nb-icon *ngIf='searchText && searchText.length > 0' [icon]="'close'" pack="eva" style="font-weight:lighter;opacity: 50%;color:gray;"
+                  (click)="clearSearch()"></nb-icon>
+              </ng-template>
+            </div>
+            <div class="col-lg-7">
+              <nz-tree-select style="width: 100%" nzPlaceHolder="Tìm theo phân loại sản phẩm" [(ngModel)]="selectedLessonCategories" [nzMaxTagCount]="3"
+                [nzMaxTagPlaceholder]="omittedPlaceHolder" [nzNodes]="nodes" [nzDefaultExpandAll]="true"
+                nzVirtualHeight="300px"
 
-          <nz-input-group [nzPrefix]="prefixIconSearch" [nzSuffix]="suffixTemplate" style="width:100%;" class="mb-2">
-            <input type="text" [(ngModel)]="searchText" nz-input size="small" placeholder="Tìm kiếm tên khóa học"
-              (keyup)="onKeyUp($event)" />
-          </nz-input-group>
-          <ng-template #prefixIconSearch>
-            <nb-icon [icon]="'search'" pack="ion" style="font-weight:lighter;opacity: 30%;color:gray;"></nb-icon>
-          </ng-template>
-          <ng-template #suffixTemplate>
-            <nb-icon [icon]="'close'" pack="eva" style="font-weight:lighter;opacity: 50%;color:gray;"
-              (click)="clearSearch()"></nb-icon>
-          </ng-template>
+                [nzShowSearch]="true"
+                [nzAllowClear]="true" [nzMultiple]="true" (ngModelChange)="onTreeSelectChange($event)"></nz-tree-select>
+              <ng-template #omittedPlaceHolder let-omittedValues>+{{ omittedValues.length }}...</ng-template>
+            </div>
+          </div>
 
-          <div class="mb-2">
-            <ngx-filter-dropdown title="Nhóm:" [list]="listGroup" [values]="selectedGroups" (valuesChange)="listGroupChange($event)"></ngx-filter-dropdown>
-            <ngx-filter-dropdown class="ml-1" title="Khu vực:" [list]="listArea" [values]="selectedAreas" (valuesChange)="listAreaChange($event)"></ngx-filter-dropdown>
 
+          <div class="text-right" style="width: 100%;">
+            <button class="mb-2" nz-button nzType="primary" (click)="assignCurrentSelected()">Đăng ký danh sách đang chọn</button>
           </div>
 
           <nz-table #basicTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
-            [nzPageSize]="9999" [nzScroll]="{ x: '500px' }">
+            [nzPageSize]="9999" [nzScroll]="{ x: '450px' }">
             <thead>
               <tr>
                 <th nzWidth="60px" class="text-center">
                   <label nz-checkbox [(ngModel)]="isCheckedAll" (ngModelChange)="setSelectedAll()"></label>
                 </th>
-                <th nzWidth="300px">
-                  <b>Tên khóa học</b>
-                </th>
-                <th><b>Phân loại</b></th>
-                <th nzWidth="150px" class="text-center"><b>Có chứng chỉ</b></th>
+                <th><b>Khóa học</b></th>
+                <th nzWidth="120px" class="text-center"><b>Có chứng chỉ</b></th>
               </tr>
             </thead>
             <tbody>
               <ng-container *ngFor="let data of basicTable.data">
                 <tr>
                   <td class="text-center">
-                    <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
-                  </td>  
-                  <td>
-                    {{data.name}}
+                    <label nz-checkbox [(ngModel)]="data.selected"></label>
+                    <!-- <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label> -->
                   </td>
                   <td>
-                    <div *ngFor="let value of data.category">{{ value }}</div>
+                    <div><b>{{data.name}}</b></div>
+                    <div>{{ data.category.length > 0 ? data.category.join(' | ') : '' }}</div>
                   </td>
                   <td class="text-center">
-                    <label nz-checkbox [ngModel]="data.haveCertification === 'Có' ? true : false"></label>
+                    <nb-icon *ngIf="data.haveCertification === 'Có'" [icon]="'checkmark-circle-2-outline'" pack="eva"
+                      style="font-weight:bold;color:#0067B1;"></nb-icon>
                   </td>
                 </tr>
               </ng-container>
@@ -60,7 +70,7 @@
 
         </div>
         <div class="col-lg-6 pl-4">
-          <div class="elanco-color mb-2" style="font-size:16px;font-weight: 600;">Khóa học được chỉ định</div>
+          <div class="elanco-color mb-3" style="font-size:16px;font-weight: 600;">Khóa học được đăng ký</div>
           <div class="row">
             <div class="col-md-12">
               <a nz-button nzType="default" (click)="removeAllSelected()">
@@ -77,12 +87,13 @@
           <br />
 
           <nz-table #selectedTable [nzData]="listOfSelected" style="width:100%" [nzShowPagination]="false"
-            nzSize="small" [nzPageSize]="9999" style="min-height:500px" [nzScroll]="{ x: '450px' }">
+            nzSize="small" [nzPageSize]="9999" style="min-height:450px" [nzScroll]="{ x: '450px' }">
             <tbody>
               <ng-container *ngFor="let data of selectedTable.data">
                 <tr>
                   <td>
                     <div><b>{{data.name}}</b><span></span></div>
+                    <div>{{ data.category.length > 0 ? data.category.join(' | ') : '' }}</div>
                   </td>
                   <td style="width:60px">
                     <nb-icon [icon]="'trash-a'" pack="ion" style="font-weight:lighter;color:red;opacity: 0.6;"

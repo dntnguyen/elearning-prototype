@@ -23,6 +23,7 @@ import { LearningViewModule } from './learning-view/learning-view.module';
 import { MyLearningPathModule } from './my-learning-paths/my-learning-path.module';
 import { UserModule } from './users/user.module';
 import { UserAssignLessonModule } from './user-assign-lessons/user-assign-lesson.module';
+import { UserLearningHistoryModule } from './user-learning-histories/user-learning-history.module';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { UserAssignLessonModule } from './user-assign-lessons/user-assign-lesson
     MyLearningPathModule,
     UserModule,
     UserAssignLessonModule,
+    UserLearningHistoryModule,
   ],
   declarations: [
     PagesComponent,
