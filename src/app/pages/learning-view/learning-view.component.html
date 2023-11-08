@@ -8,19 +8,35 @@
       <h4>{{currentSelectedLesson.name}}</h4>
       <p>Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh ký sinh trùng đường máu, được ghi nhận phổ biến ở
         các đàn heo trên thế giới</p>
-      <button class="float-left" nz-button nzType="primary" nzShape="round">
-        <i class="fas fa-check"></i><span class="mr-2"></span> Đánh dấu đã học</button>
-      <button class="float-right" nz-button nzType="white" (click)="open()" nzShape="round"><i
-          class="far fa-question-circle"></i><span class="mr-2"></span> Hỏi
-        đáp</button>
+        <div class="row">
+          <div class="col-lg-4">
+            <button class="float-left" nz-button nzType="primary" nzShape="round">
+              <i class="fas fa-check"></i><span class="mr-2"></span> Đánh dấu đã học</button>
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+          <div class="col-lg-4">
+            <button class="float-right" nz-button nzType="white" (click)="open()" nzShape="round"><i
+              class="far fa-question-circle"></i><span class="mr-2"></span> Thảo luận</button>
+          </div>
+        </div>
     </div>
 
-    <nz-drawer [nzSize]="size" [nzVisible]="visible" nzPlacement="right" nzTitle="Hỏi đáp" (nzOnClose)="close()">
+    <nz-drawer [nzSize]="size" [nzVisible]="visible" nzPlacement="right" nzTitle="Thảo luận" (nzOnClose)="close()">
       <ng-container *nzDrawerContent>
         <div class="row d-flex justify-content-center">
           <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="card shadow-0 border" style="background-color: #f0f2f5;">
               <div class="card-body p-4">
+                <div class="form-outline mb-4">
+                  <input type="text" id="addAComment" class="form-control" [(ngModel)]="valueOfComment"
+                    placeholder="Bạn có thắc mắc gì trong bài học này?" (keyup.enter)="onEnterAddComment($event)" />
+                  <!-- <img style="border-radius: 50%;" src="../../../assets/images/nick.png" alt="avatar" width="25"
+                    height="25" />
+                  <label>Super admin</label> -->
+                </div>
+
                 <div class="card mb-4" *ngFor="let item of listOfCommentInLesson">
                   <div class="card-body">
                     <p>{{item.comment}}</p>
@@ -38,36 +54,36 @@
                     </div>
                   </div>
                 </div>
-
               </div>
+
             </div>
           </div>
         </div>
+
       </ng-container>
     </nz-drawer>
   </div>
   <div class="col-4 col-lg-4 col-md-4 col-sm-4">
     <div class="card">
       <ul class="list-group">
-        <li class="list-group-item"
-          *ngFor="let item of listLessonVideos; let i = index;"
-            style="padding: 0px;">
+        <li class="list-group-item" *ngFor="let item of listLessonVideos; let i = index;" style="padding: 0px;">
           <a (click)="setActive(item)">
             <table style="width:100%;">
               <tbody>
                 <tr style="height:60px;">
-                  <td class="text-center" [ngClass]="getSelectedLessonClassOrderedNumber(item.isSelected)" style="width:40px;">
+                  <td class="text-center" [ngClass]="getSelectedLessonClassOrderedNumber(item.isSelected)"
+                    style="width:40px;">
                     <b>{{i+1}}</b>
                   </td>
-                  <td class="pl-3" [ngClass]="getSelectedLessonClass(item.isSelected)" >
+                  <td class="pl-3" [ngClass]="getSelectedLessonClass(item.isSelected)">
                     <div><b>{{item.name}}</b></div>
                     <div class="mt-1">
                       <i class="far fa-play-circle"></i><span class="ml-2" style="font-size: 12px;">{{item.time}}</span>
                     </div>
                   </td>
                   <td class="text-center" style="width:60px" [ngClass]="getSelectedLessonClass(item.isSelected)">
-                      <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: #00B432;; font-size: 20px;"></i>
-                      <!-- <i *ngIf="!item.isLearned" class="far fa-check-circle" style="font-size: 20px;"></i> -->
+                    <i *ngIf="item.isLearned" class="fas fa-check-circle" style="color: #00B432;; font-size: 20px;"></i>
+                    <!-- <i *ngIf="!item.isLearned" class="far fa-check-circle" style="font-size: 20px;"></i> -->
                   </td>
                 </tr>
               </tbody>

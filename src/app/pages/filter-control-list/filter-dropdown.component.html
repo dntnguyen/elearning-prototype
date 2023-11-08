@@ -1,0 +1,23 @@
+<a class="btn btn-sm btn-default small-text"
+  style="border:0.5px;border-radius: 25px;background-color:rgba(190,190,190,0.2)">
+  <span>{{title}}</span>
+  <ng-container *ngIf="!isChoosing">
+    <span (click)="isChoosing = true" class="ml-2" style="font-weight: bold;">{{labelListDisplay === '' ? 'Tất cả' :
+      labelListDisplay}}</span>
+  </ng-container>
+  <ng-container *ngIf="isChoosing">
+    <span class="ml-2">
+      <nz-select [(ngModel)]="values" [nzSize]="'small'" nzMode="multiple" nzAllowClear [nzMaxTagCount]="3">
+        <nz-option *ngFor="let option of list" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+      </nz-select>
+      <!-- [nzMaxTagPlaceholder]="tagPlaceHolder" -->
+      <!-- <ng-template #tagPlaceHolder let-selectedList> + {{ selectedList.length }} đã chọn</ng-template> -->
+      <span class="ml-1">
+        <a (click)="getLabelListDisplay()"><nb-icon id="ico-eye" class="check-green" [icon]="'checkmark-outline'"
+            pack="eva"></nb-icon></a>&nbsp;
+        <!-- <a (click)="isChoosing = false"><nb-icon id="ico-eye" class="close-red" [icon]="'close-outline'"
+              pack="eva"></nb-icon></a> -->
+      </span>
+    </span>
+  </ng-container>
+</a>

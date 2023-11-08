@@ -14,17 +14,14 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { LessonAssignComponent } from './lesson-assign.component';
+import { FilterDropdownComponent } from './filter-dropdown.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   imports: [
@@ -46,15 +43,15 @@ import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.mod
     NzTabsModule,
     NzProgressModule,
     NzTagModule,
-    NzCheckboxModule,
-    NzButtonModule,
-    NzDrawerModule,
-    FilterDropdownModule,
+    NzSelectModule,
   ],
   declarations: [
-    LessonAssignComponent,
+    FilterDropdownComponent,
   ],
   providers: [
   ],
+  exports: [
+    FilterDropdownComponent
+  ]
 })
-export class LessonAssignModule { }
+export class FilterDropdownModule { }

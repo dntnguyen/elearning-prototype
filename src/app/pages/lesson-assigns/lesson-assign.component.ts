@@ -12,6 +12,7 @@ interface UserAndGroup {
   groupCode?: string;
   groupName?: string;
   name_english?: string;
+  area: string
 }
 
 @Component({
@@ -20,6 +21,8 @@ interface UserAndGroup {
   templateUrl: './lesson-assign.component.html',
 })
 export class LessonAssignComponent {
+  listGroup: any = []
+  listArea: any = []
   defaultData: UserAndGroup[] = [
     {
       selected: false,
@@ -30,6 +33,7 @@ export class LessonAssignComponent {
       groupCode: 'G0001',
       groupName: 'EDC',
       name_english: "ly thi thanh tam",
+      area: "Cần Thơ",
     },
     {
       selected: false,
@@ -40,6 +44,7 @@ export class LessonAssignComponent {
       groupCode: 'G0001',
       groupName: 'EDC',
       name_english: "tran trung hieu",
+      area: "Cần Thơ",
     },
     {
       selected: false,
@@ -50,6 +55,7 @@ export class LessonAssignComponent {
       groupCode: 'G0001',
       groupName: 'EDC',
       name_english: "nguyen khanh tran",
+      area: "Đồng Nai",
     },
     {
       selected: false,
@@ -60,6 +66,7 @@ export class LessonAssignComponent {
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
       name_english: "nguyen van quy",
+      area: "Sóc Trăng",
     },
     {
       selected: false,
@@ -70,6 +77,7 @@ export class LessonAssignComponent {
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
       name_english: "le thi ngoc thuy",
+      area: "Bến Tre",
     },
     {
       selected: false,
@@ -80,6 +88,7 @@ export class LessonAssignComponent {
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
       name_english: "nguyen van khoi",
+      area: "Nha Trang",
     },
     {
       selected: false,
@@ -90,6 +99,7 @@ export class LessonAssignComponent {
       groupCode: 'G0002',
       groupName: 'Giảng viên Đại Học',
       name_english: "hoang minh tuan",
+      area: "Nha Trang",
     },
     {
       selected: false,
@@ -100,6 +110,7 @@ export class LessonAssignComponent {
       groupCode: 'G0001',
       groupName: 'EDC',
       name_english: "nguyen thai hoa",
+      area: "Bến Tre",
     },
     {
       selected: false,
@@ -110,6 +121,7 @@ export class LessonAssignComponent {
       groupCode: 'G0001',
       groupName: 'EDC',
       name_english: "vo thanh trung",
+      area: "Sóc Trăng",
     },
     {
       selected: false,
@@ -119,6 +131,7 @@ export class LessonAssignComponent {
       email: '',
       groupCode: null,
       groupName: null,
+      area: "",
     },
     {
       selected: false,
@@ -128,6 +141,7 @@ export class LessonAssignComponent {
       email: '',
       groupCode: null,
       groupName: null,
+      area: "",
     },
   ];
 
@@ -140,13 +154,19 @@ export class LessonAssignComponent {
 
   isCheckedAll: boolean
 
+  selectedGroups: string[] = []
+  selectedAreas: string[] = []
+
   constructor(iconsLibrary: NbIconLibraries,
     private router: Router,
     private changeTitleService: ChangeTitleService,
   ) {
-    this.changeTitleService.setDataTitle('Assign bài học')
+    this.changeTitleService.setDataTitle('Đăng ký học viên vào khóa học')
 
     this.listOfData = [...this.defaultData]
+
+    this.getListGroup()
+    this.getListArea()
   }
 
   setSelected(data: UserAndGroup) {
@@ -286,25 +306,30 @@ export class LessonAssignComponent {
   onKeyUp(event) {
     let value = this.searchText
 
-    if (value.length <= 0) {
-      this.listOfData = [...this.defaultData]
-      return
+    if (!value) {
+      value = ''
     }
 
-    // if (!value) {
-    //   return
-    // }
-
-    // if (value.length < 3) {
-    //   return
-    // }
-
-    value = value.toLocaleLowerCase().trim()
+    if (value.length > 0) {
+      value = value.toLocaleLowerCase().trim()
+    }
 
     let listSearch: UserAndGroup[] = []
     for (let i = 0; i < this.defaultData.length; i++) {
       let handled = this.defaultData[i]
-      if (handled.name?.toLocaleLowerCase().includes(value)
+      if (this.selectedGroups.length > 0) {
+        if (this.selectedGroups.includes(handled.groupName) === false) {
+          continue
+        }
+      }
+
+      if (this.selectedAreas.length > 0) {
+        if (this.selectedAreas.includes(handled.area) === false) {
+          continue
+        }
+      }
+
+      if (value === '' || handled.name?.toLocaleLowerCase().includes(value)
         || handled.email?.toLocaleLowerCase().includes(value)
         || handled.code?.toLocaleLowerCase().includes(value)
         || handled.name_english?.toLocaleLowerCase().includes(value) ) {
@@ -329,6 +354,29 @@ export class LessonAssignComponent {
 
   backToLesson() {
     this.router.navigate(['pages','lessons']);
+  }
+
+  getListGroup(){
+    this.listGroup.push({label:"EDC", value:"EDC"})
+    this.listGroup.push({label:"Giảng viên Đại Học", value:"Giảng viên Đại Học"})
+  }
+
+  getListArea(){
+    this.listArea.push({label:"Cần Thơ", value:"Cần Thơ"})
+    this.listArea.push({label:"Đồng Nai", value:"Đồng Nai"})
+    this.listArea.push({label:"Sóc Trăng", value:"Sóc Trăng"})
+    this.listArea.push({label:"Bến Tre", value:"Bến Tre"})
+    this.listArea.push({label:"Nha Trang", value:"Nha Trang"})
+  }
+
+  listGroupChange(values: any) {
+    this.selectedGroups = values
+    this.onKeyUp(null)
+  }
+
+  listAreaChange(values: any) {
+    this.selectedAreas = values
+    this.onKeyUp(null)
   }
 }
 

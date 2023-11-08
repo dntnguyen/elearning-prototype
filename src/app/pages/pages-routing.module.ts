@@ -9,6 +9,7 @@ import { LessonComponent } from './lessons/lesson.component';
 import { ReportActivitiesComponent } from './lessons/report-activities/report-activities.component';
 import { MyLessonComponent } from './my-lessons/my-lesson.component';
 import { MyLessonViewComponent } from './my-lessons-view/my-lesson-view.component';
+import { MyLearningPathComponent } from './my-learning-paths/my-learning-path.component';
 import { LessonAssignComponent } from './lesson-assigns/lesson-assign.component';
 import { LessonEditComponent } from './lessons/lesson-edit/lesson-edit.component';
 import { InActiveUserComponent } from './inactive-users/inactive-user.component';
@@ -23,14 +24,29 @@ import { MyExamComponent } from './my-exams/my-exam.component';
 import { MyExamViewComponent } from './my-exam-views/my-exam-view.component';
 import { ExamEditComponent } from './exams/exam-edit/exam-edit.component';
 import { LearningViewComponent } from './learning-view/learning-view.component';
+import { UserComponent } from './users/user.component';
+import { UserAssignLessonComponent } from './user-assign-lessons/user-assign-lesson.component';
+import { UserLearningHistoryComponent } from './user-learning-histories/user-learning-history.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
     {
+      path: 'users',
+      component: UserComponent,
+    },
+    {
+      path: 'user-learning-histories',
+      component: UserLearningHistoryComponent,
+    },
+    {
       path: 'lessons',
       component: LessonComponent,
+    },
+    {
+      path: 'user-assign-lessons',
+      component: UserAssignLessonComponent,
     },
     {
       path: 'lesson-categories',
@@ -75,6 +91,10 @@ const routes: Routes = [{
     {
       path: 'my-lessons',
       component: MyLessonComponent,
+    },
+    {
+      path: 'my-learning-paths',
+      component: MyLearningPathComponent,
     },
     {
       path: 'my-lessons/view',

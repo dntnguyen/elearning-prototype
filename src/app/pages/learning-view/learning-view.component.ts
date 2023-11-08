@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeTitleService } from '../../change-title.service';
 
 @Component({
   selector: 'ngx-learning-view',
@@ -12,40 +13,43 @@ export class LearningViewComponent {
   valueOfComment: string;
   currentSelectedLesson: any
 
-  constructor() {
+  constructor(
+    private changeTitleService: ChangeTitleService,
+  ) {
     this.currentSelectedLesson = this.listLessonVideos.find(item => item.id === 2)
+    this.changeTitleService.setDataTitle('Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm')
   }
 
   listLessonVideos = [{
-    id:1,
+    id: 1,
     name: "Bài 1: Tổng quan về khóa học",
     time: "3:00",
     isLearned: true,
     isSelected: false,
   },
   {
-    id:2,
+    id: 2,
     name: "Bài 2: ELANCO PIG ACADEMY là gì?",
     time: "10:23",
     isLearned: false,
     isSelected: true,
   },
   {
-    id:3,
+    id: 3,
     name: "Bài 3: Các dấu hiệu bệnh",
     time: "6:21",
     isLearned: false,
     isSelected: false,
   },
   {
-    id:4,
+    id: 4,
     name: "Bài 4: Phương pháp chữa trị",
     time: "4:00",
     isLearned: false,
     isSelected: false,
   },
   {
-    id:5,
+    id: 5,
     name: "Bài 5: Cách thức phòng ngừa",
     time: "3:04",
     isLearned: false,
@@ -82,7 +86,7 @@ export class LearningViewComponent {
       { name: 'Super admin', comment: e.target.value, avatarUrl: '../../../assets/images/nick.png', upVote: 0, liked: false }
       ]
   }
-  setActive(item){
+  setActive(item) {
     for (let index in this.listLessonVideos) {
       if (this.listLessonVideos[index].id === item.id) {
         this.listLessonVideos[index].isSelected = true

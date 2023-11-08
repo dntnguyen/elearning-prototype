@@ -1,0 +1,42 @@
+<div class="row">
+  <nb-card style="width:100%">
+    <nb-card-body>
+      <div class="mt-2" style="font-size:16px;font-weight: 600;">
+        <span (click)="backToUser()" style="cursor:pointer;padding:2px;display: inline-block;height:20px;">
+          <nb-icon [icon]="'chevron-left'" pack="ion"
+            style="font-size:18px;font-weight:lighter;color:rgb(173, 173, 173)"></nb-icon>
+        </span>
+        &nbsp;
+        <span>Lịch sử học tập của học viên: </span>
+        <span class="elanco-color">Trần Trung Hiếu</span>
+      </div>
+      <br />
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <nz-timeline>
+            <nz-timeline-item>
+              <p>
+                <nz-tag >21/10/2023</nz-tag>&nbsp; Đăng ký khóa học: <b>Cách nuôi chó theo từng giai đoạn</b>
+              </p>
+              <p><nz-tag >21/10/2023</nz-tag>&nbsp;  Đăng ký khóa học: <b>Cách để giúp chó và mèo sống hòa thuận</b>
+              </p>
+            </nz-timeline-item>
+            <nz-timeline-item nzColor="green">
+              <nz-tag >21/10/2023</nz-tag>&nbsp;
+              Hoàn thành khóa học: <b>Cách nuôi chó theo từng giai đoạn</b>
+            </nz-timeline-item>
+            <nz-timeline-item nzColor="green">
+              <nz-tag >22/10/2023</nz-tag>&nbsp;
+              Hoàn thành khóa học: <b>Cách để giúp chó và mèo sống hòa thuận</b>
+            </nz-timeline-item>
+            <nz-timeline-item nzColor="red">
+              <nz-tag >28/10/2023</nz-tag>&nbsp;
+              Hoàn thành bài thi: <b>Bài thi kiểm tra năng lực nội bộ Elanco tháng 10/2023</b>
+            </nz-timeline-item>
+          </nz-timeline>
+        </div>
+      </div>
+
+    </nb-card-body>
+  </nb-card>
+</div>

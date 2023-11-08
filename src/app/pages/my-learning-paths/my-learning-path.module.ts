@@ -14,17 +14,15 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { LessonAssignComponent } from './lesson-assign.component';
+import { MyLearningPathComponent } from './my-learning-path.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
-import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
+import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   imports: [
@@ -46,15 +44,13 @@ import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.mod
     NzTabsModule,
     NzProgressModule,
     NzTagModule,
-    NzCheckboxModule,
-    NzButtonModule,
-    NzDrawerModule,
-    FilterDropdownModule,
+    NzRateModule,
+    NzSelectModule,
   ],
   declarations: [
-    LessonAssignComponent,
+    MyLearningPathComponent,
   ],
   providers: [
   ],
 })
-export class LessonAssignModule { }
+export class MyLearningPathModule { }

@@ -14,7 +14,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { LessonAssignComponent } from './lesson-assign.component';
+import { UserAssignLessonComponent } from './user-assign-lesson.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -25,6 +25,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.module';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 
 @NgModule({
   imports: [
@@ -50,11 +51,12 @@ import { FilterDropdownModule } from '../filter-control-list/filter-dropdown.mod
     NzButtonModule,
     NzDrawerModule,
     FilterDropdownModule,
+    NzTreeSelectModule,
   ],
   declarations: [
-    LessonAssignComponent,
+    UserAssignLessonComponent,
   ],
   providers: [
   ],
 })
-export class LessonAssignModule { }
+export class UserAssignLessonModule { }

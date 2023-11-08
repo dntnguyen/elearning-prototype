@@ -14,8 +14,8 @@ nb-card.inline-form-card nb-card-body {
   padding-bottom: 0;
 }
 
-.do-exam {
-  color: #00B432
+#ico-eye {
+  color: #00be3f
 }
 
 #ico-analytics {
@@ -36,52 +36,39 @@ nb-card.inline-form-card nb-card-body {
   color: #0067B1;
 }
 
+#btn-add {
+  color: white;
+}
+
 #btn-delete {
   background-color: #EBF3FF;
   border: 0px;
   color: #0067B1;
 }
 
-.incoming-div {
-  width: 80%;
+.public-div {
+  width: 100%;
   height: 100%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  border: 1px solid #0067B1;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: rgba(9.11, 198.69, 62.19, 0.10);
   border-radius: 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  display: inline-flex;
-  color:black;
+  display: inline-flex
 }
 
-.ongoing-div {
-  width: 80%;
+.private-div {
+  width: 100%;
   height: 100%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background: #0067B1;
-  border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  display: inline-flex;
-  color:white;
-}
-
-.complete-div {
-  width: 80%;
-  height: 100%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background: rgba(199, 199, 199, 0.527);
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: rgba(197, 12, 0, 0.10);
   border-radius: 20px;
   justify-content: center;
   align-items: center;
@@ -92,7 +79,7 @@ nb-card.inline-form-card nb-card-body {
 $default-status-font-size: 12px;
 
 .private-value {
-  color: red;
+  color: rgb(221, 1, 1);
   font-size: $default-status-font-size;
   // font-family: Inter;
   // font-weight: 400;
@@ -100,7 +87,7 @@ $default-status-font-size: 12px;
 }
 
 .public-value {
-  color: #00B432;
+  color: #029c2e;
   font-size: $default-status-font-size;
   // font-family: Inter;
   // font-weight: 400;
