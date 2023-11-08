@@ -49,13 +49,13 @@ nb-card.inline-form-card nb-card-body {
   padding-right: 4px;
   padding-top: 2px;
   padding-bottom: 2px;
-  background: #0067B1;
+  border: 1px solid #0067B1;
   border-radius: 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   display: inline-flex;
-  color:white;
+  color:black;
 }
 
 .ongoing-div {
@@ -65,7 +65,7 @@ nb-card.inline-form-card nb-card-body {
   padding-right: 4px;
   padding-top: 2px;
   padding-bottom: 2px;
-  background: #00a838;
+  background: #0067B1;
   border-radius: 20px;
   justify-content: center;
   align-items: center;

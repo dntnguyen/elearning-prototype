@@ -43,12 +43,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
-    title: 'Khóa học của tôi',
-    icon: 'book-open',
-    link: '/pages/my-lessons',
-    home: true,
-  },
-  {
     title: 'Lộ trình học',
     icon: 'trending-up-outline',
     link: '/pages/my-learning-paths',
@@ -58,6 +52,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Khám phá khóa học mới',
     icon: 'globe-outline',
     link: '/pages/new-lessons',
+    home: true,
+  },
+  {
+    title: 'Khóa học của tôi',
+    icon: 'book-open',
+    link: '/pages/my-lessons',
     home: true,
   },
   {

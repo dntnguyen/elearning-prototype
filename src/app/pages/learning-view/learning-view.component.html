@@ -8,14 +8,22 @@
       <h4>{{currentSelectedLesson.name}}</h4>
       <p>Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh ký sinh trùng đường máu, được ghi nhận phổ biến ở
         các đàn heo trên thế giới</p>
-      <button class="float-left" nz-button nzType="primary" nzShape="round">
-        <i class="fas fa-check"></i><span class="mr-2"></span> Đánh dấu đã học</button>
-      <button class="float-right" nz-button nzType="white" (click)="open()" nzShape="round"><i
-          class="far fa-question-circle"></i><span class="mr-2"></span> Hỏi
-        đáp</button>
+        <div class="row">
+          <div class="col-lg-4">
+            <button class="float-left" nz-button nzType="primary" nzShape="round">
+              <i class="fas fa-check"></i><span class="mr-2"></span> Đánh dấu đã học</button>
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+          <div class="col-lg-4">
+            <button class="float-right" nz-button nzType="white" (click)="open()" nzShape="round"><i
+              class="far fa-question-circle"></i><span class="mr-2"></span> Thảo luận</button>
+          </div>
+        </div>
     </div>
 
-    <nz-drawer [nzSize]="size" [nzVisible]="visible" nzPlacement="right" nzTitle="Hỏi đáp" (nzOnClose)="close()">
+    <nz-drawer [nzSize]="size" [nzVisible]="visible" nzPlacement="right" nzTitle="Thảo luận" (nzOnClose)="close()">
       <ng-container *nzDrawerContent>
         <div class="row d-flex justify-content-center">
           <div class="col-md-12 col-lg-12 col-sm-12">

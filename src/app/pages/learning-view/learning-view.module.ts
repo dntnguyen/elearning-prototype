@@ -13,7 +13,7 @@ import { NzListModule } from 'ng-zorro-antd/list';
     CommonModule,
     NzDrawerModule,
     NzButtonModule,
-    NzListModule
+    NzListModule,
   ]
 })
 export class LearningViewModule { }

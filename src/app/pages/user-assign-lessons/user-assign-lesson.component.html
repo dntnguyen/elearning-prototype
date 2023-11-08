@@ -33,9 +33,13 @@
           </div>
 
 
-          <div class="text-right" style="width: 100%;">
-            <button class="mb-2" nz-button nzType="primary" (click)="assignCurrentSelected()">Đăng ký danh sách đang chọn</button>
-          </div>
+          <!-- <div class="mb-2">
+            <ngx-filter-dropdown title="Nhóm:" [list]="listGroup" [values]="selectedGroups"
+              (valuesChange)="listGroupChange($event)"></ngx-filter-dropdown>
+            <ngx-filter-dropdown class="ml-1" title="Khu vực:" [list]="listArea" [values]="selectedAreas"
+              (valuesChange)="listAreaChange($event)"></ngx-filter-dropdown>
+
+          </div> -->
 
           <nz-table #basicTable [nzData]="listOfData" style="width:100%" [nzShowPagination]="false" nzSize="small"
             [nzPageSize]="9999" [nzScroll]="{ x: '450px' }">
@@ -52,8 +56,7 @@
               <ng-container *ngFor="let data of basicTable.data">
                 <tr>
                   <td class="text-center">
-                    <label nz-checkbox [(ngModel)]="data.selected"></label>
-                    <!-- <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label> -->
+                    <label nz-checkbox [(ngModel)]="data.selected" (ngModelChange)="setSelected(data)"></label>
                   </td>
                   <td>
                     <div><b>{{data.name}}</b></div>

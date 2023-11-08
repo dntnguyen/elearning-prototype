@@ -17,7 +17,7 @@
           </ng-template>
 
           <nz-select class="ml-2" style="width: 200px;" nzAllowClear
-            nzPlaceHolder="Chọn trạng thái" [(ngModel)]="selectedStatusValue" (ngModelChange)="onKeyUp(null)">
+            nzPlaceHolder="Tìm theo trạng thái" [(ngModel)]="selectedStatusValue" (ngModelChange)="onKeyUp(null)">
             <nz-option *ngFor="let item of listStatus" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
           </nz-select>
         </div>
