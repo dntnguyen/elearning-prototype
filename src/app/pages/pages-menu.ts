@@ -8,6 +8,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Người dùng',
+    icon: 'person-outline',
+    link: '/pages/users',
+  },
+  {
     title: 'Bài học',
     icon: 'book-outline',
     link: '/pages/lessons',
@@ -15,7 +20,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Phân loại bài học',
-    icon: 'browser',
+    icon: 'copy-outline',
     link: '/pages/lesson-categories',
     home: true,
   },
@@ -38,26 +43,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: 'Lộ trình học',
+    icon: 'trending-up-outline',
+    link: '/pages/my-learning-paths',
+    home: true,
+  },
+  {
+    title: 'Khám phá khóa học mới',
+    icon: 'globe-outline',
+    link: '/pages/new-lessons',
+    home: true,
+  },
+  {
     title: 'Khóa học của tôi',
     icon: 'book-open',
     link: '/pages/my-lessons',
     home: true,
   },
   {
-    title: 'Khám phá khóa học mới',
-    icon: 'calendar-outline',
-    link: '/pages/new-lessons',
-    home: true,
-  },
-  {
     title: 'Bài thi của tôi',
-    icon: 'book-open',
+    icon: 'file-text-outline',
     link: '/pages/my-exams',
     home: true,
   },
   {
     title: 'Báo cáo',
-    icon: 'layout-outline',
+    icon: 'pie-chart-outline',
     children: [
       {
         title: 'Người dùng ít hoạt động',

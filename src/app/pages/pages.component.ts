@@ -51,11 +51,14 @@ export class PagesComponent {
     }
 
     if (this.viewAs === 'admin') {
-      for (let i = 0; i < this.menu.length; i++) {
+      for (let i = this.menu.length - 1; i >= 0; i--) {
         if (this.menu[i].link === '/pages/my-lessons') {
           this.menu.splice(i, 1)
         }
         if (this.menu[i].link === '/pages/new-lessons') {
+          this.menu.splice(i, 1)
+        }
+        if (this.menu[i].link === '/pages/my-learning-paths') {
           this.menu.splice(i, 1)
         }
         if (this.menu[i].link === '/pages/my-exams') {
@@ -66,6 +69,7 @@ export class PagesComponent {
       for (let i = this.menu.length - 1; i >= 0; i--) {
         if (this.menu[i].link !== '/pages/my-lessons'
           && this.menu[i].link !== '/pages/new-lessons'
+          && this.menu[i].link !== '/pages/my-learning-paths'
           && this.menu[i].link !== '/pages/my-exams'
           && this.menu[i].link !== '/pages/dashboard') {
           this.menu.splice(i, 1)

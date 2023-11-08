@@ -87,70 +87,70 @@ export class NewLessonComponent {
       publishedDate: '12/09/2023',
       isPrivate: false
     },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 23,
-      publishedDate: '12/09/2023',
-      isPrivate: true
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 80,
-      publishedDate: '12/09/2023',
-      isPrivate: true
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 69,
-      publishedDate: '12/09/2023',
-      isPrivate: true
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 100,
-      publishedDate: '12/09/2023',
-      isPrivate: true
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 42,
-      publishedDate: '12/09/2023',
-      isPrivate: false
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 0,
-      publishedDate: '12/09/2023',
-      isPrivate: false
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 80,
-      publishedDate: '12/09/2023',
-      isPrivate: false
-    },
-    {
-      imageUrl: '../../../assets/images/my-lesson-sample-image.png',
-      name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
-      description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
-      progressPercent: 100,
-      publishedDate: '12/09/2023',
-      isPrivate: false
-    },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 23,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: true
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 80,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: true
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 69,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: true
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 100,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: true
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 42,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: false
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 0,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: false
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 80,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: false
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/my-lesson-sample-image.png',
+    //   name: 'Bệnh tiêu chảy cấp PED và viêm ruột truyền nhiễm',
+    //   description: 'Bệnh thiếu máu do vi khuẩn M. suis thường bị gọi nhầm là bệnh...',
+    //   progressPercent: 100,
+    //   publishedDate: '12/09/2023',
+    //   isPrivate: false
+    // },
   ];
 
   constructor(iconsLibrary: NbIconLibraries,
